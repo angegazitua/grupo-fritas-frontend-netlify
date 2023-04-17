@@ -3,7 +3,9 @@ import React from 'react'
 
 export default function Resumen() {
     return (
+
         <>
+        <body id="body-pg">
             <h2>¿Qué es War Houses?</h2>
             <p>War of Houses es un juego multijugador de gestión de recursos inspirado en el mítico 
                 mundo de Harry Potter, en el cual las 4 casas de Howards, Griffindor, Slytherin, Ravenclaw 
@@ -12,11 +14,14 @@ export default function Resumen() {
                 acumulando en nuestra mano.</p>
 
             <p>La mecánica del juego es sencilla: tiramos los dados, recogemos los recursos que estos 
-                hayan generado y finalmente construimos cabañas, escobas y castillos siempre que 
+                hayan generado y finalmente construimos cabañas, escobas y castillos, siempre que 
                 dispongamos de los recursos necesarios para poderlos construir. Ya ves que su 
                 dinámica es sencilla y el objetivo del juego para ganar es conseguir tener 10 
                 snitches doradas.</p>
 
+            <a href='/'>Ir a Inicio</a>
+            <a href='/equipo'>Conoce nuestro Equipo</a>
+        </body>
         </>
     )
 }

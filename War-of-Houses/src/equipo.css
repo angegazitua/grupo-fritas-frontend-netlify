@@ -1,0 +1,16 @@
+
+.equipo {
+    display: flex;
+    margin: 20px;
+    align-items: center;
+
+}
+
+.persona {
+    margin: 80px;
+}
+
+img {
+    width: 150px;
+    height: 200px;
+}
