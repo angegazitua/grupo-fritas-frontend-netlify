@@ -7,6 +7,7 @@ import Layout from './pages/Layout';
 import AboutUs from './pages/AboutUs/AboutUs';
 import LandingPage from './pages/LandingPage/LandingPage';
 import MainPage from './pages/MainPage/MainPage';
+import Board from './game/Board';
 
 function Router() {
   const router = createBrowserRouter([
@@ -25,6 +26,10 @@ function Router() {
         {
           path: 'main-page',
           element: <MainPage />
+        },
+        {
+          path: 'board',
+          element: <Board />
         }
       ]
     },

@@ -26,6 +26,11 @@ function Navbar() {
                          Main Page
                     </NavLink>
                 </li>
+                <li className="navbar-element"> 
+                    <NavLink to="board" className={({isActive}) => isActive ? "navbar-link name" : "navbar-link"}>
+                         Board
+                    </NavLink>
+                </li>
             </ul>
         </nav>
     </header>
