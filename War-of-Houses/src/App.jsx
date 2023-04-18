@@ -1,22 +1,22 @@
-import './App.css'
+import React from 'react'
+import { Toaster } from 'react-hot-toast';
+import Router from './Router'
+
 
 function App() {
 
   return (
     <>
-    <body id="body-app">
-    <div className="App">
-      <h1>Welcome to War of Houses</h1>
-      <p className="read-the-docs">
-        Web Page made by María Angélica Gazitúa y Camila Bennett
-      </p>
-      <div>
-        <a href='/paginaprincipal'>Ir a Página Principal</a>
-        <a href='/equipo'>Conoce a nuestro equipo</a>
-      </div>
-      
-    </div>
-    </body>
+      <Router />
+      <Toaster position='bottom-center' toastOptions={
+        {
+          style: {
+            background: '#191414',
+            color: 'white',
+            border: '1px solid #2e2c2c'
+          }
+        }
+      }/>
     </>
   )
 }
