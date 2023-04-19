@@ -6,10 +6,7 @@ import FotoCami from '../../assets/img/foto_cami.jpeg'
 function AboutUs() {
   return (
     <main className="content-about-us">
-      <div className="bg-container-about-us">
-
-        
-      </div>
+      <div className="bg-container-about-us"></div>
 
       <div className='equipo'>
         <div className='persona'>
