@@ -6,26 +6,37 @@ import FotoCami from '../../assets/img/foto_cami.jpeg'
 function AboutUs() {
   return (
     <main className="content-about-us">
-      <div className="bg-container-about-us"></div>
+      <div className="bg-container-about-us">
+
+        
+      </div>
 
       <div className='equipo'>
         <div className='persona'>
-          <img src={FotoAnge}></img>
+          <img className='foto-persona' src={FotoAnge}></img>
           <hr class="line"></hr>
-          <h2>María Angélica Gazitúa</h2>
-          <p class="title">CEO & Founder</p>
-          <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-          <p>ange.gazitua@uc.cl</p>
+          <h2 id='nombre'>María Angélica Gazitúa</h2>
+          <br></br>
+          <p>Estudiante de Ingeniería Civil</p>
+          <p>Major: Ingeniería de Software</p>
+          <p>Minor: Ingeniería Industrial</p>
+          <p>Dato curioso: Fanática de Harry Potter</p>
+          <br></br>
+          <p>Contacto: ange.gazitua@uc.cl</p>
           <p><button class="button-about">Contact</button></p>
         </div>
 
         <div className='persona'>
-          <img src={FotoCami}></img>
+          <img className='foto-persona' src={FotoCami}></img>
           <hr class="line"></hr>
-          <h2>Camila Bennett</h2>
-          <p class="title">Art Director</p>
-          <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-          <p>mike@example.com</p>
+          <h2 id='nombre'>Camila Bennett</h2>
+          <br></br>
+          <p>Estudiante de Ingeniería Civil</p>
+          <p>Major: Ingeniería de Software</p>
+          <p>Minor: Ingeniería Industrial</p>
+          <p>Dato curioso: Fanática de Catan</p>
+          <br></br>
+          <p>Contacto: camila.bennett@uc.cl</p>
           <p><button class="button-about">Contact</button></p>
         </div>
       </div>
