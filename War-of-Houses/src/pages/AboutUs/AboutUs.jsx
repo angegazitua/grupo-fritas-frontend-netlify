@@ -1,7 +1,7 @@
 import React from "react";
 import './about-us.css'
-import FotoAnge from '../../assets/img/foto_ange.jpeg'
-import FotoCami from '../../assets/img/foto_cami.jpeg'
+import FotoAnge from '../../assets/img/foto_ange.jpg'
+import FotoCami from '../../assets/img/foto_cami.jpg'
 
 function AboutUs() {
   return (
