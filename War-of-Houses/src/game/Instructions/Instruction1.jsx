@@ -6,18 +6,27 @@ import Board from '../Board.jsx';
 function Instruction1() {
   return (
     <main className="content-instruction">
-        <h1 className="titulo-instrucciones-1">Welcome to the instructions of <span className="name-instructions">War of Houses</span></h1>
+        <h1 className="titulo-instrucciones">¿Quieres aprender a jugar <span className="name-instructions">War of Houses</span>?</h1>
         <div className="div-instrucciones">
             <div className="div-instrucciones-board">
                 <Board />
             </div>
             <div className="div-instrucciones-text">
-              <p>Aca van las intrucciones escritas</p>
+                <p>Frente a ti se encuentra el mágico mundo de War of Houses, el cual se compone de 19 hexágonos de terreno. 
+                Tu objetivo es colonizar el mundo, mediante la construcción de cabañas, castillos y escobas.</p>
+                <p>En War of Houses hay 5 tipos diferentes de terreno, donde cata uno produce una materia prima diferente:</p>
+                <ul>
+                    <li>El bosque prohibido produce pelo de unicornio</li>
+                    <li>La cámara de los secretos produce dientes de serpiente</li>
+                    <li>Milk</li>
+                </ul>
             </div>
         </div>
-        <Link className="next-button" to='/instruction2'>
-            Next
-        </Link>
+        <div className="div-botones">
+            <Link className="next-button" to='/instruction2'>
+                Next
+            </Link>
+        </div>
     </main>
   )
 }

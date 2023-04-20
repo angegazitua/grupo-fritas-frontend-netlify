@@ -50,7 +50,8 @@
     color: goldenrod;
 }
 
-.titulo-instrucciones-1 {
+.titulo-instrucciones {
+    padding-top: 20px;
     text-align: center;
 }
 
@@ -74,7 +75,22 @@
     margin-top: 5px;
 }
 
-.play-button:hover {
+.back-button:hover {
+    background-color: white;
+    color: goldenrod;
+}
+
+.back-button {
+    padding: 10px 20px;
+    background: goldenrod;
+    transition: all 0.5s ease-in;
+    text-decoration: none;
+    border-radius: 7px;
+    font-size: 1.2vw;
+    margin-top: 5px;
+}
+
+.next-button:hover {
     background-color: white;
     color: goldenrod;
 }
@@ -93,4 +109,16 @@
     display: flex;
     flex-direction: column;
     margin-top: 100px;
+}
+
+.div-botones{
+    display: flex;
+    justify-content: center;
+}
+
+.div-boton{
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    align-self: center;
 }

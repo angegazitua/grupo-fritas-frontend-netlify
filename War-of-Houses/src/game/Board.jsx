@@ -17,7 +17,7 @@ function Board () {
     return (
       <div id="board">
         {/* <img src={Image6} id='cabana'></img> */}
-        <HexGrid width={1550} height={800} viewBox="-50 -50 100 100">
+        <HexGrid width={1550} height={600} viewBox="-50 -50 100 100">  {/* aca se cambia el tamaño del board */}
           {/* Grid with manually inserted hexagons */}
           <Layout size={{ x: 10, y: 10 }} flat={true} spacing={1.01} origin={{ x: 0, y: 0 }}>
             <Hexagon q={0} r={0} s={0} fill = 'pat-logo'/>
