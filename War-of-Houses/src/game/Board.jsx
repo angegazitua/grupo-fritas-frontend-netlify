@@ -9,6 +9,7 @@ import Image3 from '../assets/img/chamber.png'
 import Image4 from '../assets/img/diagonal_alley.jpg'
 import Image5 from '../assets/img/oficina_dumbledore.jpg'
 import Image6 from '../assets/img/cabana-de-madera_rojo.png'
+import Image7 from '../assets/img/logo_howards.png'
 
 function Board () {
     const hexagonSize = { x: 18, y: 10 };
@@ -19,7 +20,7 @@ function Board () {
         <HexGrid width={1550} height={800} viewBox="-50 -50 100 100">
           {/* Grid with manually inserted hexagons */}
           <Layout size={{ x: 10, y: 10 }} flat={true} spacing={1.01} origin={{ x: 0, y: 0 }}>
-            <Hexagon q={0} r={0} s={0} fill = 'pat-1'/>
+            <Hexagon q={0} r={0} s={0} fill = 'pat-logo'/>
             {/* Using pattern (defined below) to fill the hexagon */}
             <Hexagon q={0} r={1} s={-1} fill = 'pat-2'/> 
             <Hexagon q={1} r={0} s={-1} fill = 'pat-3'/>
@@ -43,12 +44,14 @@ function Board () {
 
             {/* Pattern and text */}
           </Layout>
-          <Pattern id="pat-1" link={Image1} size={hexagonSize}/>
+
+          {/* <Pattern id="pat-1" link={Image1} size={hexagonSize}/>
           <Pattern id="pat-2" link={Image2} size={hexagonSize}/>
           <Pattern id="pat-3" link={Image3} size={hexagonSize3}/>
           <Pattern id="pat-4" link={Image4} size={hexagonSize}/>
           <Pattern id="pat-5" link={Image5} size={hexagonSize}/>
           <Pattern id="pat-cabaña" link={Image6}/>
+          <Pattern id="pat-logo" link={Image7}/> */}
 
         </HexGrid>
       </div>

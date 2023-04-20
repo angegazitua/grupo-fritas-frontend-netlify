@@ -1,0 +1,96 @@
+/* 
+.content-instruction {
+    align-items: center;
+    align-content: center;
+    opacity: 0;
+}
+
+
+.next-button {
+    padding: 10px 20px;
+    background: goldenrod;
+    transition: all 0.5s ease-in;
+    text-decoration: none;
+    border-radius: 7px;
+    font-size: 1.2vw;
+    margin-top: 5px;
+}
+
+.play-button:hover {
+    background-color: white;
+    color: goldenrod;
+}
+
+.name-instructions {
+    color: goldenrod;
+}
+
+.name-instructions:focus, .name-instructions:hover {
+    color: goldenrod;
+    text-shadow:
+     2px 3px 0 red,
+     4px 4px 0 green,  
+      6px 5px 0 blue,
+     8px  6px 0 yellow,
+      10px 7px 0 black;
+  }
+
+
+@media screen and (max-width: 850px) {
+    .bg-container {
+        height: 100.5vh;
+    }
+
+    .content {
+        font-size: 13px;
+    }
+} */
+
+.name-instructions {
+    color: goldenrod;
+}
+
+.titulo-instrucciones-1 {
+    text-align: center;
+}
+
+.name-instructions:focus, .name-instructions:hover {
+    color: goldenrod;
+    text-shadow:
+     2px 3px 0 red,
+     4px 4px 0 green,  
+      6px 5px 0 blue,
+     8px  6px 0 yellow,
+      10px 7px 0 black;
+}
+
+.next-button {
+    padding: 10px 20px;
+    background: goldenrod;
+    transition: all 0.5s ease-in;
+    text-decoration: none;
+    border-radius: 7px;
+    font-size: 1.2vw;
+    margin-top: 5px;
+}
+
+.play-button:hover {
+    background-color: white;
+    color: goldenrod;
+}
+
+.div-instrucciones {
+    display: flex;
+}
+
+.div-instrucciones-board {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+
+.div-instrucciones-text {
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+}

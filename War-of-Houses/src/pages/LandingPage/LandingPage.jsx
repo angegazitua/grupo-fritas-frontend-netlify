@@ -8,9 +8,6 @@ function LandingPage() {
         <div className="bg-container"></div>
         <div className="content-landing">
             <h1>Welcome to <span className="name-landing">War of Houses</span></h1>
-            {/* <Link className="play-button">
-                Play Now!
-            </Link> */}
         </div>
     </main>
   )

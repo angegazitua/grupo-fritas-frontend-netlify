@@ -27,7 +27,7 @@ function Navbar() {
                     </NavLink>
                 </li>
                 <li className="navbar-element"> 
-                    <NavLink to="board" className={({isActive}) => isActive ? "navbar-link name" : "navbar-link"}>
+                    <NavLink to="instruction1" className={({isActive}) => isActive ? "navbar-link name" : "navbar-link"}>
                         Board Instructions
                     </NavLink>
                 </li>
