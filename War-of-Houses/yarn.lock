@@ -376,6 +376,11 @@ react-router-dom@^6.10.0:
     "@remix-run/router" "1.5.0"
     react-router "6.10.0"
 
+react-router-hashlink@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/react-router-hashlink/-/react-router-hashlink-0.6.0.tgz#e643f2ec374040660db4be0ec544b7d084d0cf61"
+  integrity sha512-LpbQJXXLwhXIz3DEc+OqAK34XwYb+7C61yzDc+hNVbWfovTdiIEXMQ8DssVxEp0i3N8VmrwXgejWQE8nSTsKGA==
+
 react-router@6.10.0:
   version "6.10.0"
   resolved "https://registry.npmjs.org/react-router/-/react-router-6.10.0.tgz"

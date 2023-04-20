@@ -58,7 +58,7 @@ tr:hover {background-color: grey;}
 @media screen and (max-width: 850px) {
 
     .bg-container-main-page {
-        height: 100.5vh;
+        height: 200.5vh;
     }
 
     .content {

@@ -15,7 +15,7 @@ function Board () {
     const hexagonSize3 = { x: 10, y: 10 };
     return (
       <div id="board">
-        <img src={Image6} id='cabana'></img>
+        {/* <img src={Image6} id='cabana'></img> */}
         <HexGrid width={1550} height={800} viewBox="-50 -50 100 100">
           {/* Grid with manually inserted hexagons */}
           <Layout size={{ x: 10, y: 10 }} flat={true} spacing={1.01} origin={{ x: 0, y: 0 }}>
