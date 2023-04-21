@@ -14,11 +14,15 @@ function Instruction1() {
             <div className="div-instrucciones-text">
                 <p>Frente a ti se encuentra el mágico mundo de War of Houses, el cual se compone de 19 hexágonos de terreno. 
                 Tu objetivo es colonizar el mundo, mediante la construcción de cabañas, castillos y escobas.</p>
-                <p>En War of Houses hay 5 tipos diferentes de terreno, donde cata uno produce una materia prima diferente:</p>
+                <br></br>
+                <p>En War of Houses hay 5 tipos diferentes de terreno, donde cada uno produce una materia prima diferente:</p>
+                <br></br>
                 <ul>
-                    <li>El bosque prohibido produce pelo de unicornio</li>
-                    <li>La cámara de los secretos produce dientes de serpiente</li>
-                    <li>Milk</li>
+                    <li>El bosque prohibido produce pelo de unicornio.</li>
+                    <li>La cámara de los secretos produce dientes de serpiente.</li>
+                    <li>La casa de Hagrid prudce huevos de dragón.</li>
+                    <li>Diagonal Alley produce varitas mágicas.</li>
+                    <li>La oficina de Dumbledore produce plumas de Phoenix.</li>
                 </ul>
             </div>
         </div>
