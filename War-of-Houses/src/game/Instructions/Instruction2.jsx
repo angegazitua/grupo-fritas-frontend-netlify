@@ -19,18 +19,16 @@ function Instruction2() {
   return (
     <main className="content-instruction">
         
-        {/* <img src={ImageCabanaRoja} className='cabana-roja-tablero'></img> */}
         {isVisibleInst && <img src={ImageCabanaRoja} className='cabana-roja-instrucciones' alt="Imagen" />}
-        
         {isVisibleInst && <img src={ImageEscobaRoja} className='escoba-roja-instrucciones' alt="Imagen" />}
 
-        {/* <img src={ImageCabanaRoja} className='cabana-roja-instrucciones'></img>
-        <img src={ImageEscobaRoja} className='escoba-roja-tablero'></img>
-        <img src={ImageEscobaRoja} className='escoba-roja-instrucciones'></img> */}
         <h1 className="titulo-instrucciones">¿Quieres aprender a jugar <span className="name-instructions">War of Houses</span>?</h1>
         <div className="div-instrucciones">
             <div className="div-instrucciones-board">
-              {isVisibleBoard && <img src={ImageCabanaRoja} className='cabana-roja-tablero' alt="Imagen" />}
+              <div className='div-cabana-roja-tablero'>
+                {isVisibleBoard && <img src={ImageCabanaRoja} className='cabana-roja-tablero' alt="Imagen" />}
+              </div>
+              
               {isVisibleBoard && <img src={ImageEscobaRoja} className='escoba-roja-tablero' alt="Imagen" />}
                 <Board />
                 

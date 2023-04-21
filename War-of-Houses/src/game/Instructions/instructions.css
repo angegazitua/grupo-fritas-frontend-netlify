@@ -104,6 +104,20 @@
     display: flex;
     flex-direction: column;
     width: 60%;
+    position: relative; 
+}
+
+.div-cabana-roja-tablero {
+    z-index: 1;
+    position: relative;
+    top: 48%;
+    left: 31%;
+    width: 2.5%;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .div-instrucciones-text {
@@ -125,18 +139,11 @@
     align-self: center;
 }
 
-.cabana-roja-tablero {
-    z-index: 1;
-    position: absolute;
-    top: 52%;
-    left: 31%;
-    width: 2.5%;
-    height: auto;
-}
+
 
 .cabana-roja-instrucciones {
     z-index: 1;
-    position: absolute;
+    position: relat;
     top: 70%;
     left: 70%;
   }
