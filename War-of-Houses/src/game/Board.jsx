@@ -23,7 +23,7 @@ function Board () {
             <Hexagon q={0} r={0} s={0} fill = 'pat-logo'/>
             {/* Using pattern (defined below) to fill the hexagon */}
             <Hexagon q={0} r={1} s={-1} fill = 'pat-2'> 
-              <Text>6</Text>
+              <Text>10</Text>
             </Hexagon>
             <Hexagon q={1} r={0} s={-1} fill = 'pat-3'>
               <Text>8</Text> 
@@ -35,7 +35,7 @@ function Board () {
               <Text>5</Text>
               </Hexagon>
             <Hexagon q={-1} r={0} s={1} fill = 'pat-1'>
-              <Text>9</Text>
+              <Text>6</Text>
               </Hexagon>
             <Hexagon q={-1} r={1} s={0} fill = 'pat-2'>
               <Text>9</Text>
@@ -49,7 +49,7 @@ function Board () {
               <Text>6</Text>
               </Hexagon>
             <Hexagon q={1} r={1} s={-2} fill = 'pat-5'>
-              <Text>10</Text>
+              <Text>9</Text>
               </Hexagon>
             <Hexagon q={2} r={0} s={-2} fill = 'pat-1'>
               <Text>5</Text>

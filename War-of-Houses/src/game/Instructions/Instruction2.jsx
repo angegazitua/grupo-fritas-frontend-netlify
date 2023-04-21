@@ -1,17 +1,32 @@
-import React from "react";
+
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import './instructions.css';
 import Board from '../Board.jsx';
 import ImageCabanaRoja from '../../assets/img/cabana-de-madera_rojo.png'
 import ImageEscobaRoja from '../../assets/img/escoba-roja.png'
 
+
 function Instruction2() {
+  const [isVisibleInst, setIsVisibleInst] = useState(true);
+  const [isVisibleBoard, setIsVisibleBoard] = useState(false);
+
+  function handleClick() {
+    setIsVisibleInst(false);
+    setIsVisibleBoard(true);
+  }
+
   return (
     <main className="content-instruction">
-        <img src={ImageCabanaRoja} className='cabana-roja-tablero'></img>
-        <img src={ImageCabanaRoja} className='cabana-roja-instrucciones'></img>
+        {isVisibleBoard && <img src={ImageCabanaRoja} className='cabana-roja-tablero' alt="Imagen" />}
+        {/* <img src={ImageCabanaRoja} className='cabana-roja-tablero'></img> */}
+        {isVisibleInst && <img src={ImageCabanaRoja} className='cabana-roja-instrucciones' alt="Imagen" />}
+        {isVisibleBoard && <img src={ImageEscobaRoja} className='escoba-roja-tablero' alt="Imagen" />}
+        {isVisibleInst && <img src={ImageEscobaRoja} className='escoba-roja-instrucciones' alt="Imagen" />}
+
+        {/* <img src={ImageCabanaRoja} className='cabana-roja-instrucciones'></img>
         <img src={ImageEscobaRoja} className='escoba-roja-tablero'></img>
-        <img src={ImageEscobaRoja} className='escoba-roja-instrucciones'></img>
+        <img src={ImageEscobaRoja} className='escoba-roja-instrucciones'></img> */}
         <h1 className="titulo-instrucciones">¿Quieres aprender a jugar <span className="name-instructions">War of Houses</span>?</h1>
         <div className="div-instrucciones">
             <div className="div-instrucciones-board">
@@ -24,6 +39,12 @@ function Instruction2() {
                 partida.</p>
               <br></br>
               <p> ¿Quieres ver cómo se ve el inicio de la partida? ¡Apreta el botón! </p>
+              <br></br>
+              <br></br>
+              <br></br>
+              {isVisibleInst && 
+              (<button className='back-button' onClick={handleClick}>Haz clic aquí</button>) }
+              
               
             </div>
         </div>
@@ -34,7 +55,7 @@ function Instruction2() {
         </Link>
         </div>
         <div className="div-boton">
-        <Link className="next-button">
+        <Link className="next-button" to='/instruction3'>
             Next
         </Link>
         </div>

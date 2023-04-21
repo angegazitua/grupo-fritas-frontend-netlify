@@ -9,6 +9,7 @@ import LandingPage from './pages/LandingPage/LandingPage';
 import MainPage from './pages/MainPage/MainPage';
 import Instruction1 from './game/Instructions/Instruction1';
 import Instruction2 from './game/Instructions/Instruction2';
+import Instruction3 from './game/Instructions/Instruction3';
 
 function Router() {
   const router = createBrowserRouter([
@@ -35,6 +36,10 @@ function Router() {
         {
           path: 'instruction2',
           element: <Instruction2 />
+        },
+        {
+          path: 'instruction3',
+          element: <Instruction3 />
         }
       ]
     },
