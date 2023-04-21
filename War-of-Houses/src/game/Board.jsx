@@ -81,14 +81,14 @@ function Board () {
 
 
           </Layout>
-{/* 
+
           <Pattern id="pat-1" link={Image1} size={hexagonSize}/>
           <Pattern id="pat-2" link={Image2} size={hexagonSize}/>
           <Pattern id="pat-3" link={Image3} size={hexagonSize3}/>
           <Pattern id="pat-4" link={Image4} size={hexagonSize}/>
           <Pattern id="pat-5" link={Image5} size={hexagonSize}/>
           <Pattern id="pat-cabaña" link={Image6}/>
-          <Pattern id="pat-logo" link={Image7}/> */}
+          <Pattern id="pat-logo" link={Image7}/>
 
         </HexGrid>
       </div>

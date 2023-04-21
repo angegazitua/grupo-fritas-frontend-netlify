@@ -8,7 +8,7 @@ function LandingPage() {
         <div className="bg-container"></div>
         <div className="content-landing">
             <h1>Welcome to <span className="name-landing">War of Houses</span></h1>
-            <h2>LLeva a tu casa la conquista de Howards</h2>
+            <h5>LLeva a tu casa la conquista de Hogwarts</h5>
         </div>
     </main>
   )
