@@ -68,7 +68,7 @@ function Instruction3() {
       </div>
       <div className="div-botones">
         <div className="div-boton">
-          <Link className="back-button" to='/instruction1'>
+          <Link className="back-button" to='/instruction2'>
             Back
             </Link>
           </div>

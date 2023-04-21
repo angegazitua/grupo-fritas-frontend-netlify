@@ -138,6 +138,15 @@
     left: 70%;
   }
 
+
+.escoba-roja-tablero {
+    z-index: 1;
+    position: absolute;
+    top: 58%;
+    left: 32%;
+    transform: rotate(16deg);
+}
+
 #escoba-roja-tablero-1 {
     z-index: 1;
     position: absolute;
@@ -149,9 +158,9 @@
 #escoba-roja-tablero-2 {
     z-index: 1;
     position: absolute;
-    top: 70%;
-    left: 45%;
-    transform: rotate(16deg);
+    top: 61.7%;
+    left: 35.2%;
+    transform: rotate(320deg);
 }
 
 .escoba-roja-instrucciones {
