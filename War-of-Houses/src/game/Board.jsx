@@ -8,7 +8,7 @@ import Image2 from '../assets/img/cabaña_hagrid.jpg'
 import Image3 from '../assets/img/chamber.png'
 import Image4 from '../assets/img/diagonal_alley.jpg'
 import Image5 from '../assets/img/oficina_dumbledore.jpg'
-import Image6 from '../assets/img/cabana-de-madera_rojo.png'
+import Image6 from '../assets/img/cabana-roja.png'
 import Image7 from '../assets/img/logo_howards.png'
 
 function Board () {

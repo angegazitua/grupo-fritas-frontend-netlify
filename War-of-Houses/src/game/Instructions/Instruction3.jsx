@@ -1,5 +1,5 @@
 
-import ImageCabanaRoja from '../../assets/img/cabana-de-madera_rojo.png';
+import ImageCabanaRoja from '../../assets/img/cabana-roja.png';
 import ImageEscobaRoja1 from '../../assets/img/escoba-roja.png'
 import ImageEscobaRoja2 from '../../assets/img/escoba-roja.png'
 
@@ -77,6 +77,15 @@ function Instruction3() {
               adyacentes a estos terrenos. En la ilustración la cabaña roja está adyacente a
               un Diagonal Alley y a la casa de Hagrid. el resultado de la tirada es un 4, el jugador rojo recibirá 1 barita 
               y un huevo de dragón.</p> 
+          <br></br> 
+          <p>Lo ideal es que la mayoría de las cabañas o castillos estén adyacentes a varios
+              terrenos (el máximo posible es 3). De esta forma, podrán conseguir, según
+              el resultado de los dados, diferentes materias primas.</p>
+          <br></br> 
+          <p>Puedes construir una cabaña nueva en una encrucijada
+            que esté libre, con la condición de que una de tus propias
+            escobas lleve hasta ella y que la cabaña/castillo más cercano esté,
+            como mínimo, a dos encrucijadas de distancia.</p>
         </div>
       </div>
       <div className="div-botones">

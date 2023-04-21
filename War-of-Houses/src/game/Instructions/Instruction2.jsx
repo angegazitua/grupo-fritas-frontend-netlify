@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import './instructions.css';
 import Board from '../Board.jsx';
-import ImageCabanaRoja from '../../assets/img/cabana-de-madera_rojo.png'
+import ImageCabanaRoja from '../../assets/img/cabana-roja.png'
 import ImageEscobaRoja from '../../assets/img/escoba-roja.png'
 
 

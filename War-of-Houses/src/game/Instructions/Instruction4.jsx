@@ -1,7 +1,7 @@
 
-import ImageCabanaRoja from '../../assets/img/cabana-de-madera_rojo.png';
-import ImageEscobaRoja from '../../assets/img/escoba-roja.png'
-import ImageCastilloRojo from '../../assets/img/castillo-rojo.png'
+import ImageCabanaRoja from '../../assets/img/cabana-roja-grande.png';
+import ImageEscobaRoja from '../../assets/img/escoba-roja-grande.png'
+import ImageCastilloRojo from '../../assets/img/castillo-rojo-grande.png'
 import { Link } from "react-router-dom";
 import './instructions.css';
 import ImageCartaDragon from '../../assets/img/huevo-dragon.jpg';

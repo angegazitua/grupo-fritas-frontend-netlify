@@ -13,22 +13,22 @@ function Navbar() {
             <ul className="navbar-links-container">
                 <li className="navbar-element">
                     <NavLink to="/" className={({isActive}) => isActive ? "navbar-link name" : "navbar-link"}>
-                        Home
+                        Inicio
                     </NavLink>
                 </li>
                 <li className="navbar-element"> 
                     <NavLink to="about-us" className={({isActive}) => isActive ? "navbar-link name" : "navbar-link"}>
-                        About Us
+                        Sobre Nosotros
                     </NavLink>
                 </li>
                 <li className="navbar-element"> 
                     <NavLink to="main-page" className={({isActive}) => isActive ? "navbar-link name" : "navbar-link"}>
-                         Main Page
+                         Pagina Principal
                     </NavLink>
                 </li>
                 <li className="navbar-element"> 
                     <NavLink to="instruction1" className={({isActive}) => isActive ? "navbar-link name" : "navbar-link"}>
-                        Board Instructions
+                        Instrucciones
                     </NavLink>
                 </li>
             </ul>
