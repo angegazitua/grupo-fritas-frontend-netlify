@@ -173,17 +173,17 @@
 
 .div-cartas-escoba {
     display: flex;
-    margin-bottom: 50px;
+    align-items: center;
 }
 
 .div-cartas-cabana {
     display: flex;
-    margin-bottom: 50px;
+    align-items: center;
 }
 
 .div-cartas-castillo {
     display: flex;
-    margin-bottom: 50px;
+    align-items: center;
 }
 
 .pieza {
@@ -203,26 +203,44 @@
 }
 
 .carta-unicornio {
-    height: 100px;
-    width: 100px;
+    height: 150px;
+    width: 120px;
+    border-radius: 10px;
+    border: 2px solid white;
 }
 
 .carta-serpiente {
-    height: 100px;
-    width: 100px;
+    height: 150px;
+    width: 120px;
+    border-radius: 10px;
+    border: 2px solid white;
 }
 
 .carta-varita {
-    height: 100px;
-    width: 100px;
+    height: 150px;
+    width: 120px;
+    border-radius: 10px;
+    border: 2px solid white;
 }
 
 .carta-phoenix {
-    height: 100px;
-    width: 100px;
+    height: 150px;
+    width: 120px;
+    border-radius: 10px;
+    border: 2px solid white;
 }
 
 .carta-dragon {
-    height: 100px;
-    width: 100px;
+    height: 150px;
+    width: 120px;
+    border-radius: 10px;
+    border: 2px solid white;
 }
+
+#text-instruction-4 {
+    margin-left: 100px;
+    margin-right: 100px;
+    padding-top: 20px;
+
+}
+
