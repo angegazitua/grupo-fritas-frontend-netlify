@@ -108,35 +108,55 @@
     transform: translate(-42%, -54%);
 }
 
-@media screen and (max-width: 1015px) {
+.div-escoba-roja-tablero {
+    z-index: 1;
+    position: absolute;
+    top: 44%;
+    left: 54%;
+    transform: translate(-48%, -56%);
+    transform: rotate(16deg);
+}
+.escoba-roja-tablero {
+    width: 25px;
+}
+
+@media screen and (min-width: 550px) and (max-width: 950px) {
     .div-cabana-roja-tablero {
         z-index: 1;
         position: absolute;
-        top: calc(42% + 1.5vw); /* Cambiar la altura a 100vw */
+        top: calc(42% + 0.5vw); 
         left: 54%;
         transform: translate(-42%, -54%);
+    }
+    .cabana-roja-tablero {
+        width: 3vw;
+    }
+
+    .escoba-roja-tablero {
+        width: 3vw;
+    }
+}
+
+
+@media screen and (max-width: 550px) {
+    .div-cabana-roja-tablero {
+        z-index: 1;
+        position: absolute;
+        top: calc(42% + 5vw); 
+        left: 54%;
+        transform: translate(-42%, -54%);
+    }
+    .cabana-roja-tablero {
+        width: 3vw;
+    }
+
+    .escoba-roja-tablero {
+        width: 3vw;
     }
 }
 
 
 
-
-.div-escoba-roja-tablero {
-    z-index: 1;
-    position: absolute;
-    top: 44%;
-    left: 53.5%;
-    transform: translate(-48%, -56%);
-    transform: rotate(16deg);
-}
-
-.cabana-roja-tablero {
-    width: 2em;
-}
-
-.escoba-roja-tablero {
-    width: 2vw;
-}
 
 .div-instrucciones-text {
     display: flex;
