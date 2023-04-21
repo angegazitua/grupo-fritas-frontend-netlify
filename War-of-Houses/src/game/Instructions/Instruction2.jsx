@@ -55,7 +55,7 @@ function Instruction2() {
               </div>
               <br></br>
               {isVisibleInst && 
-              (<button className='back-button' onClick={handleClick}>Haz clic aquí</button>) }
+              (<button id="boton-click" className="back-button" onClick={handleClick}>Haz clic aquí</button>) }
               
               
             </div>
