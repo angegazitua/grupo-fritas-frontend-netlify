@@ -48,16 +48,39 @@ function Instruction3() {
     }
   }, [isVisible2]);
 
+
+
   return (
     <main className="content-instruction">
-      <div className="img-container">
-        {isVisible1 && <img src={images[0]} className='cabana-roja-tablero' alt="Imagen" />}
-        {isVisible2 && <img src={images[1]} className='escoba-roja-tablero' alt="Imagen" id='escoba-roja-tablero-1' />}
-        {isVisible3 && <img src={images[2]} className='escoba-roja-tablero' alt="Imagen" id='escoba-roja-tablero-2' />}
-      </div>
+
       <h1 className="titulo-instrucciones">¿Quieres aprender a jugar <span className="name-instructions">War of Houses</span>?</h1>
       <div className="div-instrucciones">
         <div className="div-instrucciones-board">
+          <div className='div-cabana-roja-tablero'>
+            {<img src={ImageCabanaRoja} className='cabana-roja-tablero' alt="Imagen" />}
+          </div>
+          <div className='div-escoba-roja-tablero'>
+            {<img src={ImageEscobaRoja1} className='escoba-roja-tablero' alt="Imagen" />}
+          </div>
+
+          <div id='escoba-roja-tablero-1'>
+            {isVisible1 && <img src={images[1]} className='escoba-roja-tablero' alt="Imagen" />}
+          </div>
+          <div id='cabana-roja-tablero-1'>
+            {isVisible2 && <img src={images[0]} className='cabana-roja-tablero' alt="Imagen" />}
+          </div>
+          <div id='escoba-roja-tablero-2'>
+            {isVisible3 && <img src={images[1]} className='escoba-roja-tablero' alt="Imagen" />}
+          </div>
+          {/* <div id='cabana-roja-tablero-2'>
+            {isVisible1 && <img src={images[0]} className='cabana-roja-tablero' alt="Imagen" />}
+          </div>
+          <div id='cabana-roja-tablero-2'>
+            {isVisible1 && <img src={images[0]} className='cabana-roja-tablero' alt="Imagen" />}
+          </div> */}
+          
+          {/* {isVisible2 && <img src={images[1]} className='escoba-roja-tablero' alt="Imagen" id='escoba-roja-tablero-1' />}
+          {isVisible3 && <img src={images[2]} className='escoba-roja-tablero' alt="Imagen" id='escoba-roja-tablero-2' />} */}
           <Board />
         </div>
         <div className="div-instrucciones-text">
@@ -66,21 +89,19 @@ function Instruction3() {
           Un castillo vale 2 snitches doradas. Pero, para construir, necesitas
           materias primas.</p>
           <br></br>
-          <p className="parrafo-instrucciones"> En el tablero se puede ver como se van constuyendo las escobas, cabañas y castillos. </p>
-          <br></br>  
-          <p className="parrafo-instrucciones">¿Cómo consigues las materias primas? Muy sencillo: en cada turno se
+          <p className="parrafo-instrucciones"> En el tablero se puede ver como se van constuyendo las escobas, cabañas y castillos. ¿Cómo consigues las materias primas? Muy sencillo: en cada turno se
               determina el terreno que va a producir. Esto se hace tirando dos dados. En
               cada terreno hay un número. Si por ejemplo, la suma de los dados es un “4”, todos los terrenos marcados con un 
               “4” producirán. En la ilustración de la derecha sería Diagonal Alley (que produciría baritas).</p>
+
           <br></br> 
           <p className="parrafo-instrucciones">Sólo consiguen materias primas los jugadores que tengan una cabaña o un castillo
               adyacentes a estos terrenos. En la ilustración la cabaña roja está adyacente a
               un Diagonal Alley y a la casa de Hagrid. el resultado de la tirada es un 4, el jugador rojo recibirá 1 barita 
-              y un huevo de dragón.</p> 
-          <br></br> 
-          <p className="parrafo-instrucciones">Lo ideal es que la mayoría de las cabañas o castillos estén adyacentes a varios
+              y un huevo de dragón. Lo ideal es que la mayoría de las cabañas o castillos estén adyacentes a varios
               terrenos (el máximo posible es 3). De esta forma, podrán conseguir, según
-              el resultado de los dados, diferentes materias primas.</p>
+              el resultado de los dados, diferentes materias primas.</p> 
+
           <br></br> 
           <p className="parrafo-instrucciones">Puedes construir una cabaña nueva en una encrucijada
             que esté libre, con la condición de que una de tus propias

@@ -19,8 +19,7 @@ function Instruction2() {
   return (
     <main className="content-instruction">
         
-        {isVisibleInst && <img src={ImageCabanaRoja} className='cabana-roja-instrucciones' alt="Imagen" />}
-        {isVisibleInst && <img src={ImageEscobaRoja} className='escoba-roja-instrucciones' alt="Imagen" />}
+        
 
         <h1 className="titulo-instrucciones">¿Quieres aprender a jugar <span className="name-instructions">War of Houses</span>?</h1>
         <div className="div-instrucciones">
@@ -44,7 +43,16 @@ function Instruction2() {
               <br></br>
               <p className="parrafo-instrucciones"> ¿Quieres ver cómo se ve el inicio de la partida? ¡Apreta el botón! </p>
               <br></br>
-              <br></br>
+              <div className='imgs-instrucciones'>
+                <div className='img-instrucciones'>
+                  {isVisibleInst && <img src={ImageCabanaRoja} className='cabana-roja-instrucciones' alt="Imagen" />}
+                </div>
+                <div className='img-instrucciones'>
+                  {isVisibleInst && <img src={ImageEscobaRoja} className='escoba-roja-instrucciones' alt="Imagen" />}
+                </div>
+                
+                
+              </div>
               <br></br>
               {isVisibleInst && 
               (<button className='back-button' onClick={handleClick}>Haz clic aquí</button>) }
