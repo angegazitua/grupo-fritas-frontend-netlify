@@ -36,15 +36,7 @@
   }
 
 
-@media screen and (max-width: 850px) {
-    .bg-container {
-        height: 100.5vh;
-    }
-
-    .content {
-        font-size: 13px;
-    }
-} */
+ */
 
 .name-instructions {
     color: goldenrod;
@@ -107,17 +99,43 @@
     position: relative; 
 }
 
+
 .div-cabana-roja-tablero {
     z-index: 1;
-    position: relative;
-    top: 48%;
-    left: 31%;
-    width: 2.5%;
-    height: auto;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 42%;
+    left: 54%;
+    transform: translate(-42%, -54%);
+}
+
+@media screen and (max-width: 1015px) {
+    .div-cabana-roja-tablero {
+        z-index: 1;
+        position: absolute;
+        top: calc(42% + 1.5vw); /* Cambiar la altura a 100vw */
+        left: 54%;
+        transform: translate(-42%, -54%);
+    }
+}
+
+
+
+
+.div-escoba-roja-tablero {
+    z-index: 1;
+    position: absolute;
+    top: 44%;
+    left: 53.5%;
+    transform: translate(-48%, -56%);
+    transform: rotate(16deg);
+}
+
+.cabana-roja-tablero {
+    width: 2em;
+}
+
+.escoba-roja-tablero {
+    width: 2vw;
 }
 
 .div-instrucciones-text {
@@ -149,15 +167,6 @@
   }
 
 
-.escoba-roja-tablero {
-    z-index: 1;
-    position: absolute;
-    top: 58%;
-    left: 32%;
-    transform: rotate(16deg);
-    width: 2.5%;
-    height: auto;
-}
 
 #escoba-roja-tablero-1 {
     z-index: 1;

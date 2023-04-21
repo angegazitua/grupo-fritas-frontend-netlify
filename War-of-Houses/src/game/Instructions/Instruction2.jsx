@@ -28,9 +28,11 @@ function Instruction2() {
               <div className='div-cabana-roja-tablero'>
                 {isVisibleBoard && <img src={ImageCabanaRoja} className='cabana-roja-tablero' alt="Imagen" />}
               </div>
-              
-              {isVisibleBoard && <img src={ImageEscobaRoja} className='escoba-roja-tablero' alt="Imagen" />}
-                <Board />
+              <div className='div-escoba-roja-tablero'>
+                {isVisibleBoard && <img src={ImageEscobaRoja} className='escoba-roja-tablero' alt="Imagen" />}
+              </div>
+                
+              <Board />
                 
             </div>
             <div className="div-instrucciones-text">

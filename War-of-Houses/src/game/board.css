@@ -17,9 +17,6 @@
   display: flex;
 }
 
-#cabaña {
-  position: relative;
-}
 
 svg g {
   fill: white;
@@ -58,11 +55,6 @@ svg path {
     background-size: cover;
 } 
 
-#cabana {
-  z-index: 1;
-  position: absolute;
-  top: 100%;
-  left: 37%;
-}
+
 
 

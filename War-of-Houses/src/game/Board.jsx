@@ -80,7 +80,6 @@ function Board () {
               </Hexagon>
 
 
-            {/* Pattern and text */}
           </Layout>
 {/* 
           <Pattern id="pat-1" link={Image1} size={hexagonSize}/>
