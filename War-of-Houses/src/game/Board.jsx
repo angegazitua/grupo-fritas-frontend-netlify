@@ -22,25 +22,63 @@ function Board () {
           <Layout size={{ x: 10, y: 10 }} flat={true} spacing={1.01} origin={{ x: 0, y: 0 }}>
             <Hexagon q={0} r={0} s={0} fill = 'pat-logo'/>
             {/* Using pattern (defined below) to fill the hexagon */}
-            <Hexagon q={0} r={1} s={-1} fill = 'pat-2'/> 
-            <Hexagon q={1} r={0} s={-1} fill = 'pat-3'/>
-            <Hexagon q={1} r={-1} s={0} fill = 'pat-4'/>
-            <Hexagon q={0} r={-1} s={1} fill = 'pat-5'/>
-            <Hexagon q={-1} r={0} s={1} fill = 'pat-1'/>
-            <Hexagon q={-1} r={1} s={0} fill = 'pat-2'/>
+            <Hexagon q={0} r={1} s={-1} fill = 'pat-2'> 
+              <Text>6</Text>
+            </Hexagon>
+            <Hexagon q={1} r={0} s={-1} fill = 'pat-3'>
+              <Text>8</Text> 
+            </Hexagon>
+            <Hexagon q={1} r={-1} s={0} fill = 'pat-4'>
+              <Text>4</Text>
+              </Hexagon>
+            <Hexagon q={0} r={-1} s={1} fill = 'pat-5'>
+              <Text>5</Text>
+              </Hexagon>
+            <Hexagon q={-1} r={0} s={1} fill = 'pat-1'>
+              <Text>9</Text>
+              </Hexagon>
+            <Hexagon q={-1} r={1} s={0} fill = 'pat-2'>
+              <Text>9</Text>
+              </Hexagon>
+            
 
-            <Hexagon q={-2} r={0} s={1} fill = 'pat-3'/>
-            <Hexagon q={0} r={2} s={-2} fill = 'pat-4'/>
-            <Hexagon q={1} r={1} s={-2} fill = 'pat-5'/>
-            <Hexagon q={2} r={0} s={-2} fill = 'pat-1'/>
-            <Hexagon q={2} r={-1} s={-1} fill = 'pat-2' />
-            <Hexagon q={2} r={-2} s={0} fill = 'pat-3'/>
-            <Hexagon q={1} r={-2} s={1} fill = 'pat-4'/>
-            <Hexagon q={0} r={-2} s={2} fill = 'pat-5'/>
-            <Hexagon q={-1} r={-1} s={2} fill = 'pat-1'/>
-            <Hexagon q={-2} r={1} s={1} fill = 'pat-3'/>
-            <Hexagon q={-2} r={2} s={0} fill = 'pat-4'/>
-            <Hexagon q={-1} r={2} s={-1} fill = 'pat-5'/>
+            <Hexagon q={-2} r={0} s={1} fill = 'pat-3'>
+              <Text>2</Text>
+              </Hexagon>
+            <Hexagon q={0} r={2} s={-2} fill = 'pat-4'>
+              <Text>6</Text>
+              </Hexagon>
+            <Hexagon q={1} r={1} s={-2} fill = 'pat-5'>
+              <Text>10</Text>
+              </Hexagon>
+            <Hexagon q={2} r={0} s={-2} fill = 'pat-1'>
+              <Text>5</Text>
+              </Hexagon>
+            <Hexagon q={2} r={-1} s={-1} fill = 'pat-2' >
+              <Text>10</Text>
+              </Hexagon>
+            <Hexagon q={2} r={-2} s={0} fill = 'pat-3'>
+              <Text>8</Text>
+              </Hexagon>
+            <Hexagon q={1} r={-2} s={1} fill = 'pat-4'>
+              <Text>12</Text>
+              </Hexagon>
+            <Hexagon q={0} r={-2} s={2} fill = 'pat-5'>
+              <Text>11</Text>
+              </Hexagon>
+            <Hexagon q={-1} r={-1} s={2} fill = 'pat-1'>
+              <Text>3</Text>
+              </Hexagon>
+            <Hexagon q={-2} r={1} s={1} fill = 'pat-3'>
+              <Text>3</Text>
+              </Hexagon>
+            <Hexagon q={-2} r={2} s={0} fill = 'pat-4'>
+              <Text>4</Text>  
+              </Hexagon>
+            <Hexagon q={-1} r={2} s={-1} fill = 'pat-5'>
+              <Text>11</Text>
+              </Hexagon>
+
 
             {/* Pattern and text */}
           </Layout>
