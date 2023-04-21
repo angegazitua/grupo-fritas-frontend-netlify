@@ -15,7 +15,7 @@ function Instruction4() {
   return (
     <main className="content-instruction">
         <h1 className="titulo-instrucciones">¿Quieres aprender a jugar <span className="name-instructions">War of Houses</span>?</h1>
-        <p id="text-instruction-4"> Para poder construir nuevas escobas, cabañas y castillos se deben juntar diferentes cantidades de las cartas de material primas descritas
+        <p className="parrafo-instrucciones" id="text-instruction-4"> Para poder construir nuevas escobas, cabañas y castillos se deben juntar diferentes cantidades de las cartas de material primas descritas
             anteriormente. Las combinaciones para crear cada uno de estos elementos son las siguientes:
         </p>
             <div className="div-cartas-escoba">
@@ -79,7 +79,7 @@ function Instruction4() {
             </Link>
           </div>
           <div className="div-boton">
-            <Link className="next-button">
+            <Link className="next-button" to='/instruction5'>
               Next
             </Link>
           </div>

@@ -12,10 +12,10 @@ function Instruction1() {
                 <Board />
             </div>
             <div className="div-instrucciones-text">
-                <p>Frente a ti se encuentra el mágico mundo de War of Houses, el cual se compone de 19 hexágonos de terreno. 
+                <p className="parrafo-instrucciones">Frente a ti se encuentra el mágico mundo de War of Houses, el cual se compone de 19 hexágonos de terreno. 
                 Tu objetivo es colonizar el mundo, mediante la construcción de cabañas, castillos y escobas.</p>
                 <br></br>
-                <p>En War of Houses hay 5 tipos diferentes de terreno, donde cada uno produce una materia prima diferente:</p>
+                <p className="parrafo-instrucciones">En War of Houses hay 5 tipos diferentes de terreno, donde cada uno produce una materia prima diferente:</p>
                 <br></br>
                 <ul>
                     <li>El bosque prohibido produce pelo de unicornio.</li>

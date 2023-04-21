@@ -34,11 +34,11 @@ function Instruction2() {
                 
             </div>
             <div className="div-instrucciones-text">
-              <p>Empiezas la partida con 2 cabañas y 2 escobas. Cada cabaña vale 1 snitch dorada, así
+              <p className="parrafo-instrucciones">Empiezas la partida con 2 cabañas y 2 escobas. Cada cabaña vale 1 snitch dorada, así
                 que ya empiezas con un total de 2 snitches doradas. El primer jugador que consiga 10 snitches doradas, gana la
                 partida.</p>
               <br></br>
-              <p> ¿Quieres ver cómo se ve el inicio de la partida? ¡Apreta el botón! </p>
+              <p className="parrafo-instrucciones"> ¿Quieres ver cómo se ve el inicio de la partida? ¡Apreta el botón! </p>
               <br></br>
               <br></br>
               <br></br>

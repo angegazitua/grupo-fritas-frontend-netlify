@@ -97,6 +97,7 @@
 
 .div-instrucciones {
     display: flex;
+    align-items: center;
 }
 
 .div-instrucciones-board {
@@ -108,7 +109,7 @@
 .div-instrucciones-text {
     display: flex;
     flex-direction: column;
-    margin-top: 100px;
+    margin-top: 30px;
     margin-right: 50px;
 }
 
@@ -134,7 +135,7 @@
 .cabana-roja-instrucciones {
     z-index: 1;
     position: absolute;
-    top: 55%;
+    top: 70%;
     left: 70%;
   }
 
@@ -166,7 +167,7 @@
 .escoba-roja-instrucciones {
     z-index: 1;
     position: absolute;
-    top: 55%;
+    top: 70%;
     left: 75%;
     
 }
@@ -242,4 +243,8 @@
     margin-right: 100px;
     padding-top: 20px;
 
+}
+
+.parrafo-instrucciones {
+    text-align: justify;
 }

@@ -61,28 +61,28 @@ function Instruction3() {
           <Board />
         </div>
         <div className="div-instrucciones-text">
-          <p>Para conseguir más puntos de victoria tienes que construir
+          <p className="parrafo-instrucciones">Para conseguir más puntos de victoria tienes que construir
           nuevas escobas y cabañas, y ampliar tus cabañas a castillos.
           Un castillo vale 2 snitches doradas. Pero, para construir, necesitas
           materias primas.</p>
           <br></br>
-          <p> En el tablero se puede ver como se van constuyendo las escobas, cabañas y castillos. </p>
+          <p className="parrafo-instrucciones"> En el tablero se puede ver como se van constuyendo las escobas, cabañas y castillos. </p>
           <br></br>  
-          <p>¿Cómo consigues las materias primas? Muy sencillo: en cada turno se
+          <p className="parrafo-instrucciones">¿Cómo consigues las materias primas? Muy sencillo: en cada turno se
               determina el terreno que va a producir. Esto se hace tirando dos dados. En
               cada terreno hay un número. Si por ejemplo, la suma de los dados es un “4”, todos los terrenos marcados con un 
               “4” producirán. En la ilustración de la derecha sería Diagonal Alley (que produciría baritas).</p>
           <br></br> 
-          <p>Sólo consiguen materias primas los jugadores que tengan una cabaña o un castillo
+          <p className="parrafo-instrucciones">Sólo consiguen materias primas los jugadores que tengan una cabaña o un castillo
               adyacentes a estos terrenos. En la ilustración la cabaña roja está adyacente a
               un Diagonal Alley y a la casa de Hagrid. el resultado de la tirada es un 4, el jugador rojo recibirá 1 barita 
               y un huevo de dragón.</p> 
           <br></br> 
-          <p>Lo ideal es que la mayoría de las cabañas o castillos estén adyacentes a varios
+          <p className="parrafo-instrucciones">Lo ideal es que la mayoría de las cabañas o castillos estén adyacentes a varios
               terrenos (el máximo posible es 3). De esta forma, podrán conseguir, según
               el resultado de los dados, diferentes materias primas.</p>
           <br></br> 
-          <p>Puedes construir una cabaña nueva en una encrucijada
+          <p className="parrafo-instrucciones">Puedes construir una cabaña nueva en una encrucijada
             que esté libre, con la condición de que una de tus propias
             escobas lleve hasta ella y que la cabaña/castillo más cercano esté,
             como mínimo, a dos encrucijadas de distancia.</p>
