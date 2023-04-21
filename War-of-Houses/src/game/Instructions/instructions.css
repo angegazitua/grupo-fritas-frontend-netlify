@@ -130,6 +130,8 @@
     position: absolute;
     top: 52%;
     left: 31%;
+    width: 2.5%;
+    height: auto;
 }
 
 .cabana-roja-instrucciones {
@@ -146,6 +148,8 @@
     top: 58%;
     left: 32%;
     transform: rotate(16deg);
+    width: 2.5%;
+    height: auto;
 }
 
 #escoba-roja-tablero-1 {
@@ -247,4 +251,48 @@
 
 .parrafo-instrucciones {
     text-align: justify;
+}
+
+.play-button:hover {
+    background-color: white;
+    color: goldenrod;
+}
+
+.play-button {
+    padding: 10px 20px;
+    background: goldenrod;
+    transition: all 0.5s ease-in;
+    text-decoration: none;
+    border-radius: 7px;
+    font-size: 1.2vw;
+    margin-top: 100px;
+}
+
+.content-5 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5vw;
+    text-align: justify;
+    gap: 30px;
+    margin-bottom: 180px;
+    padding-top: 100px;
+}
+
+.bg-container-5 {
+    position: absolute;
+    width: 100%;
+    height: 100.5vh;
+    background-image: url("../../assets/img/about_us_background.jpg");
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    z-index: -2;
+    opacity: 0.4;
+}
+
+.content-instruction-5 {
+    width: 100%;
+    height: 100.5vh;
 }
