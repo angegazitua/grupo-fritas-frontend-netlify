@@ -170,3 +170,59 @@
     left: 75%;
     
 }
+
+.div-cartas-escoba {
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.div-cartas-cabana {
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.div-cartas-castillo {
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.pieza {
+    padding: 100px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.carta {
+    padding: 10px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.carta-unicornio {
+    height: 100px;
+    width: 100px;
+}
+
+.carta-serpiente {
+    height: 100px;
+    width: 100px;
+}
+
+.carta-varita {
+    height: 100px;
+    width: 100px;
+}
+
+.carta-phoenix {
+    height: 100px;
+    width: 100px;
+}
+
+.carta-dragon {
+    height: 100px;
+    width: 100px;
+}

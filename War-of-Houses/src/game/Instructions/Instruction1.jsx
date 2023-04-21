@@ -20,7 +20,7 @@ function Instruction1() {
                 <ul>
                     <li>El bosque prohibido produce pelo de unicornio.</li>
                     <li>La cámara de los secretos produce dientes de serpiente.</li>
-                    <li>La casa de Hagrid prudce huevos de dragón.</li>
+                    <li>La casa de Hagrid produce huevos de dragón.</li>
                     <li>Diagonal Alley produce varitas mágicas.</li>
                     <li>La oficina de Dumbledore produce plumas de Phoenix.</li>
                 </ul>
