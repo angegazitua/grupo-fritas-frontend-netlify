@@ -120,74 +120,21 @@
     width: 25px;
 }
 
-@media screen and (min-width: 550px) and (max-width: 950px) {
-    .div-cabana-roja-tablero {
-        z-index: 1;
-        position: absolute;
-        top: calc(42% + 0.5vw); 
-        left: 54%;
-        transform: translate(-42%, -54%);
-    }
-    .cabana-roja-tablero {
-        width: 3vw;
-    }
-
-    .escoba-roja-tablero {
-        width: 3vw;
-    }
+.div-cabana-azul-tablero {
+    z-index: 1;
+    position: absolute;
+    top: 42%;
+    left: 32%;
+    transform: translate(-42%, -54%);
 }
 
-
-@media screen and (min-width: 650px) and (max-width: 720px) {
-    .div-cabana-roja-tablero {
-        z-index: 1;
-        position: absolute;
-        top: calc(42% + 1.0vw); 
-        left: 54%;
-        transform: translate(-42%, -54%);
-    }
-    .cabana-roja-tablero {
-        width: 3vw;
-    }
-
-    .escoba-roja-tablero {
-        width: 3vw;
-    }
-}
-
-
-@media screen and (min-width: 500px) and (max-width: 650px) {
-    .div-cabana-roja-tablero {
-        z-index: 1;
-        position: absolute;
-        top: calc(42% + 2vw); 
-        left: 54%;
-        transform: translate(-42%, -54%);
-    }
-    .cabana-roja-tablero {
-        width: 3vw;
-    }
-
-    .escoba-roja-tablero {
-        width: 3vw;
-    }
-}
-
-@media screen and (min-width: 400px) and (max-width: 500px) {
-    .div-cabana-roja-tablero {
-        z-index: 1;
-        position: absolute;
-        top: calc(42% + 3vw); 
-        left: 54%;
-        transform: translate(-42%, -54%);
-    }
-    .cabana-roja-tablero {
-        width: 3vw;
-    }
-
-    .escoba-roja-tablero {
-        width: 3vw;
-    }
+.div-escoba-azul-tablero {
+    z-index: 1;
+    position: absolute;
+    top: 44%;
+    left: 32%;
+    transform: translate(-48%, -56%);
+    transform: rotate(16deg);
 }
 
 .div-instrucciones-text {
@@ -208,12 +155,6 @@
     padding-left: 20px;
     align-self: center;
 }
-
-
-
-
-
-
 
 
 .imgs-instrucciones {
@@ -358,6 +299,14 @@
     transform: rotate(140deg);
 }
 
+#escoba-azul-tablero-1 {
+    z-index: 1;
+    position: absolute;
+    top: 46%;
+    left: 37%;
+    transform: rotate(140deg);
+}
+
 
 #cabana-roja-tablero-1 {
     z-index: 1;
@@ -366,10 +315,154 @@
     left: 63%;
 }
 
+#cabana-azul-tablero-1 {
+    z-index: 1;
+    position: absolute;
+    top: 46%;
+    left: 42%;
+}
+
+#castillo-azul-tablero-1 {
+    z-index: 1;
+    position: absolute;
+    top: 46%;
+    left: 42%;
+}
+
 #escoba-roja-tablero-2 {
     z-index: 1;
     position: absolute;
     top: 52.5%;
     left: 64%;
     transform: rotate(11deg);
+}
+
+@media screen and (min-width: 550px) and (max-width: 950px) {
+    .div-cabana-roja-tablero {
+        z-index: 1;
+        position: absolute;
+        top: calc(42% + 0.5vw); 
+        left: 54%;
+        transform: translate(-42%, -54%);
+    }
+    .cabana-roja-tablero {
+        width: 3vw;
+    }
+
+    .escoba-roja-tablero {
+        width: 3vw;
+    }
+
+    .div-cabana-azul-tablero {
+        z-index: 1;
+        position: absolute;
+        top: calc(42% + 0.5vw); 
+        left: 32%;
+        transform: translate(-42%, -32%);
+    }
+    .cabana-azul-tablero {
+        width: 3vw;
+    }
+
+    .escoba-azul-tablero {
+        width: 3vw;
+    }
+}
+
+
+@media screen and (min-width: 650px) and (max-width: 720px) {
+    .div-cabana-roja-tablero {
+        z-index: 1;
+        position: absolute;
+        top: calc(42% + 1.0vw); 
+        left: 54%;
+        transform: translate(-42%, -54%);
+    }
+    .cabana-roja-tablero {
+        width: 3vw;
+    }
+
+    .escoba-roja-tablero {
+        width: 3vw;
+    }
+
+    .div-cabana-azul-tablero {
+        z-index: 1;
+        position: absolute;
+        top: calc(42% + 1.0vw); 
+        left: 32%;
+        transform: translate(-42%, -32%);
+    }
+    .cabana-azul-tablero {
+        width: 3vw;
+    }
+
+    .escoba-azul-tablero {
+        width: 3vw;
+    }
+}
+
+
+@media screen and (min-width: 500px) and (max-width: 650px) {
+    .div-cabana-roja-tablero {
+        z-index: 1;
+        position: absolute;
+        top: calc(42% + 2vw); 
+        left: 54%;
+        transform: translate(-42%, -54%);
+    }
+    .cabana-roja-tablero {
+        width: 3vw;
+    }
+
+    .escoba-roja-tablero {
+        width: 3vw;
+    }
+
+    .div-cabana-azul-tablero {
+        z-index: 1;
+        position: absolute;
+        top: calc(42% + 2.0vw); 
+        left: 32%;
+        transform: translate(-42%, -32%);
+    }
+    .cabana-azul-tablero {
+        width: 3vw;
+    }
+
+    .escoba-azul-tablero {
+        width: 3vw;
+    }
+}
+
+@media screen and (min-width: 400px) and (max-width: 500px) {
+    .div-cabana-roja-tablero {
+        z-index: 1;
+        position: absolute;
+        top: calc(42% + 3vw); 
+        left: 54%;
+        transform: translate(-42%, -54%);
+    }
+    .cabana-roja-tablero {
+        width: 3vw;
+    }
+
+    .escoba-roja-tablero {
+        width: 3vw;
+    }
+
+    .div-cabana-azul-tablero {
+        z-index: 1;
+        position: absolute;
+        top: calc(42% + 3.0vw); 
+        left: 32%;
+        transform: translate(-42%, -32%);
+    }
+    .cabana-azul-tablero {
+        width: 3vw;
+    }
+
+    .escoba-azul-tablero {
+        width: 3vw;
+    }
 }

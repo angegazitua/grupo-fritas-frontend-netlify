@@ -2,6 +2,9 @@
 import ImageCabanaRoja from '../../assets/img/cabana-roja.png';
 import ImageEscobaRoja1 from '../../assets/img/escoba-roja.png'
 import ImageEscobaRoja2 from '../../assets/img/escoba-roja.png'
+import ImageCabanaAzul from '../../assets/img/cabana-azul.png';
+import ImageEscobaAzul from '../../assets/img/escoba-azul.png'
+import ImageCastilloAzul from '../../assets/img/castillo-azul.png'
 
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
@@ -62,6 +65,12 @@ function Instruction3() {
           <div className='div-escoba-roja-tablero'>
             {<img src={ImageEscobaRoja1} className='escoba-roja-tablero' alt="Imagen" />}
           </div>
+          <div className='div-cabana-azul-tablero'>
+            {<img src={ImageCabanaAzul} className='cabana-azul-tablero' alt="Imagen" />}
+          </div>
+          <div className='div-escoba-azul-tablero'>
+            {<img src={ImageEscobaAzul} className='escoba-azul-tablero' alt="Imagen" />}
+          </div>
 
           <div id='escoba-roja-tablero-1'>
             {isVisible1 && <img src={images[1]} className='escoba-roja-tablero' alt="Imagen" />}
@@ -72,6 +81,17 @@ function Instruction3() {
           <div id='escoba-roja-tablero-2'>
             {isVisible3 && <img src={images[1]} className='escoba-roja-tablero' alt="Imagen" />}
           </div>
+
+          <div id='escoba-azul-tablero-1'>
+            {isVisible1 && <img src={ImageEscobaAzul} className='escoba-azul-tablero' alt="Imagen" />}
+          </div>
+          <div id='cabana-azul-tablero-1'>
+            {!isVisible3 && isVisible2 && <img src={ImageCabanaAzul} className='cabana-azul-tablero' alt="Imagen" />}
+          </div>
+          <div id='castillo-azul-tablero-1'>
+            {isVisible3 && <img src={ImageCastilloAzul} className='castillo-azul-tablero' alt="Imagen" />}
+          </div>
+
           {/* <div id='cabana-roja-tablero-2'>
             {isVisible1 && <img src={images[0]} className='cabana-roja-tablero' alt="Imagen" />}
           </div>
