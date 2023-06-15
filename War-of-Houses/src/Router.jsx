@@ -12,6 +12,7 @@ import Instruction2 from './game/Instructions/Instruction2';
 import Instruction3 from './game/Instructions/Instruction3';
 import Instruction4 from './game/Instructions/Instruction4';
 import Instruction5 from './game/Instructions/Instruction5';
+import Partida from './game/Partida/Partida';
 
 function Router() {
   const router = createBrowserRouter([
@@ -50,6 +51,10 @@ function Router() {
         {
           path: 'instruction5',
           element: <Instruction5 />
+        },
+        {
+          path: 'partida',
+          element: <Partida />
         }
       ]
     },

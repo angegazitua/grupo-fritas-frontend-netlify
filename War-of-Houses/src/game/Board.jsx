@@ -1,4 +1,4 @@
-
+import axios from 'axios';
 // https://www.npmjs.com/package/react-hexgrid?activeTab=readme
 
 import { HexGrid, Layout, Hexagon, Text, Pattern, Path, Hex } from 'react-hexgrid';
