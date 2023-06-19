@@ -13,6 +13,7 @@ import Instruction3 from './game/Instructions/Instruction3';
 import Instruction4 from './game/Instructions/Instruction4';
 import Instruction5 from './game/Instructions/Instruction5';
 import Partida from './game/Partida/Partida';
+import Login from './profile/Login';
 
 function Router() {
   const router = createBrowserRouter([
@@ -55,6 +56,10 @@ function Router() {
         {
           path: 'partida',
           element: <Partida />
+        },
+        {
+          path: 'login',
+          element: <Login />
         }
       ]
     },

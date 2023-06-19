@@ -1,6 +1,6 @@
 import axios from 'axios';
 // https://www.npmjs.com/package/react-hexgrid?activeTab=readme
-
+import React, {createContext, useState, useEffect} from "react";
 import { HexGrid, Layout, Hexagon, Text, Pattern, Path, Hex} from 'react-hexgrid';
 import './partida.css'
 import Image1 from '../../assets/img/bosque_prohibido.jpg'
@@ -19,6 +19,10 @@ import CartaSerpiente from '../../assets/img/diente-serpiente.jpg';
 function Partida () {
     const hexagonSize = { x: 18, y: 10 };
     const hexagonSize3 = { x: 10, y: 10 };
+
+
+
+
     return (
     
       <div className="div-partida">
@@ -104,273 +108,70 @@ function Partida () {
             </Layout>
 
             <Layout size={{ x: 3, y: 3 }} flat={true} spacing={1.01} origin={{ x: 0, y: 0 }}>
-                <Hexagon q={0} r={0} s={0} fill = 'pat-logo' class="hexagon-button">
-                </Hexagon>
-                <Hexagon q={0} r={-1} s={1} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={1} r={-1} s={0} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={1} r={0} s={-1} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={0} r={1} s={-1} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-1} r={1} s={0} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-1} r={0} s={1} fill = 'pat-logo'>
-                </Hexagon>
                 {/* Segunda vuelta */}
-                <Hexagon q={0} r={-2} s={2} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={1} r={-2} s={1} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={2} r={-2} s={0} fill = 'pat-logo'>
+                <Hexagon q={1} r={-2} s={1} id="hexagon_125" fill = 'pat-logo' onClick={() => alert("hola")}>
                 </Hexagon>
                 <Hexagon q={2} r={-1} s={-1} fill = 'pat-logo'>
                 </Hexagon>
-                <Hexagon q={2} r={0} s={-2} fill = 'pat-logo'>
-                </Hexagon>
                 <Hexagon q={1} r={1} s={-2} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={0} r={2} s={-2} fill = 'pat-logo'>
                 </Hexagon>
                 <Hexagon q={-1} r={2} s={-1} fill = 'pat-logo'>
                 </Hexagon>
-                <Hexagon q={-2} r={2} s={0} fill = 'pat-logo'>
-                </Hexagon>
                 <Hexagon q={-2} r={1} s={1} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-2} r={0} s={2} fill = 'pat-logo'>
                 </Hexagon>
                 <Hexagon q={-1} r={-1} s={2} fill = 'pat-logo'>
                 </Hexagon>
                 {/* Tercera vuelta */}
-                <Hexagon q={0} r={-3} s={3} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={1} r={-3} s={2} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={2} r={-3} s={1} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={3} r={-3} s={0} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={3} r={-2} s={-1} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={3} r={-1} s={-2} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={3} r={0} s={-3} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={2} r={1} s={-3} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={1} r={2} s={-3} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={0} r={3} s={-3} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-1} r={3} s={-2} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-2} r={3} s={-1} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-3} r={3} s={0} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-3} r={2} s={1} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-3} r={1} s={2} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-3} r={0} s={3} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-2} r={-1} s={3} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-1} r={-2} s={3} fill = 'pat-logo'>
-                </Hexagon>
                 {/* Cuarta vuelta */}
-                <Hexagon q={0} r={-4} s={4} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={1} r={-4} s={3} fill = 'pat-logo'>
-                </Hexagon>
                 <Hexagon q={2} r={-4} s={2} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={3} r={-4} s={1} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={4} r={-4} s={0} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={4} r={-3} s={-1} fill = 'pat-logo'>
                 </Hexagon>
                 <Hexagon q={4} r={-2} s={-2} fill = 'pat-logo'>
                 </Hexagon>
-                <Hexagon q={4} r={-1} s={-3} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={4} r={0} s={-4} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={3} r={1} s={-4} fill = 'pat-logo'>
-                </Hexagon>
                 <Hexagon q={2} r={2} s={-4} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={1} r={3} s={-4} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={0} r={4} s={-4} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-1} r={4} s={-3} fill = 'pat-logo'>
                 </Hexagon>
                 <Hexagon q={-2} r={4} s={-2} fill = 'pat-logo'>
                 </Hexagon>
-                <Hexagon q={-3} r={4} s={-1} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-4} r={4} s={0} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-4} r={3} s={1} fill = 'pat-logo'>
-                </Hexagon>
                 <Hexagon q={-4} r={2} s={2} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-4} r={1} s={3} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-4} r={0} s={4} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-3} r={-1} s={4} fill = 'pat-logo'>
                 </Hexagon>
                 <Hexagon q={-2} r={-2} s={4} fill = 'pat-logo'>
                 </Hexagon>
-                <Hexagon q={-1} r={-3} s={4} fill = 'pat-logo'>
-                </Hexagon>
                 {/* Quinta vuelta */}
-                <Hexagon q={0} r={-5} s={5} fill = 'pat-logo'>
-                </Hexagon>
                 <Hexagon q={1} r={-5} s={4} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={2} r={-5} s={3} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={3} r={-5} s={2} fill = 'pat-logo'>
                 </Hexagon>
                 <Hexagon q={4} r={-5} s={1} fill = 'pat-logo'>
                 </Hexagon>
-                <Hexagon q={5} r={-5} s={0} fill = 'pat-logo'>
-                </Hexagon>
                 <Hexagon q={5} r={-4} s={-1} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={5} r={-3} s={-2} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={5} r={-2} s={-3} fill = 'pat-logo'>
                 </Hexagon>
                 <Hexagon q={5} r={-1} s={-4} fill = 'pat-logo'>
                 </Hexagon>
-                <Hexagon q={5} r={0} s={-5} fill = 'pat-logo'>
-                </Hexagon>
                 <Hexagon q={4} r={1} s={-5} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={3} r={2} s={-5} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={2} r={3} s={-5} fill = 'pat-logo'>
                 </Hexagon>
                 <Hexagon q={1} r={4} s={-5} fill = 'pat-logo'>
                 </Hexagon>
-                <Hexagon q={0} r={5} s={-5} fill = 'pat-logo'>
-                </Hexagon>
                 <Hexagon q={-1} r={5} s={-4} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-2} r={5} s={-3} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-3} r={5} s={-2} fill = 'pat-logo'>
                 </Hexagon>
                 <Hexagon q={-4} r={5} s={-1} fill = 'pat-logo'>
                 </Hexagon>
-                <Hexagon q={-5} r={5} s={0} fill = 'pat-logo'>
-                </Hexagon>
                 <Hexagon q={-5} r={4} s={1} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-5} r={3} s={2} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-5} r={2} s={3} fill = 'pat-logo'>
                 </Hexagon>
                 <Hexagon q={-5} r={1} s={4} fill = 'pat-logo'>
                 </Hexagon>
-                <Hexagon q={-5} r={0} s={5} fill = 'pat-logo'>
-                </Hexagon>
                 <Hexagon q={-4} r={-1} s={5} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-3} r={-2} s={5} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-2} r={-3} s={5} fill = 'pat-logo'>
                 </Hexagon>
                 <Hexagon q={-1} r={-4} s={5} fill = 'pat-logo'>
                 </Hexagon>
                 {/* Sexta vuelta */}
-                <Hexagon q={0} r={-6} s={6} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={1} r={-6} s={5} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={2} r={-6} s={4} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={3} r={-6} s={3} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={4} r={-6} s={2} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={5} r={-6} s={1} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={6} r={-6} s={0} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={6} r={-5} s={-1} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={6} r={-4} s={-2} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={6} r={-3} s={-3} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={6} r={-2} s={-4} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={6} r={-1} s={-5} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={6} r={0} s={-6} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={5} r={1} s={-6} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={4} r={2} s={-6} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={3} r={3} s={-6} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={2} r={4} s={-6} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={1} r={5} s={-6} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={0} r={6} s={-6} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-1} r={6} s={-5} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-2} r={6} s={-4} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-3} r={6} s={-3} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-4} r={6} s={-2} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-5} r={6} s={-1} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-6} r={6} s={0} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-6} r={5} s={1} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-6} r={4} s={2} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-6} r={3} s={3} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-6} r={2} s={4} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-6} r={1} s={5} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-6} r={0} s={6} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-5} r={-1} s={6} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-4} r={-2} s={6} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-3} r={-3} s={6} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-2} r={-4} s={6} fill = 'pat-logo'>
-                </Hexagon>
-                <Hexagon q={-1} r={-5} s={6} fill = 'pat-logo'>
-                </Hexagon>
 
 
 
-
-
-
+                {/* <Path start={{ q: 0, r: 0, s: 0 }} end={{ q: 0, r: 0, s: 1 }} /> */}
+                {/* <Path start={new Hex(-1, -1, 2)} end={new Hex(1, -2, 1)} /> */}
                 
-                    
+
+                {/* <StraightPath start={{ q: 0, r: 0, s: 0 }} end={{ q: 0, r: 0, s: 1 }} /> */}
+                {/* <StraightPath start={new Hex(-1, -1, 2)} end={new Hex(1, -2, 1)} /> */}
+
+                {/* <StraightPath start={{ q: 0, r: 0, s: 0 }} end={{ q: 1, r: 0, s: 0 }} /> */}
 
 
               
@@ -405,6 +206,12 @@ function Partida () {
       </div>
    
     );
+
+    // Obtén una referencia al elemento
+    var hexagonElement = document.getElementById('hexagon_125');
+
+    // Oculta el hexágono
+    hexagonElement.style.display = 'none';
 }
 
 export default Partida;

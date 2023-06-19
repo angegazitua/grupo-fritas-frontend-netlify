@@ -11,6 +11,11 @@ function Navbar() {
                 <span className="name title"> War of Houses </span>
             </NavLink>
             <ul className="navbar-links-container">
+                <li className="navbar-element"> 
+                    <NavLink to="login" className={({isActive}) => isActive ? "navbar-link name" : "navbar-link"}>
+                        Log in
+                    </NavLink>
+                </li>
                 <li className="navbar-element">
                     <NavLink to="/" className={({isActive}) => isActive ? "navbar-link name" : "navbar-link"}>
                         Inicio
