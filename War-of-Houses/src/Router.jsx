@@ -18,6 +18,7 @@ import SignUp from './profile/SignUp';
 import UserCheck from './protected/UserCheck';
 import AdminCheck from './protected/AdminCheck';
 import LogOutButton from './profile/Logout';
+import Partidas from './game/Partida/Partidas';
 
 function Router() {
   const router = createBrowserRouter([
@@ -58,8 +59,8 @@ function Router() {
           element: <Instruction5 />
         },
         {
-          path: 'partida',
-          element: <Partida />
+          path: 'partidas',
+          element: <Partidas />
         },
         {
           path: 'login',

@@ -43,8 +43,8 @@ function Navbar() {
                     </NavLink>
                 </li>
                 <li className="navbar-element"> 
-                    <NavLink to="partida" className={({isActive}) => isActive ? "navbar-link name" : "navbar-link"}>
-                        Partida
+                    <NavLink to="partidas" className={({isActive}) => isActive ? "navbar-link name" : "navbar-link"}>
+                        Partidas
                     </NavLink>
                 </li>
                 <li className="navbar-element"> 

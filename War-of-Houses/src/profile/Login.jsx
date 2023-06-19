@@ -6,6 +6,7 @@ import { AuthContext } from '../auth/AuthContext';
 
 function Login() {
     const {token, setToken} = useContext(AuthContext);
+    const {user_id, setUserId} = useContext(AuthContext);
     const [mail, setEmail] = useState('');
     const [contrasena, setPassword] = useState('');
     const [msg, setMsg] = useState('');
@@ -25,7 +26,9 @@ function Login() {
             setMsg('Login exitoso');
             // Guardar el token en el local storage
             const access_token = response.data.access_token;
+            const user_id = response.data.user_id;
             setToken(access_token);
+            setUserId(user_id);
             
 
         }).catch((error) => {
@@ -35,8 +38,8 @@ function Login() {
     };
 
     return (
-        <h1>¡Bienvenido! Inicia tu sesión a continuación</h1> 
         <div className="Login">
+            <h1>¡Bienvenido! Inicia tu sesión a continuación</h1> 
 
             <p>{msg}</p>
             
