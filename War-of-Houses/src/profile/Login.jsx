@@ -28,15 +28,18 @@ function Login() {
             setToken(access_token);
             
 
-
-
         }).catch((error) => {
             console.log(error);
+            setMsg('credenciales incorrectas');
         });
     };
 
     return (
+        <h1>¡Bienvenido! Inicia tu sesión a continuación</h1> 
         <div className="Login">
+
+            <p>{msg}</p>
+            
             <form onSubmit={handleSubmit}>
                 <label>
                     Email:
@@ -59,8 +62,11 @@ function Login() {
                     />  
                 </label>
                 <input type="submit" value="Enviar" />
+                
             </form>
+            
         </div>
+        
     );
 }
 
