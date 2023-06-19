@@ -11,14 +11,20 @@ function Navbar() {
                 <span className="name title"> War of Houses </span>
             </NavLink>
             <ul className="navbar-links-container">
+                
+                <li className="navbar-element">
+                    <NavLink to="/" className={({isActive}) => isActive ? "navbar-link name" : "navbar-link"}>
+                        Inicio
+                    </NavLink>
+                </li>
                 <li className="navbar-element"> 
                     <NavLink to="login" className={({isActive}) => isActive ? "navbar-link name" : "navbar-link"}>
                         Log in
                     </NavLink>
                 </li>
-                <li className="navbar-element">
-                    <NavLink to="/" className={({isActive}) => isActive ? "navbar-link name" : "navbar-link"}>
-                        Inicio
+                <li className="navbar-element"> 
+                    <NavLink to="signup" className={({isActive}) => isActive ? "navbar-link name" : "navbar-link"}>
+                        Sign Up
                     </NavLink>
                 </li>
                 <li className="navbar-element"> 

@@ -1,18 +1,22 @@
 import React, { useState } from 'react';
-import './Login.css';
+import './SignUp.css';
 import axios from 'axios';
 
-function Login() {
+function SignUp() {
     const [mail, setEmail] = useState('');
     const [contrasena, setPassword] = useState('');
+    const [nombre, setName] = useState('');
+    const puntos = 0;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log("apretaste el form")
-        axios.post(`${import.meta.env.VITE_BACKEND_URL}/authentication/login`, 
+        axios.post(`${import.meta.env.VITE_BACKEND_URL}/authentication/signup`, 
         {
+            nombre,
             mail, 
-            contrasena
+            contrasena, 
+            puntos
         }
         ).then((response) => {
             console.log(response);
@@ -22,8 +26,18 @@ function Login() {
     };
 
     return (
-        <div className="Login">
+        <div className="SignUp">
             <form onSubmit={handleSubmit}>
+                <label>
+                    Nombre:
+                    <input
+                        type="name"
+                        name="nombre"
+                        value={nombre}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                    />
+                </label>
                 <label>
                     Email:
                     <input
@@ -50,4 +64,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default SignUp;

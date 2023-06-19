@@ -14,6 +14,7 @@ import Instruction4 from './game/Instructions/Instruction4';
 import Instruction5 from './game/Instructions/Instruction5';
 import Partida from './game/Partida/Partida';
 import Login from './profile/Login';
+import SignUp from './profile/SignUp';
 
 function Router() {
   const router = createBrowserRouter([
@@ -60,6 +61,10 @@ function Router() {
         {
           path: 'login',
           element: <Login />
+        },
+        {
+          path: 'signup',
+          element: <SignUp />
         }
       ]
     },
