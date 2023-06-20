@@ -20,9 +20,6 @@ function Partida () {
     const hexagonSize = { x: 18, y: 10 };
     const hexagonSize3 = { x: 10, y: 10 };
 
-
-
-
     return (
     
       <div className="div-partida">
@@ -103,13 +100,11 @@ function Partida () {
               <Hexagon q={-1} r={2} s={-1} fill = 'pat-5'>
                 <Text>11</Text>
                 </Hexagon>
-
-
             </Layout>
 
             <Layout size={{ x: 3, y: 3 }} flat={true} spacing={1.01} origin={{ x: 0, y: 0 }}>
                 {/* Segunda vuelta */}
-                <Hexagon q={1} r={-2} s={1} id="hexagon_125" fill = 'pat-logo' onClick={() => alert("hola")}>
+                <Hexagon q={1} r={-2} s={1} className = 'hexagon_125' fill = 'pat-logo' onClick={() => alert("hola")}>
                 </Hexagon>
                 <Hexagon q={2} r={-1} s={-1} fill = 'pat-logo'>
                 </Hexagon>
@@ -161,6 +156,7 @@ function Partida () {
                 <Hexagon q={-1} r={-4} s={5} fill = 'pat-logo'>
                 </Hexagon>
                 {/* Sexta vuelta */}
+              
 
 
 
@@ -177,13 +173,13 @@ function Partida () {
               
             </Layout>
 
-            {/* <Pattern id="pat-1" link={Image1} size={hexagonSize}/>
+            <Pattern id="pat-1" link={Image1} size={hexagonSize}/>
             <Pattern id="pat-2" link={Image2} size={hexagonSize}/>
             <Pattern id="pat-3" link={Image3} size={hexagonSize3}/>
             <Pattern id="pat-4" link={Image4} size={hexagonSize}/>
             <Pattern id="pat-5" link={Image5} size={hexagonSize}/>
             <Pattern id="pat-cabaña" link={Image6}/>
-            <Pattern id="pat-logo" link={Image7}/> */}
+            <Pattern id="pat-logo" link={Image7}/>
 
           </HexGrid>
           

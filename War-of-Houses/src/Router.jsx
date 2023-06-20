@@ -63,6 +63,10 @@ function Router() {
           element: <Partidas />
         },
         {
+          path: 'partida',
+          element: <Partida />
+        },
+        {
           path: 'login',
           element: <Login />
         },
