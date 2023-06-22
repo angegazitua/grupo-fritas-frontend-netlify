@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../../auth/AuthContext';
+import { Link } from "react-router-dom";
 
 function PartidasTabla() {
   const [partidas, setPartidas] = useState([]);
@@ -26,26 +27,37 @@ function PartidasTabla() {
 
   return (
     <div>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Botón</th>
-          </tr>
-        </thead>
-        <tbody>
-          {partidas.map((partida) => (
-            <tr key={partida.id}>
-              <td>{partida.id}</td>
-              <td>
-                <button>Ingresar a la partida</button>
-              </td>
+      {partidas.length > 0 ? (
+        <table>
+          <thead>
+            <tr>
+              <th>Id partida</th>
+              <th>Botón</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {partidas.map((partida) => (
+              <tr key={partida.id}>
+                <td>{partida.id}</td>
+                <td>
+                  <div className="div-boton-partida">
+                    <Link className="partida-button" to='/partida'>
+                      Ingresar a la partida
+                    </Link>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <Link className="crear-partida-button" to='/partida'>
+          Crear partida
+        </Link>
+      )}
     </div>
   );
+  
   
 }
 
