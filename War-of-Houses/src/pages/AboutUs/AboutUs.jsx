@@ -20,7 +20,7 @@ function AboutUs() {
           <p>Dato curioso: Fanática de Harry Potter</p>
           <br></br>
           <p>Contacto: ange.gazitua@uc.cl</p>
-          <p><button class="button-about">Contact</button></p>
+          <p><button className="button-about">Contact</button></p>
         </div>
 
         <div className='persona'>

@@ -23,6 +23,20 @@ function PartidasTabla() {
         console.log(error);
       });
   }, []);
+
+  const handleCrearPartida = () => {
+    console.log(user_id);
+    axios.post(`${import.meta.env.VITE_BACKEND_URL}/iniciar_partida`, {
+      idUsuario: user_id
+    })
+      .then((response) => {
+        // Aquí puedes manejar la respuesta de la llamada a la API
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   
 
   return (
@@ -51,7 +65,7 @@ function PartidasTabla() {
           </tbody>
         </table>
       ) : (
-        <Link className="crear-partida-button" to='/partida'>
+        <Link className="crear-partida-button" to='/partida' onClick={handleCrearPartida}>
           Crear partida
         </Link>
       )}
