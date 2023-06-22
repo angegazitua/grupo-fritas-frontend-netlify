@@ -33,14 +33,14 @@ function Partida () {
     const searchParams = new URLSearchParams(location.search);
     const idPartida = searchParams.get("idPartida");
 
-    let foto_pos = {'foto_pos_1_2_5': null, 'foto_pos_1_3_5': null, 'foto_pos_2_4_7': null,
-      'foto_pos_2_5_7': null, 'foto_pos_3_5_8': null, 'foto_pos_3_6_8': null,
-      'foto_pos_4_7_9': null, 'foto_pos_5_7_10': null, 'foto_pos_5_8_10': null,
-      'foto_pos_6_8_11': null, 'foto_pos_7_9_12': null, 'foto_pos_7_10_12': null,
-      'foto_pos_8_10_13': null, 'foto_pos_8_11_13': null, 'foto_pos_9_12_14': null,
-      'foto_pos_10_12_15': null, 'foto_pos_10_13_15': null, 'foto_pos_11_13_16': null,
-      'foto_pos_12_14_17': null, 'foto_pos_12_15_17': null, 'foto_pos_13_15_18': null,
-      'foto_pos_13_16_18': null, 'foto_pos_15_17_19': null, 'foto_pos_15_18_19': null
+    let foto_pos = {'foto_pos_1_2_5': 'pat-cabana-azul', 'foto_pos_1_3_5': 'pat-logo', 'foto_pos_2_4_7': 'pat-logo',
+      'foto_pos_2_5_7': 'pat-logo', 'foto_pos_3_5_8': 'pat-logo', 'foto_pos_3_6_8': 'pat-logo',
+      'foto_pos_4_7_9': 'pat-logo', 'foto_pos_5_7_10': 'pat-logo', 'foto_pos_5_8_10': 'pat-logo',
+      'foto_pos_6_8_11': 'pat-logo', 'foto_pos_7_9_12': 'pat-logo', 'foto_pos_7_10_12': 'pat-logo',
+      'foto_pos_8_10_13': 'pat-logo', 'foto_pos_8_11_13': 'pat-logo', 'foto_pos_9_12_14': 'pat-logo',
+      'foto_pos_10_12_15': 'pat-logo', 'foto_pos_10_13_15': 'pat-logo', 'foto_pos_11_13_16': 'pat-logo',
+      'foto_pos_12_14_17': 'pat-logo', 'foto_pos_12_15_17': 'pat-logo', 'foto_pos_13_15_18': 'pat-logo',
+      'foto_pos_13_16_18': 'pat-logo', 'foto_pos_15_17_19': 'pat-logo', 'foto_pos_15_18_19': 'pat-logo'
   };
 
     useEffect(() => {
@@ -58,8 +58,10 @@ function Partida () {
           Object.keys(cabanas_rojas).forEach((key) => {
             const pos = cabanas_rojas[key]["posicion"].split(",").join("_");
             console.log(pos);
-            foto_pos[`foto_pos_${pos}`] = "pat-cabana-roja";
+            foto_pos[`foto_pos_${pos}`] = 'pat-cabana-roja';
             // poner en hexagono como fill = {foto_pos['foto_pos_1_2_5']}
+            foto_pos['foto_pos_1_2_5'] = 'pat-cabana-roja';
+            
           });
 
 
@@ -74,7 +76,7 @@ function Partida () {
           const castillos_amarillos = response.data["jugador_4"]["castillos"];
 
 
-          const foto_pos_1_2_5 = 'pat-castillo-rojo';
+          
 
         })
         .catch((error) => {
@@ -166,7 +168,7 @@ function Partida () {
 
             <Layout size={{ x: 3, y: 3 }} flat={true} spacing={1.01} origin={{ x: 0, y: 0 }}>
                 {/* Segunda vuelta */}
-                <Hexagon q={1} r={-2} s={1} className = 'hexagon_125' fill = 'pat-cabana-roja' onClick={() => alert("hola")}>
+                <Hexagon q={1} r={-2} s={1} className = 'hexagon_125' fill = {foto_pos['foto_pos_1_2_5']} onClick={() => alert("hola")}>
                 </Hexagon>
                 <Hexagon q={2} r={-1} s={-1} fill = 'pat-logo'>
                 </Hexagon>
