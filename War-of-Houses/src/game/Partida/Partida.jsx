@@ -20,6 +20,8 @@ function Partida () {
     const hexagonSize = { x: 18, y: 10 };
     const hexagonSize3 = { x: 10, y: 10 };
 
+    
+
     return (
     
       <div className="div-partida">

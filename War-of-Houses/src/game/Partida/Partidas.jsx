@@ -5,39 +5,41 @@ import { Link } from "react-router-dom";
 
 function PartidasTabla() {
   const [partidas, setPartidas] = useState([]);
-  const {user_id} = useContext(AuthContext);
-  console.log('ACAAAAAAAA')
-  console.log(user_id);
+  const { user_id } = useContext(AuthContext);
+  
   useEffect(() => {
+    cargarPartidas();
+
+    // Agregamos user_id como dependencia para que se ejecute el efecto cada vez que user_id cambie
+  }, [user_id]);
+
+  const cargarPartidas = () => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/obtener_partidas_usuario/${user_id}`)
       .then((response) => {
         const data = response.data;
-        console.log(data);
         const partidas = Object.keys(data).map((key) => data[key]);
-        console.log(partidas);
-  
         setPartidas(partidas);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  };
 
   const handleCrearPartida = () => {
-    console.log(user_id);
-    axios.post(`${import.meta.env.VITE_BACKEND_URL}/iniciar_partida`, {
-      idUsuario: user_id
-    })
+    axios
+      .post(`${import.meta.env.VITE_BACKEND_URL}/iniciar_partida`, {
+        idUsuario: user_id
+      })
       .then((response) => {
-        // Aquí puedes manejar la respuesta de la llamada a la API
         console.log(response.data);
+        const idPartida = response.data.idPartida;
+        cargarPartidas(); // Actualizamos las partidas después de crear una nueva partida
       })
       .catch((error) => {
         console.log(error);
       });
   };
-  
 
   return (
     <div>
@@ -55,7 +57,7 @@ function PartidasTabla() {
                 <td>{partida.id}</td>
                 <td>
                   <div className="div-boton-partida">
-                    <Link className="partida-button" to='/partida'>
+                    <Link className="partida-button" to={`/partida?idPartida=${partida.id}`}>
                       Ingresar a la partida
                     </Link>
                   </div>
@@ -64,15 +66,12 @@ function PartidasTabla() {
             ))}
           </tbody>
         </table>
-      ) : (
-        <Link className="crear-partida-button" to='/partida' onClick={handleCrearPartida}>
-          Crear partida
-        </Link>
-      )}
+      ) : null}
+      <Link className="crear-partida-button" onClick={handleCrearPartida}>
+        Ingresar a una nueva partida
+      </Link>
     </div>
   );
-  
-  
 }
 
 export default PartidasTabla;
