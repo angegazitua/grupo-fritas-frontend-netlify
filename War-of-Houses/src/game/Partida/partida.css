@@ -75,18 +75,18 @@ svg path {
 
 
 svg g {
-  fill: none;
+  fill-opacity: 1;
 }
 
 svg g .hexagon_125 {
   fill:black;
   fill-opacity: 1;
-  display: no;
+  /* display: none; */
 }
 
 svg g:hover {
   fill: red;
-  fill-opacity: 0.3;
+  fill-opacity: 1;
 }
 
 /* .grid {
