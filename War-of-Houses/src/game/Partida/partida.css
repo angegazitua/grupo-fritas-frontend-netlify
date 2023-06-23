@@ -83,6 +83,12 @@ svg g:hover {
   fill-opacity: 1;
 }
 
+.div-cuadro-respuestas{
+  margin-top: 10px;
+  background-color: goldenrod;
+  padding: 10px;
+}
+
 /* .grid {
     width: 500%;
 } */
