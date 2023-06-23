@@ -90,8 +90,8 @@ svg g:hover {
 }
 
 svg g polygon {
-  stroke: white;
-  stroke-width: 0.1;
+  stroke: grey;
+  stroke-width: 0;
   transition: fill-opacity .5s;
 }
 
