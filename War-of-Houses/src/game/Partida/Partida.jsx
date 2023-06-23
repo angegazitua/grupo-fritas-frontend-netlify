@@ -30,8 +30,8 @@ import CastilloAzul from '../../assets/img/castillo-azul.png';
 function Partida () {
     const hexagonSize = { x: 18, y: 10 };
     const hexagonSize3 = { x: 10, y: 10 };
-    let que_quiere_comprar = null;
-    let puede_comprar = null;
+    let [que_quiere_comprar, setQueQuiereComprar] = useState(null);
+    let [puede_comprar, setPuedeComprar] = useState(null);
 
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
@@ -194,8 +194,8 @@ function Partida () {
         .then((response) => {
           console.log(response.data);
           if (response.data["bool"]) {
-            que_quiere_comprar = "cabana";
-            puede_comprar = true;
+            setQueQuiereComprar("cabana");
+            setPuedeComprar(true);
           }
           cargarPartida(); // Actualizamos las partidas después de crear una nueva partida
         })
@@ -210,8 +210,8 @@ function Partida () {
         .then((response) => {
           console.log(response.data);
           if (response.data["bool"]) {
-            que_quiere_comprar = "castillo";
-            puede_comprar = true;
+            setQueQuiereComprar("castillo");
+            setPuedeComprar(true);
           }
           cargarPartida(); // Actualizamos las partidas después de crear una nueva partida
         })
@@ -220,7 +220,8 @@ function Partida () {
         });
     };
 
-    const handleComprar = (que_quiere_comprar, puede_comprar, pos) => {
+    const handleComprar = (pos) => {
+      console.log(pos);
       console.log("Intentando comprar");
       if (puede_comprar) {
         if (que_quiere_comprar === "cabana") {
@@ -235,7 +236,10 @@ function Partida () {
     };
 
     const handleComprarCabana = (pos) => {
-      lista_pos = pos.split("_");
+      console.log("ACAAAAAAAAAA")
+      console.log(pos);
+      const lista_pos = pos.split("_");
+      console.log(lista_pos);
       axios
         .post(`${import.meta.env.VITE_BACKEND_URL}/guardar_cabana`, {
           idJugador: jugador,
@@ -356,56 +360,56 @@ function Partida () {
 
             <Layout size={{ x: 3, y: 3 }} flat={true} spacing={1.01} origin={{ x: 0, y: 0 }}>
                 {/* Segunda vuelta */}
-                <Hexagon q={1} r={-2} s={1} fill = {fotoPos['foto_pos_5_8_10']} onClick={handleComprar(que_quiere_comprar, puede_comprar, '5_8_10')}>
+                <Hexagon q={1} r={-2} s={1} id='5_8_10' fill = {fotoPos['foto_pos_5_8_10']} onClick={() => handleComprar('5_8_10')}>
                 </Hexagon>
-                <Hexagon q={2} r={-1} s={-1} fill = {fotoPos['foto_pos_8_10_13']} onClick={handleComprar(que_quiere_comprar, puede_comprar, '8_10_13')}>
+                <Hexagon q={2} r={-1} s={-1} id='8_10_13' fill = {fotoPos['foto_pos_8_10_13']} onClick={() => handleComprar('8_10_13')}>
                 </Hexagon>
-                <Hexagon q={1} r={1} s={-2} fill = {fotoPos['foto_pos_10_13_15']} onClick={handleComprar(que_quiere_comprar, puede_comprar, '10_13_15')}>
+                <Hexagon q={1} r={1} s={-2} id='10_13_15' fill = {fotoPos['foto_pos_10_13_15']} onClick={() => handleComprar('10_13_15')}>
                 </Hexagon>
-                <Hexagon q={-1} r={2} s={-1} fill = {fotoPos['foto_pos_10_12_15']} onClick={handleComprar(que_quiere_comprar, puede_comprar, '10_12_15')}>
+                <Hexagon q={-1} r={2} s={-1} id='10_12_15' fill = {fotoPos['foto_pos_10_12_15']}  onClick={() => handleComprar('10_12_15')}>
                 </Hexagon>
-                <Hexagon q={-2} r={1} s={1} fill = {fotoPos['foto_pos_7_10_12']} onClick={handleComprar(que_quiere_comprar, puede_comprar, '7_10_12')}>
+                <Hexagon q={-2} r={1} s={1} id='7_10_12' fill = {fotoPos['foto_pos_7_10_12']}  onClick={() => handleComprar('7_10_12')}>
                 </Hexagon>
-                <Hexagon q={-1} r={-1} s={2} fill = {fotoPos['foto_pos_5_7_10']} onClick={handleComprar(que_quiere_comprar, puede_comprar, '5_7_10')}>
+                <Hexagon q={-1} r={-1} s={2} id='5_7_10' fill = {fotoPos['foto_pos_5_7_10']}  onClick={() => handleComprar('5_7_10')}>
                 </Hexagon>
                 {/* Tercera vuelta */}
                 {/* Cuarta vuelta */}
-                <Hexagon q={2} r={-4} s={2} fill = {fotoPos['foto_pos_3_5_8']} onClick={handleComprar(que_quiere_comprar, puede_comprar, '3_5_8')}>
+                <Hexagon q={2} r={-4} s={2} id='3_5_8' fill = {fotoPos['foto_pos_3_5_8']}  onClick={() => handleComprar('3_5_8')}>
                 </Hexagon>
-                <Hexagon q={4} r={-2} s={-2} fill = {fotoPos['foto_pos_8_11_13']} onClick={handleComprar(que_quiere_comprar, puede_comprar, '8_11_13')}>
+                <Hexagon q={4} r={-2} s={-2} id='8_11_13' fill = {fotoPos['foto_pos_8_11_13']}  onClick={() => handleComprar('8_11_13')}>
                 </Hexagon>
-                <Hexagon q={2} r={2} s={-4} fill = {fotoPos['foto_pos_13_15_18']} onClick={handleComprar(que_quiere_comprar, puede_comprar, '13_15_18')}>
+                <Hexagon q={2} r={2} s={-4} id='13_15_18' fill = {fotoPos['foto_pos_13_15_18']}  onClick={() => handleComprar('13_15_18')}>
                 </Hexagon>
-                <Hexagon q={-2} r={4} s={-2} fill = {fotoPos['foto_pos_12_15_17']} onClick={handleComprar(que_quiere_comprar, puede_comprar, '12_15_17')}>
+                <Hexagon q={-2} r={4} s={-2} id='12_15_17' fill = {fotoPos['foto_pos_12_15_17']}  onClick={() => handleComprar('12_15_17')}>
                 </Hexagon>
-                <Hexagon q={-4} r={2} s={2} fill = {fotoPos['foto_pos_7_9_12']} onClick={handleComprar(que_quiere_comprar, puede_comprar, '7_9_12')}>
+                <Hexagon q={-4} r={2} s={2} id='7_9_12' fill = {fotoPos['foto_pos_7_9_12']}  onClick={() => handleComprar('7_9_12')}>
                 </Hexagon>
-                <Hexagon q={-2} r={-2} s={4} fill = {fotoPos['foto_pos_2_5_7']} onClick={handleComprar(que_quiere_comprar, puede_comprar, '2_5_7')}>
+                <Hexagon q={-2} r={-2} s={4} id='2_5_7' fill = {fotoPos['foto_pos_2_5_7']}  onClick={() => handleComprar('2_5_7')}>
                 </Hexagon>
                 {/* Quinta vuelta */}
-                <Hexagon q={1} r={-5} s={4} fill = {fotoPos['foto_pos_1_3_5']} onClick={handleComprar(que_quiere_comprar, puede_comprar, '1_3_5')}>
+                <Hexagon q={1} r={-5} s={4} id='1_3_5' fill = {fotoPos['foto_pos_1_3_5']}  onClick={() => handleComprar('1_3_5')}>
                 </Hexagon>
-                <Hexagon q={4} r={-5} s={1} fill = {fotoPos['foto_pos_3_6_8']} onClick={handleComprar(que_quiere_comprar, puede_comprar, '3_6_8')}>
+                <Hexagon q={4} r={-5} s={1} id='3_6_8' fill = {fotoPos['foto_pos_3_6_8']}  onClick={() => handleComprar('3_6_8')}>
                 </Hexagon>
-                <Hexagon q={5} r={-4} s={-1} fill = {fotoPos['foto_pos_6_8_11']} onClick={handleComprar(que_quiere_comprar, puede_comprar, '6_8_11')}>
+                <Hexagon q={5} r={-4} s={-1} id='6_8_11' fill = {fotoPos['foto_pos_6_8_11']}  onClick={() => handleComprar('6_8_11')}>
                 </Hexagon>
-                <Hexagon q={5} r={-1} s={-4} fill = {fotoPos['foto_pos_11_13_16']} onClick={handleComprar(que_quiere_comprar, puede_comprar, '11_13_16')}>
+                <Hexagon q={5} r={-1} s={-4} id='11_13_16' fill = {fotoPos['foto_pos_11_13_16']}  onClick={() => handleComprar('11_13_16')}>
                 </Hexagon>
-                <Hexagon q={4} r={1} s={-5} fill = {fotoPos['foto_pos_13_16_18']} onClick={handleComprar(que_quiere_comprar, puede_comprar, '13_16_18')}>
+                <Hexagon q={4} r={1} s={-5} id='13_16_18' fill = {fotoPos['foto_pos_13_16_18']}  onClick={() => handleComprar('13_16_18')}>
                 </Hexagon>
-                <Hexagon q={1} r={4} s={-5} fill = {fotoPos['foto_pos_15_18_19']} onClick={handleComprar(que_quiere_comprar, puede_comprar, '15_18_19')}>
+                <Hexagon q={1} r={4} s={-5} id='15_18_19' fill = {fotoPos['foto_pos_15_18_19']}  onClick={() => handleComprar('15_18_19')}>
                 </Hexagon>
-                <Hexagon q={-1} r={5} s={-4} fill = {fotoPos['foto_pos_15_17_19']} onClick={handleComprar(que_quiere_comprar, puede_comprar, '15_17_19')}>
+                <Hexagon q={-1} r={5} s={-4} id='15_17_19' fill = {fotoPos['foto_pos_15_17_19']} onClick={() => handleComprar('15_17_19')}>
                 </Hexagon>
-                <Hexagon q={-4} r={5} s={-1} fill = {fotoPos['foto_pos_12_14_17']} onClick={handleComprar(que_quiere_comprar, puede_comprar, '12_14_17')}>
+                <Hexagon q={-4} r={5} s={-1} id='12_14_17' fill = {fotoPos['foto_pos_12_14_17']}  onClick={() => handleComprar('12_14_17')}>
                 </Hexagon>
-                <Hexagon q={-5} r={4} s={1} fill = {fotoPos['foto_pos_9_12_14']} onClick={handleComprar(que_quiere_comprar, puede_comprar, '9_12_14')}>
+                <Hexagon q={-5} r={4} s={1} id='9_12_14' fill = {fotoPos['foto_pos_9_12_14']}  onClick={() => handleComprar('9_12_14')}>
                 </Hexagon>
-                <Hexagon q={-5} r={1} s={4} fill = {fotoPos['foto_pos_4_7_9']} onClick={handleComprar(que_quiere_comprar, puede_comprar, '4_7_9')}>
+                <Hexagon q={-5} r={1} s={4} id='4_7_9' fill = {fotoPos['foto_pos_4_7_9']}  onClick={() => handleComprar('4_7_9')}>
                 </Hexagon>
-                <Hexagon q={-4} r={-1} s={5} fill = {fotoPos['foto_pos_2_4_7']} onClick={handleComprar(que_quiere_comprar, puede_comprar, '2_4_7')}>
+                <Hexagon q={-4} r={-1} s={5} id='2_4_7' fill = {fotoPos['foto_pos_2_4_7']}  onClick={() => handleComprar('2_4_7')}>
                 </Hexagon>
-                <Hexagon q={-1} r={-4} s={5} fill = {fotoPos['foto_pos_1_2_5']} onClick={handleComprar(que_quiere_comprar, puede_comprar, '1_2_5')}>
+                <Hexagon q={-1} r={-4} s={5} id='1_2_5' fill = {fotoPos['foto_pos_1_2_5']}  onClick={() => handleComprar('1_2_5')}>
                 </Hexagon>
                 {/* Sexta vuelta */}
             
