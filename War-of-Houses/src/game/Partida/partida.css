@@ -78,12 +78,6 @@ svg g {
   fill-opacity: 1;
 }
 
-svg g .hexagon_125 {
-  fill:black;
-  fill-opacity: 1;
-  /* display: none; */
-}
-
 svg g:hover {
   fill: red;
   fill-opacity: 1;

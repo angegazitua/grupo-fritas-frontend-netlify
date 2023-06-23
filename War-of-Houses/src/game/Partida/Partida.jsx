@@ -33,7 +33,8 @@ function Partida () {
     const searchParams = new URLSearchParams(location.search);
     const idPartida = searchParams.get("idPartida");
 
-    let foto_pos = {'foto_pos_1_2_5': 'pat-cabana-azul', 'foto_pos_1_3_5': 'pat-logo', 'foto_pos_2_4_7': 'pat-logo',
+    const [fotoPos, setFotoPos] = useState(
+      {'foto_pos_1_2_5': 'pat-logo', 'foto_pos_1_3_5': 'pat-logo', 'foto_pos_2_4_7': 'pat-logo',
       'foto_pos_2_5_7': 'pat-logo', 'foto_pos_3_5_8': 'pat-logo', 'foto_pos_3_6_8': 'pat-logo',
       'foto_pos_4_7_9': 'pat-logo', 'foto_pos_5_7_10': 'pat-logo', 'foto_pos_5_8_10': 'pat-logo',
       'foto_pos_6_8_11': 'pat-logo', 'foto_pos_7_9_12': 'pat-logo', 'foto_pos_7_10_12': 'pat-logo',
@@ -41,11 +42,21 @@ function Partida () {
       'foto_pos_10_12_15': 'pat-logo', 'foto_pos_10_13_15': 'pat-logo', 'foto_pos_11_13_16': 'pat-logo',
       'foto_pos_12_14_17': 'pat-logo', 'foto_pos_12_15_17': 'pat-logo', 'foto_pos_13_15_18': 'pat-logo',
       'foto_pos_13_16_18': 'pat-logo', 'foto_pos_15_17_19': 'pat-logo', 'foto_pos_15_18_19': 'pat-logo'
-  };
+      }
+    );
+
+  //   let foto_pos = {'foto_pos_1_2_5': 'pat-cabana-azul', 'foto_pos_1_3_5': 'pat-logo', 'foto_pos_2_4_7': 'pat-logo',
+  //     'foto_pos_2_5_7': 'pat-logo', 'foto_pos_3_5_8': 'pat-logo', 'foto_pos_3_6_8': 'pat-logo',
+  //     'foto_pos_4_7_9': 'pat-logo', 'foto_pos_5_7_10': 'pat-logo', 'foto_pos_5_8_10': 'pat-logo',
+  //     'foto_pos_6_8_11': 'pat-logo', 'foto_pos_7_9_12': 'pat-logo', 'foto_pos_7_10_12': 'pat-logo',
+  //     'foto_pos_8_10_13': 'pat-logo', 'foto_pos_8_11_13': 'pat-logo', 'foto_pos_9_12_14': 'pat-logo',
+  //     'foto_pos_10_12_15': 'pat-logo', 'foto_pos_10_13_15': 'pat-logo', 'foto_pos_11_13_16': 'pat-logo',
+  //     'foto_pos_12_14_17': 'pat-logo', 'foto_pos_12_15_17': 'pat-logo', 'foto_pos_13_15_18': 'pat-logo',
+  //     'foto_pos_13_16_18': 'pat-logo', 'foto_pos_15_17_19': 'pat-logo', 'foto_pos_15_18_19': 'pat-logo'
+  // };
 
     useEffect(() => {
       cargarPartida();
-      // Hacer que cambie cada vez que cambie jugador actual
     }, []);
   
     const cargarPartida = () => {
@@ -58,25 +69,104 @@ function Partida () {
           Object.keys(cabanas_rojas).forEach((key) => {
             const pos = cabanas_rojas[key]["posicion"].split(",").join("_");
             console.log(pos);
-            foto_pos[`foto_pos_${pos}`] = 'pat-cabana-roja';
-            // poner en hexagono como fill = {foto_pos['foto_pos_1_2_5']}
-            foto_pos['foto_pos_1_2_5'] = 'pat-cabana-roja';
+            setFotoPos(fotoPos => ({
+              ...fotoPos,
+              [`foto_pos_${pos}`]: 'pat-cabana-roja'
+            }));
+            // setFotoPos({...fotoPos, [`foto_pos_${pos}`]: 'pat-cabana-roja'});
+            //fotoPos[`foto_pos_${pos}`] = 'pat-cabana-roja';
+            // // poner en hexagono como fill = {foto_pos['foto_pos_1_2_5']}
+            // foto_pos['foto_pos_1_2_5'] = 'pat-cabana-roja';
+            
             
           });
 
 
 
           const cabanas_verdes = response.data["jugador_2"]["cabanas"];
+          console.log(cabanas_verdes);
+          Object.keys(cabanas_verdes).forEach((key) => {
+            const pos_verde = cabanas_verdes[key]["posicion"].split(",").join("_");
+            console.log(pos_verde);
+            setFotoPos(fotoPos => ({
+              ...fotoPos,
+              [`foto_pos_${pos_verde}`]: 'pat-cabana-verde'
+            }));
+          });
+
           const cabanas_azules = response.data["jugador_3"]["cabanas"];
+          console.log(cabanas_azules);
+          Object.keys(cabanas_azules).forEach((key) => {
+            const pos_azul = cabanas_azules[key]["posicion"].split(",").join("_");
+            console.log(pos_azul);
+            setFotoPos(fotoPos => ({
+              ...fotoPos,
+              [`foto_pos_${pos_azul}`]: 'pat-cabana-azul'
+            }));
+            //setFotoPos({...fotoPos, [`foto_pos_${pos_azul}`]: 'pat-cabana-azul'});
+            //fotoPos[`foto_pos_${pos_azul}`] = 'pat-cabana-azul';
+            // // poner en hexagono como fill = {foto_pos['foto_pos_1_2_5']}
+            // foto_pos['foto_pos_1_2_5'] = 'pat-cabana-roja';
+            
+            
+          });
           const cabanas_amarillas = response.data["jugador_4"]["cabanas"];
+          console.log(cabanas_amarillas);
+          Object.keys(cabanas_amarillas).forEach((key) => {
+            const pos_amarilla = cabanas_amarillas[key]["posicion"].split(",").join("_");
+            console.log(pos_amarilla);
+            setFotoPos(fotoPos => ({
+              ...fotoPos,
+              [`foto_pos_${pos_amarilla}`]: 'pat-cabana-amarilla'
+            }));
+          });
 
           const castillos_rojos = response.data["jugador_1"]["castillos"];
-          const castillos_verdes = response.data["jugador_2"]["castillos"];
-          const castillos_azules = response.data["jugador_3"]["castillos"];
-          const castillos_amarillos = response.data["jugador_4"]["castillos"];
-
-
+          console.log(castillos_rojos);
+          Object.keys(castillos_rojos).forEach((key) => {
+            const pos_castillo_rojo = castillos_rojos[key]["posicion"].split(",").join("_");
+            console.log(pos_castillo_rojo);
+            setFotoPos(fotoPos => ({
+              ...fotoPos,
+              [`foto_pos_${pos_castillo_rojo}`]: 'pat-castillo-rojo'
+            }));
+          });
           
+          const castillos_verdes = response.data["jugador_2"]["castillos"];
+          console.log(castillos_verdes);
+          Object.keys(castillos_verdes).forEach((key) => {
+            const pos_castillo_verde = castillos_verdes[key]["posicion"].split(",").join("_");
+            console.log(pos_castillo_verde);
+            setFotoPos(fotoPos => ({
+              ...fotoPos,
+              [`foto_pos_${pos_castillo_verde}`]: 'pat-castillo-verde'
+            }));
+          });
+
+
+          const castillos_azules = response.data["jugador_3"]["castillos"];
+          console.log(castillos_azules);
+          Object.keys(castillos_azules).forEach((key) => {
+            const pos_castillo_azul = castillos_azules[key]["posicion"].split(",").join("_");
+            console.log(pos_castillo_azul);
+            setFotoPos(fotoPos => ({
+              ...fotoPos,
+              [`foto_pos_${pos_castillo_azul}`]: 'pat-castillo-azul'
+            }));
+          });
+
+
+          const castillos_amarillos = response.data["jugador_4"]["castillos"];
+          console.log(castillos_amarillos);
+          Object.keys(castillos_amarillos).forEach((key) => {
+            const pos_castillo_amarillo = castillos_amarillos[key]["posicion"].split(",").join("_");
+            console.log(pos_castillo_amarillo);
+            setFotoPos(fotoPos => ({
+              ...fotoPos,
+              [`foto_pos_${pos_castillo_amarillo}`]: 'pat-castillo-amarillo'
+            }));
+          });
+
 
         })
         .catch((error) => {
@@ -94,7 +184,7 @@ function Partida () {
           <p>Ravenclaw: </p>
           <p>Slytherin: </p>
           <p>Huffelpuff: </p>
-          <div class="cartas">
+          <div className="cartas">
             <img className='carta-dragon' src={CartaDragon}></img>
             <img className='carta-phoenix' src={CartaPhoenix}></img>
             <img className='carta-unicornio' src={CartaUnicornio}></img>
@@ -168,62 +258,59 @@ function Partida () {
 
             <Layout size={{ x: 3, y: 3 }} flat={true} spacing={1.01} origin={{ x: 0, y: 0 }}>
                 {/* Segunda vuelta */}
-                <Hexagon q={1} r={-2} s={1} className = 'hexagon_125' fill = {foto_pos['foto_pos_1_2_5']} onClick={() => alert("hola")}>
+                <Hexagon q={1} r={-2} s={1} fill = {fotoPos['foto_pos_5_8_10']} onClick={() => alert("hola")}>
                 </Hexagon>
-                <Hexagon q={2} r={-1} s={-1} fill = 'pat-logo'>
+                <Hexagon q={2} r={-1} s={-1} fill = {fotoPos['foto_pos_8_10_13']}>
                 </Hexagon>
-                <Hexagon q={1} r={1} s={-2} fill = 'pat-logo'>
+                <Hexagon q={1} r={1} s={-2} fill = {fotoPos['foto_pos_10_13_15']}>
                 </Hexagon>
-                <Hexagon q={-1} r={2} s={-1} fill = 'pat-logo'>
+                <Hexagon q={-1} r={2} s={-1} fill = {fotoPos['foto_pos_10_12_15']}>
                 </Hexagon>
-                <Hexagon q={-2} r={1} s={1} fill = 'pat-logo'>
+                <Hexagon q={-2} r={1} s={1} fill = {fotoPos['foto_pos_7_10_12']}>
                 </Hexagon>
-                <Hexagon q={-1} r={-1} s={2} fill = 'pat-logo'>
+                <Hexagon q={-1} r={-1} s={2} fill = {fotoPos['foto_pos_5_7_10']}>
                 </Hexagon>
                 {/* Tercera vuelta */}
                 {/* Cuarta vuelta */}
-                <Hexagon q={2} r={-4} s={2} fill = 'pat-logo'>
+                <Hexagon q={2} r={-4} s={2} fill = {fotoPos['foto_pos_3_5_8']}>
                 </Hexagon>
-                <Hexagon q={4} r={-2} s={-2} fill = 'pat-logo'>
+                <Hexagon q={4} r={-2} s={-2} fill = {fotoPos['foto_pos_8_11_13']}>
                 </Hexagon>
-                <Hexagon q={2} r={2} s={-4} fill = 'pat-logo'>
+                <Hexagon q={2} r={2} s={-4} fill = {fotoPos['foto_pos_13_15_18']}>
                 </Hexagon>
-                <Hexagon q={-2} r={4} s={-2} fill = 'pat-logo'>
+                <Hexagon q={-2} r={4} s={-2} fill = {fotoPos['foto_pos_12_15_17']}>
                 </Hexagon>
-                <Hexagon q={-4} r={2} s={2} fill = 'pat-logo'>
+                <Hexagon q={-4} r={2} s={2} fill = {fotoPos['foto_pos_7_9_12']}>
                 </Hexagon>
-                <Hexagon q={-2} r={-2} s={4} fill = 'pat-logo'>
+                <Hexagon q={-2} r={-2} s={4} fill = {fotoPos['foto_pos_2_5_7']}>
                 </Hexagon>
                 {/* Quinta vuelta */}
-                <Hexagon q={1} r={-5} s={4} fill = 'pat-logo'>
+                <Hexagon q={1} r={-5} s={4} fill = {fotoPos['foto_pos_1_3_5']}>
                 </Hexagon>
-                <Hexagon q={4} r={-5} s={1} fill = 'pat-logo'>
+                <Hexagon q={4} r={-5} s={1} fill = {fotoPos['foto_pos_3_6_8']}>
                 </Hexagon>
-                <Hexagon q={5} r={-4} s={-1} fill = 'pat-logo'>
+                <Hexagon q={5} r={-4} s={-1} fill = {fotoPos['foto_pos_6_8_11']}>
                 </Hexagon>
-                <Hexagon q={5} r={-1} s={-4} fill = 'pat-logo'>
+                <Hexagon q={5} r={-1} s={-4} fill = {fotoPos['foto_pos_11_13_16']}>
                 </Hexagon>
-                <Hexagon q={4} r={1} s={-5} fill = 'pat-logo'>
+                <Hexagon q={4} r={1} s={-5} fill = {fotoPos['foto_pos_13_16_18']}>
                 </Hexagon>
-                <Hexagon q={1} r={4} s={-5} fill = 'pat-logo'>
+                <Hexagon q={1} r={4} s={-5} fill = {fotoPos['foto_pos_15_18_19']}>
                 </Hexagon>
-                <Hexagon q={-1} r={5} s={-4} fill = 'pat-logo'>
+                <Hexagon q={-1} r={5} s={-4} fill = {fotoPos['foto_pos_15_17_19']}>
                 </Hexagon>
-                <Hexagon q={-4} r={5} s={-1} fill = 'pat-logo'>
+                <Hexagon q={-4} r={5} s={-1} fill = {fotoPos['foto_pos_12_14_17']}>
                 </Hexagon>
-                <Hexagon q={-5} r={4} s={1} fill = 'pat-logo'>
+                <Hexagon q={-5} r={4} s={1} fill = {fotoPos['foto_pos_9_12_14']}>
                 </Hexagon>
-                <Hexagon q={-5} r={1} s={4} fill = 'pat-logo'>
+                <Hexagon q={-5} r={1} s={4} fill = {fotoPos['foto_pos_4_7_9']}>
                 </Hexagon>
-                <Hexagon q={-4} r={-1} s={5} fill = 'pat-logo'>
+                <Hexagon q={-4} r={-1} s={5} fill = {fotoPos['foto_pos_2_4_7']}>
                 </Hexagon>
-                <Hexagon q={-1} r={-4} s={5} fill = 'pat-logo'>
+                <Hexagon q={-1} r={-4} s={5} fill = {fotoPos['foto_pos_1_2_5']}>
                 </Hexagon>
                 {/* Sexta vuelta */}
-              
-
-
-
+            
                 {/* <Path start={{ q: 0, r: 0, s: 0 }} end={{ q: 0, r: 0, s: 1 }} /> */}
                 {/* <Path start={new Hex(-1, -1, 2)} end={new Hex(1, -2, 1)} /> */}
                 
