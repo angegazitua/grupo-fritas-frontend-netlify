@@ -277,7 +277,7 @@ function Partida () {
     };
 
     const handleComprarCastillo = (pos) => {
-      lista_pos = pos.split("_");
+      const lista_pos = pos.split("_");
       axios
         .post(`${import.meta.env.VITE_BACKEND_URL}/guardar_castillo`, {
           idJugador: jugador,
