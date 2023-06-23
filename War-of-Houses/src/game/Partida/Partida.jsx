@@ -17,15 +17,17 @@ import CartaPhoenix from '../../assets/img/pluma-pheonix.jpg';
 import CartaUnicornio from '../../assets/img/pelo-unicornio.jpg';
 import CartaVarita from '../../assets/img/varita-magica.jpg';
 import CartaSerpiente from '../../assets/img/diente-serpiente.jpg';
-import CabanaRoja from '../../assets/img/cabana-roja.png';
+import CabanaRoja from '../../assets/img/cabana-roja-grande.png';
 //import CabanaVerde from '../../assets/img/cabana-verde.png';
-import CabanaAzul from '../../assets/img/cabana-azul.png';
+import CabanaAzul from '../../assets/img/cabana-azul-grande.png';
 // import CabanaAmarilla from '../../assets/img/cabana-amarilla.png';
-import CastilloRojo from '../../assets/img/castillo-rojo.png';
+import CastilloRojo from '../../assets/img/castillo-rojo-grande.png';
 // import CastilloVerde from '../../assets/img/castillo-verde.png';
 import CastilloAzul from '../../assets/img/castillo-azul.png';
 // import CastilloAmarillo from '../../assets/img/castillo-amarillo.png';
-
+import EscobaRojaRecto from '../../assets/img/escoba-roja-recto.png';
+import EscobaRojaDerecha from '../../assets/img/escoba-roja-derecha.png';
+import EscobaRojaIzquierda from '../../assets/img/escoba-roja-izquierda.png';
 
 function Partida () {
     const hexagonSize = { x: 18, y: 10 };
@@ -379,6 +381,105 @@ function Partida () {
             </Layout>
 
             <Layout size={{ x: 3, y: 3 }} flat={true} spacing={1.01} origin={{ x: 0, y: 0 }}>
+                {/* Escobas primera vuelta */}
+                <Hexagon q={0} r={-1.5} s={1.5} fill = 'pat-escoba-roja-recto' onClick={() => handleComprar('5_10')}>
+                </Hexagon>
+                <Hexagon q={1.5} r={-1.5} s={1.5} fill = 'pat-escoba-roja-derecha' onClick={() => handleComprar('8_10')}>
+                </Hexagon>
+                <Hexagon q={1.5} r={0} s={1.5} fill = 'pat-escoba-roja-izquierda' onClick={() => handleComprar('10_13')}>
+                </Hexagon>
+                <Hexagon q={0} r={1.5} s={-1.5} fill = 'pat-4' onClick={() => handleComprar('10_15')}>
+                </Hexagon>
+                <Hexagon q={-1.5} r={1.5} s={0} fill = 'pat-4' onClick={() => handleComprar('10_12')}>
+                </Hexagon>
+                <Hexagon q={-1.5} r={0} s={1.5} fill = 'pat-4' onClick={() => handleComprar('7_10')}>
+                </Hexagon>
+                {/* Escobas segunda vuelta */}
+                <Hexagon q={1.5} r={-3} s={-2} fill = 'pat-4' onClick={() => handleComprar('5_8')}>
+                </Hexagon>
+                <Hexagon q={3} r={-1.5} s={-1} fill = 'pat-4' onClick={() => handleComprar('8_13')}>
+                </Hexagon>
+                <Hexagon q={3} r={1.5} s={-4.5} fill = 'pat-4' onClick={() => handleComprar('13_18')}>
+                </Hexagon>
+                <Hexagon q={1.5} r={3} s={-4.5} fill = 'pat-4' onClick={() => handleComprar('15_18')}>
+                </Hexagon>
+                <Hexagon q={-1.5} r={3} s={-1.5} fill = 'pat-4' onClick={() => handleComprar('12_15')}>
+                </Hexagon>
+                <Hexagon q={-3} r={1.5} s={-1.5} fill = 'pat-4' onClick={() => handleComprar('7_12')}>
+                </Hexagon>
+                <Hexagon q={-3} r={-1.5} s={0} fill = 'pat-4' onClick={() => handleComprar('2_7')}>
+                </Hexagon>
+                <Hexagon q={-1.5} r={-3} s={1.5} fill = 'pat-4' onClick={() => handleComprar('2_5')}>
+                </Hexagon>
+                {/* Escobas tercera vuelta */}
+                <Hexagon q={3} r={-4.5} s={1.5} fill = 'pat-4' onClick={() => handleComprar('3_8')}>
+                </Hexagon>
+                <Hexagon q={4.5} r={-3} s={-1.5} fill = 'pat-4' onClick={() => handleComprar('8_11')}>
+                </Hexagon>
+                <Hexagon q={4.5} r={1.5} s={-6} fill = 'pat-4' onClick={() => handleComprar('16_18')}>
+                </Hexagon>
+                <Hexagon q={-1.5} r={6} s={-4.5} fill = 'pat-4' onClick={() => handleComprar('17_19')}>
+                </Hexagon>
+                <Hexagon q={-4.5} r={-1.5} s={6} fill = 'pat-4' onClick={() => handleComprar('2_4')}>
+                </Hexagon>
+                <Hexagon q={-6} r={1.5} s={4.5} fill = 'pat-4' onClick={() => handleComprar('4_9')}>
+                </Hexagon>
+                <Hexagon q={-1.5} r={4.5} s={-3} fill = 'pat-4' onClick={() => handleComprar('15_17')}>
+                </Hexagon>
+                <Hexagon q={-3} r={4.5} s={-1.5} fill = 'pat-4' onClick={() => handleComprar('12_17')}>
+                </Hexagon>
+                <Hexagon q={-4.5} r={3} s={1.5} fill = 'pat-4' onClick={() => handleComprar('9_12')}>
+                </Hexagon>
+                <Hexagon q={-1.5} r={-1.5} s={3} fill = 'pat-4' onClick={() => handleComprar('5_7')}>
+                </Hexagon>
+                <Hexagon q={-4.5} r={1.5} s={3} fill = 'pat-4' onClick={() => handleComprar('7_9')}>
+                </Hexagon>
+                <Hexagon q={1.5} r={-4.5} s={3} fill = 'pat-4' onClick={() => handleComprar('3_5')}>
+                </Hexagon>
+                <Hexagon q={0} r={-4.5} s={4.5} fill = 'pat-4' onClick={() => handleComprar('1_5')}>
+                </Hexagon>
+                <Hexagon q={4.5} r={-4.5} s={4.5} fill = 'pat-4' onClick={() => handleComprar('6_8')}>
+                </Hexagon>
+                <Hexagon q={4.5} r={0} s={4.5} fill = 'pat-4' onClick={() => handleComprar('13_16')}>
+                </Hexagon>
+                <Hexagon q={0} r={4.5} s={-4.5} fill = 'pat-4' onClick={() => handleComprar('15_19')}>
+                </Hexagon>
+                <Hexagon q={-4.5} r={4.5} s={0} fill = 'pat-4' onClick={() => handleComprar('12_14')}>
+                </Hexagon>
+                <Hexagon q={-4.5} r={0} s={4.5} fill = 'pat-4' onClick={() => handleComprar('4_7')}>
+                </Hexagon>
+                <Hexagon q={4.5} r={-1.5} s={4.5} fill = 'pat-4' onClick={() => handleComprar('11_13')}>
+                </Hexagon>
+                <Hexagon q={-1.5} r={-4.5} s={6} fill = 'pat-4' onClick={() => handleComprar('1_2')}>
+                </Hexagon>
+                <Hexagon q={-6} r={4.5} s={4.5} fill = 'pat-4' onClick={() => handleComprar('9_14')}>
+                </Hexagon>
+                <Hexagon q={-4.5} r={6} s={4.5} fill = 'pat-4' onClick={() => handleComprar('14_17')}>
+                </Hexagon>
+                <Hexagon q={1.5} r={4.5} s={-4.5} fill = 'pat-4' onClick={() => handleComprar('18_19')}>
+                </Hexagon>
+                <Hexagon q={6} r={-1.5} s={4.5} fill = 'pat-4' onClick={() => handleComprar('11_16')}>
+                </Hexagon>
+                <Hexagon q={6} r={-4.5} s={4.5} fill = 'pat-4' onClick={() => handleComprar('6_11')}>
+                </Hexagon>
+                <Hexagon q={4.5} r={-6} s={4.5} fill = 'pat-4' onClick={() => handleComprar('3_6')}>
+                </Hexagon>
+                <Hexagon q={1.5} r={-6} s={4.5} fill = 'pat-4' onClick={() => handleComprar('1_3')}>
+                </Hexagon>
+                
+                
+
+
+
+                
+
+
+
+                <Hexagon q={1.5} r={1.5} s={0} fill = 'pat-4' onClick={() => handleComprar('13_15')}>
+                </Hexagon>
+
+
+                
                 {/* Segunda vuelta */}
                 <Hexagon q={1} r={-2} s={1} id='5_8_10' fill = {fotoPos['foto_pos_5_8_10']} onClick={() => handleComprar('5_8_10')}>
                 </Hexagon>
@@ -432,7 +533,7 @@ function Partida () {
                 <Hexagon q={-1} r={-4} s={5} id='1_2_5' fill = {fotoPos['foto_pos_1_2_5']}  onClick={() => handleComprar('1_2_5')}>
                 </Hexagon>
                 {/* Sexta vuelta */}
-            
+                
                 {/* <Path start={{ q: 0, r: 0, s: 0 }} end={{ q: 0, r: 0, s: 1 }} /> */}
                 {/* <Path start={new Hex(-1, -1, 2)} end={new Hex(1, -2, 1)} /> */}
                 
@@ -447,26 +548,28 @@ function Partida () {
             </Layout>
 
             {/* Patterns de terreno */}
-            <Pattern id="pat-1" link={Image1} size={hexagonSize}/>
+            {/* <Pattern id="pat-1" link={Image1} size={hexagonSize}/>
             <Pattern id="pat-2" link={Image2} size={hexagonSize}/>
             <Pattern id="pat-3" link={Image3} size={hexagonSize3}/>
             <Pattern id="pat-4" link={Image4} size={hexagonSize}/>
             <Pattern id="pat-5" link={Image5} size={hexagonSize}/>
-            <Pattern id="pat-logo" link={Image7}/>
+            <Pattern id="pat-logo" link={Image7}/> */}
 
             {/* Patterns de cabanas */}
-            <Pattern id="pat-cabana-roja" link={CabanaRoja} size={{x:1.8, y:1.8}}/>
+            <Pattern id="pat-cabana-roja" link={CabanaRoja} size={{x:3.0, y:1.8}}/>
             {/* <Pattern id="pat-cabana-verde" link={CabanaVerde} size={{x:1.8, y:1.8}}/> */}
-            <Pattern id="pat-cabana-azul" link={CabanaAzul} size={{x:1.8, y:1.8}}/>
+            <Pattern id="pat-cabana-azul" link={CabanaAzul} size={{x:3.0, y:1.8}}/>
             {/* <Pattern id="pat-cabana-amarilla" link={CabanaAmarilla} size={{x:1.8, y:1.8}}/> */}
 
             {/* Patterns de castillos */}
-            <Pattern id="pat-castillo-rojo" link={CastilloRojo} size={{x:1.8, y:1.8}}/>
+            <Pattern id="pat-castillo-rojo" link={CastilloRojo} size={{x:3.0, y:1.8}}/>
             {/* <Pattern id="pat-castillo-verde" link={CastilloVerde} size={{x:1.8, y:1.8}}/> */}
-            <Pattern id="pat-castillo-azul" link={CastilloAzul} size={{x:1.8, y:1.8}}/>
+            <Pattern id="pat-castillo-azul" link={CastilloAzul} size={{x:3.0, y:1.8}}/>
             {/* <Pattern id="pat-castillo-amarillo" link={CastilloAmarillo} size={{x:1.8, y:1.8}}/> */}
 
-
+            <Pattern id="pat-escoba-roja-recto" link={EscobaRojaRecto} size={{x:3.0, y:1.8}}/>
+            <Pattern id="pat-escoba-roja-derecha" link={EscobaRojaDerecha} size={{x:3.0, y:1.8}}/>
+            <Pattern id="pat-escoba-roja-izquierda" link={EscobaRojaIzquierda} size={{x:3.0, y:1.8}}/>
           </HexGrid>
           
         </div>

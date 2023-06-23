@@ -89,6 +89,12 @@ svg g:hover {
   padding: 10px;
 }
 
+svg g polygon {
+  stroke: white;
+  stroke-width: 0.1;
+  transition: fill-opacity .5s;
+}
+
 /* .grid {
     width: 500%;
 } */
