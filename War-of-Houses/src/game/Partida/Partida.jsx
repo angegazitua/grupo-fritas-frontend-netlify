@@ -30,8 +30,8 @@ import CastilloAzul from '../../assets/img/castillo-azul.png';
 function Partida () {
     const hexagonSize = { x: 18, y: 10 };
     const hexagonSize3 = { x: 10, y: 10 };
-    let [que_quiere_comprar, setQueQuiereComprar] = useState(null);
-    let [puede_comprar, setPuedeComprar] = useState(null);
+    let [queQuiereComprar, setQueQuiereComprar] = useState("");
+    let [puedeComprar, setPuedeComprar] = useState(false);
 
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
@@ -195,8 +195,13 @@ function Partida () {
         .then((response) => {
           console.log(response.data);
           if (response.data["bool"]) {
+            console.log("MIRAR ACA")
+            console.log(queQuiereComprar);
+            console.log(puedeComprar);
             setQueQuiereComprar("cabana");
             setPuedeComprar(true);
+            console.log(queQuiereComprar);
+            console.log(puedeComprar);
           }
           cargarPartida(); // Actualizamos las partidas después de crear una nueva partida
         })
@@ -224,11 +229,13 @@ function Partida () {
     const handleComprar = (pos) => {
       console.log(pos);
       console.log("Intentando comprar");
-      if (puede_comprar) {
-        if (que_quiere_comprar === "cabana") {
+      console.log(puedeComprar);
+
+      if (puedeComprar) {
+        if (queQuiereComprar === "cabana") {
           console.log("Comprar cabaña");
           handleComprarCabana(pos);
-        } else if (que_quiere_comprar === "castillo") {
+        } else if (queQuiereComprar === "castillo") {
           console.log("Comprar castillo");
           handleComprarCastillo(pos);
         }
@@ -251,12 +258,22 @@ function Partida () {
         })
         .then((response) => {
           console.log(response.data);
+          console.log("hola Holaaaaaa")
+          setQueQuiereComprar(null);
+          setPuedeComprar(false);
+          console.log(queQuiereComprar);
+          console.log(puedeComprar);
+          console.log("chao Chaooooo")
           cargarPartida(); // Actualizamos las partidas después de crear una nueva partida
         })
         .catch((error) => {
           console.log(error);
+          setQueQuiereComprar(null);
+          setPuedeComprar(false);
+          console.log(queQuiereComprar);
+          console.log(puedeComprar);
         });
-      puede_comprar = false;
+      
     };
 
     const handleComprarCastillo = (pos) => {
@@ -275,7 +292,8 @@ function Partida () {
         .catch((error) => {
           console.log(error);
         });
-      puede_comprar = false;
+      setQueQuiereComprar(null);
+      setPuedeComprar(false);
     };
 
     return (
