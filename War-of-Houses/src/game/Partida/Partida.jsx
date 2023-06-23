@@ -66,7 +66,8 @@ function Partida () {
         .get(`${import.meta.env.VITE_BACKEND_URL}/estado_partida/${idPartida}`)
         .then((response) => {
           console.log(response.data);
-          const cabanas_rojas = response.data["jugador_1"]["cabanas"];
+          console.log(response.data["jugador_rojo"]["cabanas"]);
+          const cabanas_rojas = response.data["jugador_rojo"]["cabanas"];
           console.log(cabanas_rojas);
           Object.keys(cabanas_rojas).forEach((key) => {
             const pos = cabanas_rojas[key]["posicion"].split(",").join("_");
@@ -84,7 +85,7 @@ function Partida () {
           });
 
 
-          const cabanas_verdes = response.data["jugador_2"]["cabanas"];
+          const cabanas_verdes = response.data["jugador_verde"]["cabanas"];
           console.log(cabanas_verdes);
           Object.keys(cabanas_verdes).forEach((key) => {
             const pos_verde = cabanas_verdes[key]["posicion"].split(",").join("_");
@@ -95,7 +96,7 @@ function Partida () {
             }));
           });
 
-          const cabanas_azules = response.data["jugador_3"]["cabanas"];
+          const cabanas_azules = response.data["jugador_azul"]["cabanas"];
           console.log(cabanas_azules);
           Object.keys(cabanas_azules).forEach((key) => {
             const pos_azul = cabanas_azules[key]["posicion"].split(",").join("_");
@@ -111,7 +112,7 @@ function Partida () {
             
             
           });
-          const cabanas_amarillas = response.data["jugador_4"]["cabanas"];
+          const cabanas_amarillas = response.data["jugador_amarillo"]["cabanas"];
           console.log(cabanas_amarillas);
           Object.keys(cabanas_amarillas).forEach((key) => {
             const pos_amarilla = cabanas_amarillas[key]["posicion"].split(",").join("_");
@@ -122,7 +123,7 @@ function Partida () {
             }));
           });
 
-          const castillos_rojos = response.data["jugador_1"]["castillos"];
+          const castillos_rojos = response.data["jugador_rojo"]["castillos"];
           console.log(castillos_rojos);
           Object.keys(castillos_rojos).forEach((key) => {
             const pos_castillo_rojo = castillos_rojos[key]["posicion"].split(",").join("_");
@@ -133,7 +134,7 @@ function Partida () {
             }));
           });
           
-          const castillos_verdes = response.data["jugador_2"]["castillos"];
+          const castillos_verdes = response.data["jugador_verde"]["castillos"];
           console.log(castillos_verdes);
           Object.keys(castillos_verdes).forEach((key) => {
             const pos_castillo_verde = castillos_verdes[key]["posicion"].split(",").join("_");
@@ -145,7 +146,7 @@ function Partida () {
           });
 
 
-          const castillos_azules = response.data["jugador_3"]["castillos"];
+          const castillos_azules = response.data["jugador_azul"]["castillos"];
           console.log(castillos_azules);
           Object.keys(castillos_azules).forEach((key) => {
             const pos_castillo_azul = castillos_azules[key]["posicion"].split(",").join("_");
@@ -157,7 +158,7 @@ function Partida () {
           });
 
 
-          const castillos_amarillos = response.data["jugador_4"]["castillos"];
+          const castillos_amarillos = response.data["jugador_amarillo"]["castillos"];
           console.log(castillos_amarillos);
           Object.keys(castillos_amarillos).forEach((key) => {
             const pos_castillo_amarillo = castillos_amarillos[key]["posicion"].split(",").join("_");
@@ -240,6 +241,7 @@ function Partida () {
       console.log(pos);
       const lista_pos = pos.split("_");
       console.log(lista_pos);
+      console.log(jugador);
       axios
         .post(`${import.meta.env.VITE_BACKEND_URL}/guardar_cabana`, {
           idJugador: jugador,
