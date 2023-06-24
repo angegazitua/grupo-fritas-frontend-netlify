@@ -28,6 +28,15 @@ import CastilloAzul from '../../assets/img/castillo-azul.png';
 import EscobaRojaRecto from '../../assets/img/escoba-roja-recto.png';
 import EscobaRojaDerecha from '../../assets/img/escoba-roja-derecha.png';
 import EscobaRojaIzquierda from '../../assets/img/escoba-roja-izquierda.png';
+import EscobaAzulRecto from '../../assets/img/escoba-azul-recta.png';
+import EscobaAzulDerecha from '../../assets/img/escoba-azul-derecha.png';
+import EscobaAzulIzquierda from '../../assets/img/escoba-azul-izquierda.png';
+import EscobaVerdeRecto from '../../assets/img/escoba-verde-recto.png';
+import EscobaVerdeDerecha from '../../assets/img/escoba-verde-derecha.png';
+import EscobaVerdeIzquierda from '../../assets/img/escoba-verde-izquierda.png';
+import EscobaAmarillaRecto from '../../assets/img/escoba-amarilla-recto.png';
+import EscobaAmarillaDerecha from '../../assets/img/escoba-amarilla-derecha.png';
+import EscobaAmarillaIzquierda from '../../assets/img/escoba-amarilla-izquierda.png';
 
 function Partida () {
     const hexagonSize = { x: 18, y: 10 };
@@ -466,20 +475,12 @@ function Partida () {
                 </Hexagon>
                 <Hexagon q={1.5} r={-6} s={4.5} fill = 'pat-logo' onClick={() => handleComprar('1_3')}>
                 </Hexagon>
-                
-                
-
-
-
-                
-
-
-
-                <Hexagon q={1.5} r={1.5} s={0} fill = 'pat-4' onClick={() => handleComprar('13_15')}>
+                <Hexagon q={1.5} r={1.5} s={0} fill = 'pat-logo' onClick={() => handleComprar('13_15')}>
                 </Hexagon>
 
 
                 
+                {/* Hexagonos cabanas y castillos */}
                 {/* Segunda vuelta */}
                 <Hexagon q={1} r={-2} s={1} id='5_8_10' fill = {fotoPos['foto_pos_5_8_10']} onClick={() => handleComprar('5_8_10')}>
                 </Hexagon>
@@ -545,7 +546,7 @@ function Partida () {
             <Pattern id="pat-3" link={Image3} size={hexagonSize3}/>
             <Pattern id="pat-4" link={Image4} size={hexagonSize}/>
             <Pattern id="pat-5" link={Image5} size={hexagonSize}/>
-            <Pattern id="pat-logo" link={Image7}/>
+            <Pattern id="pat-logo" link={Image7} size={{x:9.0, y:8.0}}/>
 
             {/* Patterns de cabanas */}
             <Pattern id="pat-cabana-roja" link={CabanaRoja} size={{x:3.0, y:1.8}}/>
@@ -559,9 +560,9 @@ function Partida () {
             <Pattern id="pat-castillo-azul" link={CastilloAzul} size={{x:3.0, y:1.8}}/>
             {/* <Pattern id="pat-castillo-amarillo" link={CastilloAmarillo} size={{x:1.8, y:1.8}}/> */}
 
-            <Pattern id="pat-escoba-roja-recto" link={EscobaRojaRecto} size={{x:3.0, y:1.8}}/>
-            <Pattern id="pat-escoba-roja-derecha" link={EscobaRojaDerecha} size={{x:3.0, y:1.8}}/>
-            <Pattern id="pat-escoba-roja-izquierda" link={EscobaRojaIzquierda} size={{x:3.0, y:1.8}}/>
+            <Pattern id="pat-escoba-roja-recto" link={EscobaRojaRecto} size={{x:3.5, y:2.5}}/>
+            <Pattern id="pat-escoba-roja-derecha" link={EscobaRojaDerecha} size={{x:3.5, y:4}}/>
+            <Pattern id="pat-escoba-roja-izquierda" link={EscobaRojaIzquierda} size={{x:4, y:3.5}}/>
           </HexGrid>
           
         </div>

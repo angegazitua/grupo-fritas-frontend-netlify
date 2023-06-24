@@ -73,6 +73,14 @@ svg path {
   stroke-linejoin: round;
 }
 
+svg g text {
+  font-size: 0.20em;
+  fill: white;
+  fill-opacity: 0.7;
+  transition: fill-opacity .5s;
+  background-color: black;
+}
+
 
 svg g {
   fill-opacity: 1;
