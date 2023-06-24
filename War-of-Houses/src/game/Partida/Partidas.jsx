@@ -34,11 +34,23 @@ function PartidasTabla() {
       .then((response) => {
         console.log(response.data);
         const idPartida = response.data.idPartida;
+        axios.post(`${import.meta.env.VITE_BACKEND_URL}/asignar_turnos`, {
+          idPartida: idPartida
+        })
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
         cargarPartidas(); // Actualizamos las partidas después de crear una nueva partida
       })
       .catch((error) => {
         console.log(error);
       });
+    
+    
+    
   };
 
   return (
@@ -57,9 +69,17 @@ function PartidasTabla() {
                 <td>{partida.id}</td>
                 <td>
                   <div className="div-boton-partida">
+                  {partida.cantJugadores === 4 && partida.ganador === null ? (
                     <Link className="partida-button" to={`/partida?idPartida=${partida.id}`}>
                       Ingresar a la partida
                     </Link>
+                  ) : (
+                    <span>
+                      {partida.cantJugadores !== 4
+                        ? "La partida no tiene 4 jugadores"
+                        : "La partida ha sido finalizada"}
+                    </span>
+                  )}
                   </div>
                 </td>
               </tr>
