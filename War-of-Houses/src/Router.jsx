@@ -19,6 +19,7 @@ import UserCheck from './protected/UserCheck';
 import AdminCheck from './protected/AdminCheck';
 import LogOutButton from './profile/Logout';
 import Partidas from './game/Partida/Partidas';
+import PartidaFinalizada from './game/Partida/PartidaFinalizada'
 
 function Router() {
   const router = createBrowserRouter([
@@ -84,6 +85,10 @@ function Router() {
         },
         {
           path: 'logout',
+          element: <LogOutButton />
+        },
+        {
+          path: 'partidafinalizada',
           element: <LogOutButton />
         }
       ]

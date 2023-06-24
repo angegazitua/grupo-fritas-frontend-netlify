@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from '../../auth/AuthContext';
 // https://www.npmjs.com/package/react-hexgrid?activeTab=readme
 import React, {createContext, useState, useEffect, useContext} from "react";
@@ -39,6 +39,8 @@ import EscobaAmarillaDerecha from '../../assets/img/escoba-amarilla-derecha.png'
 import EscobaAmarillaIzquierda from '../../assets/img/escoba-amarilla-izquierda.png';
 
 function Partida () {
+    const navigate = useNavigate();
+
     const hexagonSize = { x: 18, y: 10 };
     const hexagonSize3 = { x: 10, y: 10 };
     let [queQuiereComprar, setQueQuiereComprar] = useState("");
@@ -52,6 +54,7 @@ function Partida () {
     let [turnoActual, setTurnoActual] = useState(null);
     let [miTurno, setMiTurno] = useState(false);
     let [casaTurnoActual, setCasaTurnoActual] = useState(null);
+    let [partidaFinalizada, setPartidaFinalizada] = useState(false);
 
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
@@ -85,12 +88,12 @@ function Partida () {
       }
     );
 
-    const [jugador, setJugador] = useState([]);
+    const [jugador, setJugador] = useState({});
 
     useEffect(() => {
       obtenerJugador();
       // Agregamos user_id como dependencia para que se ejecute el efecto cada vez que user_id cambie
-    }, []);
+    }, [user_id]);
 
     // useEffect(() => {
     //   obtenerJugador();
@@ -120,12 +123,28 @@ function Partida () {
         .get(`${import.meta.env.VITE_BACKEND_URL}/estado_partida/${idPartida}`)
         .then((response) => {
           console.log(response.data);
-          //Seteamos el turno actual
+          // Seteamos el turno actual
           setTurnoActual(response.data["turno_actual"]);
+          console.log("TURNO ACTUAL")
+          console.log(turnoActual);
+          console.log(jugador.turno);
+          console.log(miTurno);
           if (turnoActual === jugador.turno) {
             setMiTurno(true);
           } else {
             setMiTurno(false);
+          }
+
+          // Vemos si la partida finalizó
+          if (response.data["ganador"] !== null) {
+            axios.post(`${import.meta.env.VITE_BACKEND_URL}/finalizar_partida`, {
+              idJugadorGanador: jugador.id
+            })
+            setPartidaFinalizada(true);
+            navigate("/partidafinalizada");
+
+          } else if (response.data["ganador"] === null) {
+            setPartidaFinalizada(false);
           }
           
           if (response.data["jugador_rojo"]["id"] == turnoActual){
@@ -138,26 +157,26 @@ function Partida () {
             setCasaTurnoActual("Huffelpuff");
           }
           
-          if (jugador === response.data["jugador_rojo"]["id"]) {
+          if (jugador.id === response.data["jugador_rojo"]["id"]) {
             console.log("Cartas rojas");
             setCartasDragon(response.data["jugador_rojo"]["cantDragones"]);
             setCartasPhoenix(response.data["jugador_rojo"]["cantPhoenix"]);
             setCartasSerpiente(response.data["jugador_rojo"]["cantSerpientes"]);
             setCartasUnicornio(response.data["jugador_rojo"]["cantUnicornios"]);
             setCartasVarita(response.data["jugador_rojo"]["cantVaritas"]);
-          } else if (jugador === response.data["jugador_verde"]["id"]) {
+          } else if (jugador.id === response.data["jugador_verde"]["id"]) {
             setCartasDragon(response.data["jugador_verde"]["cantDragones"]);
             setCartasPhoenix(response.data["jugador_verde"]["cantPhoenix"]);
             setCartasSerpiente(response.data["jugador_verde"]["cantSerpientes"]);
             setCartasUnicornio(response.data["jugador_verde"]["cantUnicornios"]);
             setCartasVarita(response.data["jugador_verde"]["cantVaritas"]);
-          } else if (jugador === response.data["jugador_azul"]["id"]) {
+          } else if (jugador.id === response.data["jugador_azul"]["id"]) {
             setCartasDragon(response.data["jugador_azul"]["cantDragones"]);
             setCartasPhoenix(response.data["jugador_azul"]["cantPhoenix"]);
             setCartasSerpiente(response.data["jugador_azul"]["cantSerpientes"]);
             setCartasUnicornio(response.data["jugador_azul"]["cantUnicornios"]);
             setCartasVarita(response.data["jugador_azul"]["cantVaritas"]);
-          } else if (jugador === response.data["jugador_amarillo"]["id"]) {
+          } else if (jugador.id === response.data["jugador_amarillo"]["id"]) {
             setCartasDragon(response.data["jugador_amarillo"]["cantDragones"]);
             setCartasPhoenix(response.data["jugador_amarillo"]["cantPhoenix"]);
             setCartasSerpiente(response.data["jugador_amarillo"]["cantSerpientes"]);
@@ -179,7 +198,6 @@ function Partida () {
             //fotoPos[`foto_pos_${pos}`] = 'pat-cabana-roja';
             // // poner en hexagono como fill = {foto_pos['foto_pos_1_2_5']}
             // foto_pos['foto_pos_1_2_5'] = 'pat-cabana-roja';
-            
             
           });
 
@@ -406,7 +424,7 @@ function Partida () {
     const handleBotonComprarCabana = () => {
       if (miTurno) {
         axios
-        .get(`${import.meta.env.VITE_BACKEND_URL}/comprar_cabana/${jugador}`)
+        .get(`${import.meta.env.VITE_BACKEND_URL}/comprar_cabana/${jugador.id}`)
         .then((response) => {
           console.log(response.data);
           if (response.data["bool"]) {
@@ -430,7 +448,7 @@ function Partida () {
     const handleBotonComprarCastillo = () => {
       if (miTurno) {
         axios
-        .get(`${import.meta.env.VITE_BACKEND_URL}/comprar_castillo/${jugador}`)
+        .get(`${import.meta.env.VITE_BACKEND_URL}/comprar_castillo/${jugador.id}`)
         .then((response) => {
           console.log(response.data);
           if (response.data["bool"]) {
@@ -449,7 +467,7 @@ function Partida () {
     const handleBotonComprarEscoba = () => {
       if (miTurno) {
         axios
-        .get(`${import.meta.env.VITE_BACKEND_URL}/comprar_escoba/${jugador}`)
+        .get(`${import.meta.env.VITE_BACKEND_URL}/comprar_escoba/${jugador.id}`)
         .then((response) => {
           console.log(response.data);
           if (response.data["bool"]) {
@@ -490,10 +508,10 @@ function Partida () {
       console.log(pos);
       const lista_pos = pos.split("_");
       console.log(lista_pos);
-      console.log(jugador);
+      console.log(jugador.id);
       axios
         .post(`${import.meta.env.VITE_BACKEND_URL}/guardar_cabana`, {
-          idJugador: jugador,
+          idJugador: jugador.id,
           posicion1: lista_pos[0],
           posicion2: lista_pos[1],
           posicion3: lista_pos[2]
@@ -525,7 +543,7 @@ function Partida () {
         const lista_pos = pos.split("_");
         axios
           .post(`${import.meta.env.VITE_BACKEND_URL}/guardar_castillo`, {
-            idJugador: jugador,
+            idJugador: jugador.id,
             posicion1: lista_pos[0],
             posicion2: lista_pos[1],
             posicion3: lista_pos[2]
@@ -554,7 +572,7 @@ function Partida () {
           //Si es que efectivamente puede comprar la escoba, que llame a guarda_escoba
           axios
           .post(`${import.meta.env.VITE_BACKEND_URL}/guardar_escoba`, {
-            idJugador: jugador,
+            idJugador: jugador.id,
             posicion1: lista_pos[0],
             posicion2: lista_pos[1], 
             rotacion: rotacion

@@ -38,6 +38,7 @@ function PartidasTabla() {
           idPartida: idPartida
         })
         .then((response) => {
+          console.log("ASIGNAR TURNOS");
           console.log(response.data);
         })
         .catch((error) => {
