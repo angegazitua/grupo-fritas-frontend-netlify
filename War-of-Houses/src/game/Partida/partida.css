@@ -64,6 +64,17 @@
   align-items: center;
 }
 
+.div-cartas {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+}
+
+.div-cartas p {
+  padding: 1.8em;
+  font-size: large;
+}
+
 svg path {
   fill:none;
   stroke: red;

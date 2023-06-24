@@ -43,6 +43,12 @@ function Partida () {
     const hexagonSize3 = { x: 10, y: 10 };
     let [queQuiereComprar, setQueQuiereComprar] = useState("");
     let [puedeComprar, setPuedeComprar] = useState(false);
+    let [cartasDragon, setCartasDragon] = useState(null);
+    let [cartasVarita, setCartasVarita] = useState(null);
+    let [cartasPhoenix, setCartasPhoenix] = useState(null);
+    let [cartasUnicornio, setCartasUnicornio] = useState(null);
+    let [cartasSerpiente, setCartasSerpiente] = useState(null);
+    let [resultadoDado, setResultadoDado] = useState(null);
 
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
@@ -92,6 +98,33 @@ function Partida () {
         .get(`${import.meta.env.VITE_BACKEND_URL}/estado_partida/${idPartida}`)
         .then((response) => {
           console.log(response.data);
+          if (jugador === response.data["jugador_rojo"]["id"]) {
+            console.log("Cartas rojas");
+            setCartasDragon(response.data["jugador_rojo"]["cantDragones"]);
+            setCartasPhoenix(response.data["jugador_rojo"]["cantPhoenix"]);
+            setCartasSerpiente(response.data["jugador_rojo"]["cantSerpientes"]);
+            setCartasUnicornio(response.data["jugador_rojo"]["cantUnicornios"]);
+            setCartasVarita(response.data["jugador_rojo"]["cantVaritas"]);
+          } else if (jugador === response.data["jugador_verde"]["id"]) {
+            setCartasDragon(response.data["jugador_verde"]["cantDragones"]);
+            setCartasPhoenix(response.data["jugador_verde"]["cantPhoenix"]);
+            setCartasSerpiente(response.data["jugador_verde"]["cantSerpientes"]);
+            setCartasUnicornio(response.data["jugador_verde"]["cantUnicornios"]);
+            setCartasVarita(response.data["jugador_verde"]["cantVaritas"]);
+          } else if (jugador === response.data["jugador_azul"]["id"]) {
+            setCartasDragon(response.data["jugador_azul"]["cantDragones"]);
+            setCartasPhoenix(response.data["jugador_azul"]["cantPhoenix"]);
+            setCartasSerpiente(response.data["jugador_azul"]["cantSerpientes"]);
+            setCartasUnicornio(response.data["jugador_azul"]["cantUnicornios"]);
+            setCartasVarita(response.data["jugador_azul"]["cantVaritas"]);
+          } else if (jugador === response.data["jugador_amarillo"]["id"]) {
+            setCartasDragon(response.data["jugador_amarillo"]["cantDragones"]);
+            setCartasPhoenix(response.data["jugador_amarillo"]["cantPhoenix"]);
+            setCartasSerpiente(response.data["jugador_amarillo"]["cantSerpientes"]);
+            setCartasUnicornio(response.data["jugador_amarillo"]["cantUnicornios"]);
+            setCartasVarita(response.data["jugador_amarillo"]["cantVaritas"]);
+          } 
+          
           console.log(response.data["jugador_rojo"]["cabanas"]);
           const cabanas_rojas = response.data["jugador_rojo"]["cabanas"];
           console.log(cabanas_rojas);
@@ -307,6 +340,20 @@ function Partida () {
         });
     };
 
+    const handleBotonLanzarDado = () => {
+      axios.post(`${import.meta.env.VITE_BACKEND_URL}/lanzar_dados`, {
+        idPartida: idPartida
+      })
+      .then((response) => {
+        console.log(response.data);
+        setResultadoDado(response.data["resultado"]);
+        cargarPartida(); // Actualizamos las partidas después de crear una nueva partida
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    };
+
     const handleBotonComprarCabana = () => {
       axios
         .get(`${import.meta.env.VITE_BACKEND_URL}/comprar_cabana/${jugador}`)
@@ -468,11 +515,26 @@ function Partida () {
           <p>Slytherin: </p>
           <p>Huffelpuff: </p>
           <div className="cartas">
-            <img className='carta-dragon' src={CartaDragon}></img>
-            <img className='carta-phoenix' src={CartaPhoenix}></img>
-            <img className='carta-unicornio' src={CartaUnicornio}></img>
-            <img className='carta-varita' src={CartaVarita}></img>
-            <img className='carta-serpiente' src={CartaSerpiente}></img>
+            <div className="div-cartas">
+              <img className='carta-dragon' src={CartaDragon}></img>
+              <p>Número: {cartasDragon}</p>
+            </div>
+            <div className="div-cartas">
+              <img className='carta-phoenix' src={CartaPhoenix}></img>
+              <p>Número: {cartasPhoenix}</p>
+            </div>
+            <div className="div-cartas">
+              <img className='carta-unicornio' src={CartaUnicornio}></img>
+              <p>Número: {cartasUnicornio}</p>
+            </div>
+            <div className="div-cartas">
+              <img className='carta-varita' src={CartaVarita}></img>
+              <p>Número: {cartasVarita}</p>
+            </div>
+            <div className="div-cartas">
+              <img className='carta-serpiente' src={CartaSerpiente}></img>
+              <p>Número: {cartasSerpiente}</p>
+            </div>
           </div>
         </div>
 
@@ -728,9 +790,9 @@ function Partida () {
         </div>
 
         <div className='div-derecho-partida'>
-          <button className="button-partida" id="button-lanzar">Lanzar Dados</button>
+          <button className="button-partida" id="button-lanzar" onClick={handleBotonLanzarDado}>Lanzar Dados</button>
           <br></br>
-          <p>Resultado dados: </p>
+          <p>Resultado dados: {resultadoDado} </p>
           <br></br>
           <button className="button-partida" id="button-escoba" onClick={handleBotonComprarEscoba}>Comprar Escoba</button>
           <br></br>
