@@ -18,13 +18,13 @@ import CartaUnicornio from '../../assets/img/pelo-unicornio.jpg';
 import CartaVarita from '../../assets/img/varita-magica.jpg';
 import CartaSerpiente from '../../assets/img/diente-serpiente.jpg';
 import CabanaRoja from '../../assets/img/cabana-roja-grande.png';
-//import CabanaVerde from '../../assets/img/cabana-verde.png';
+import CabanaVerde from '../../assets/img/cabana-verde.png';
 import CabanaAzul from '../../assets/img/cabana-azul-grande.png';
-// import CabanaAmarilla from '../../assets/img/cabana-amarilla.png';
+import CabanaAmarilla from '../../assets/img/cabana-amarilla.png';
 import CastilloRojo from '../../assets/img/castillo-rojo-grande.png';
-// import CastilloVerde from '../../assets/img/castillo-verde.png';
+import CastilloVerde from '../../assets/img/castillo-verde.png';
 import CastilloAzul from '../../assets/img/castillo-azul.png';
-// import CastilloAmarillo from '../../assets/img/castillo-amarillo.png';
+import CastilloAmarillo from '../../assets/img/castillo-amarillo.png';
 import EscobaRojaRecto from '../../assets/img/escoba-roja-recto.png';
 import EscobaRojaDerecha from '../../assets/img/escoba-roja-derecha.png';
 import EscobaRojaIzquierda from '../../assets/img/escoba-roja-izquierda.png';
@@ -58,9 +58,24 @@ function Partida () {
       'foto_pos_8_10_13': 'pat-logo', 'foto_pos_8_11_13': 'pat-logo', 'foto_pos_9_12_14': 'pat-logo',
       'foto_pos_10_12_15': 'pat-logo', 'foto_pos_10_13_15': 'pat-logo', 'foto_pos_11_13_16': 'pat-logo',
       'foto_pos_12_14_17': 'pat-logo', 'foto_pos_12_15_17': 'pat-logo', 'foto_pos_13_15_18': 'pat-logo',
-      'foto_pos_13_16_18': 'pat-logo', 'foto_pos_15_17_19': 'pat-logo', 'foto_pos_15_18_19': 'pat-logo'
+      'foto_pos_13_16_18': 'pat-logo', 'foto_pos_15_17_19': 'pat-logo', 'foto_pos_15_18_19': 'pat-logo',
+      'foto_pos_1_2': 'pat-logo', 'foto_pos_1_3': 'pat-logo', 'foto_pos_1_5': 'pat-logo',
+      'foto_pos_2_4': 'pat-logo', 'foto_pos_2_5': 'pat-logo', 'foto_pos_2_7': 'pat-logo',
+      'foto_pos_3_5': 'pat-logo', 'foto_pos_3_6': 'pat-logo', 'foto_pos_3_8': 'pat-logo',
+      'foto_pos_4_7': 'pat-logo', 'foto_pos_4_9': 'pat-logo', 'foto_pos_5_7': 'pat-logo',
+      'foto_pos_5_8': 'pat-logo', 'foto_pos_5_10': 'pat-logo', 'foto_pos_6_8': 'pat-logo',
+      'foto_pos_6_11': 'pat-logo', 'foto_pos_7_9': 'pat-logo', 'foto_pos_7_10': 'pat-logo',
+      'foto_pos_7_12': 'pat-logo', 'foto_pos_8_10': 'pat-logo', 'foto_pos_8_11': 'pat-logo',
+      'foto_pos_8_13': 'pat-logo', 'foto_pos_9_12': 'pat-logo', 'foto_pos_9_14': 'pat-logo',
+      'foto_pos_10_12': 'pat-logo', 'foto_pos_10_13': 'pat-logo', 'foto_pos_10_15': 'pat-logo',
+      'foto_pos_11_13': 'pat-logo', 'foto_pos_11_16': 'pat-logo', 'foto_pos_12_14': 'pat-logo',
+      'foto_pos_12_15': 'pat-logo', 'foto_pos_12_17': 'pat-logo', 'foto_pos_13_15': 'pat-logo',
+      'foto_pos_13_16': 'pat-logo', 'foto_pos_13_18': 'pat-logo', 'foto_pos_14_17': 'pat-logo',
+      'foto_pos_15_17': 'pat-logo', 'foto_pos_15_18': 'pat-logo', 'foto_pos_15_19': 'pat-logo',
+      'foto_pos_16_18': 'pat-logo', 'foto_pos_17_19': 'pat-logo', 'foto_pos_18_19': 'pat-logo'
       }
     );
+
     const [jugador, setJugador] = useState([]);
 
     useEffect(() => {
@@ -180,6 +195,98 @@ function Partida () {
             }));
           });
 
+          const escobas_rojas = response.data["jugador_rojo"]["escobas"];
+          console.log(escobas_rojas);
+          Object.keys(escobas_rojas).forEach((key) => {
+            const pos_escoba_roja = escobas_rojas[key]["posicion"].split(",").join("_");
+            const rotacion_escoba_roja = escobas_rojas[key]["rotacion"];
+            if (rotacion_escoba_roja === 0) {
+              setFotoPos(fotoPos => ({
+                ...fotoPos,
+                [`foto_pos_${pos_escoba_roja}`]: 'pat-escoba-roja-recto'
+              }));
+            } else if (rotacion_escoba_roja === 1) {
+              setFotoPos(fotoPos => ({
+                ...fotoPos,
+                [`foto_pos_${pos_escoba_roja}`]: 'pat-escoba-roja-derecha'
+              }));
+            } else if (rotacion_escoba_roja === 2) {
+              setFotoPos(fotoPos => ({
+                ...fotoPos,
+                [`foto_pos_${pos_escoba_roja}`]: 'pat-escoba-roja-izquierda'
+              }));
+            }
+          });
+
+          const escobas_verdes = response.data["jugador_verde"]["escobas"];
+          console.log(escobas_verdes);
+          Object.keys(escobas_verdes).forEach((key) => {
+            const pos_escoba_verde = escobas_verdes[key]["posicion"].split(",").join("_");
+            const rotacion_escoba_verde = escobas_verdes[key]["rotacion"];
+            if (rotacion_escoba_verde === 0) {
+              setFotoPos(fotoPos => ({
+                ...fotoPos,
+                [`foto_pos_${pos_escoba_verde}`]: 'pat-escoba-verde-recto'
+              }));
+            } else if (rotacion_escoba_verde === 1) {
+              setFotoPos(fotoPos => ({
+                ...fotoPos,
+                [`foto_pos_${pos_escoba_verde}`]: 'pat-escoba-verde-derecha'
+              }));
+            } else if (rotacion_escoba_verde === 2) {
+              setFotoPos(fotoPos => ({
+                ...fotoPos,
+                [`foto_pos_${pos_escoba_verde}`]: 'pat-escoba-verde-izquierda'
+              }));
+            }
+          });
+
+          const escobas_azules = response.data["jugador_azul"]["escobas"];
+          console.log(escobas_azules);
+          Object.keys(escobas_azules).forEach((key) => {
+            const pos_escoba_azul = escobas_azules[key]["posicion"].split(",").join("_");
+            const rotacion_escoba_azul = escobas_azules[key]["rotacion"];
+            if (rotacion_escoba_azul === 0) {
+              setFotoPos(fotoPos => ({
+                ...fotoPos,
+                [`foto_pos_${pos_escoba_azul}`]: 'pat-escoba-azul-recto'
+              }));
+            } else if (rotacion_escoba_azul === 1) {
+              setFotoPos(fotoPos => ({
+                ...fotoPos,
+                [`foto_pos_${pos_escoba_azul}`]: 'pat-escoba-azul-derecha'
+              }));
+            } else if (rotacion_escoba_azul === 2) {
+              setFotoPos(fotoPos => ({
+                ...fotoPos,
+                [`foto_pos_${pos_escoba_azul}`]: 'pat-escoba-azul-izquierda'
+              }));
+            }
+          });
+          
+          const escobas_amarillas = response.data["jugador_amarillo"]["escobas"];
+          console.log(escobas_amarillas);
+          Object.keys(escobas_amarillas).forEach((key) => {
+            const pos_escoba_amarilla = escobas_amarillas[key]["posicion"].split(",").join("_");
+            const rotacion_escoba_amarilla = escobas_amarillas[key]["rotacion"];
+            if (rotacion_escoba_amarilla === 0) {
+              setFotoPos(fotoPos => ({
+                ...fotoPos,
+                [`foto_pos_${pos_escoba_amarilla}`]: 'pat-escoba-amarilla-recto'
+              }));
+            } else if (rotacion_escoba_amarilla === 1) {
+              setFotoPos(fotoPos => ({
+                ...fotoPos,
+                [`foto_pos_${pos_escoba_amarilla}`]: 'pat-escoba-amarilla-derecha'
+              }));
+            } else if (rotacion_escoba_amarilla === 2) {
+              setFotoPos(fotoPos => ({
+                ...fotoPos,
+                [`foto_pos_${pos_escoba_amarilla}`]: 'pat-escoba-amarilla-izquierda'
+              }));
+            }
+          });
+
 
         })
         .catch((error) => {
@@ -237,6 +344,22 @@ function Partida () {
         });
     };
 
+    const handleBotonComprarEscoba = () => {
+      axios
+        .get(`${import.meta.env.VITE_BACKEND_URL}/comprar_escoba/${jugador}`)
+        .then((response) => {
+          console.log(response.data);
+          if (response.data["bool"]) {
+            setQueQuiereComprar("escoba");
+            setPuedeComprar(true);
+          }
+          cargarPartida(); // Actualizamos las partidas después de crear una nueva partida
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+
     const handleComprar = (pos) => {
       console.log(pos);
       console.log("Intentando comprar");
@@ -254,7 +377,7 @@ function Partida () {
       
     };
 
-    const handleComprarCabana = (pos) => {
+    const handleComprarCabana = (pos, rotacion) => {
       console.log("ACAAAAAAAAAA")
       console.log(pos);
       const lista_pos = pos.split("_");
@@ -303,6 +426,33 @@ function Partida () {
         .catch((error) => {
           console.log(error);
         });
+      setQueQuiereComprar(null);
+      setPuedeComprar(false);
+    };
+
+    const handleComprarEscoba = (pos, rotacion) => {
+      console.log("Intentando colocar escoba");
+      console.log(pos);
+      console.log(rotacion);
+      const lista_pos = pos.split("_");
+      
+      if (puedeComprar){
+        //Si es que efectivamente puede comprar la escoba, que llame a guarda_escoba
+        axios
+        .post(`${import.meta.env.VITE_BACKEND_URL}/guardar_escoba`, {
+          idJugador: jugador,
+          posicion1: lista_pos[0],
+          posicion2: lista_pos[1], 
+          rotacion: rotacion
+        })
+        .then((response) => {
+          console.log(response.data);
+          cargarPartida(); // Actualizamos las partidas después de crear una nueva partida
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      }
       setQueQuiereComprar(null);
       setPuedeComprar(false);
     };
@@ -391,91 +541,91 @@ function Partida () {
 
             <Layout size={{ x: 3, y: 3 }} flat={true} spacing={1.01} origin={{ x: 0, y: 0 }}>
                 {/* Escobas primera vuelta */}
-                <Hexagon q={0} r={-1.5} s={1.5} fill = 'pat-escoba-roja-recto' onClick={() => handleComprar('5_10')}>
+                <Hexagon q={0} r={-1.5} s={1.5} fill = {fotoPos['foto_pos_5_10']} onClick={() => handleComprarEscoba('5_10', 0)}>
                 </Hexagon>
-                <Hexagon q={1.5} r={-1.5} s={1.5} fill = 'pat-escoba-roja-derecha' onClick={() => handleComprar('8_10')}>
+                <Hexagon q={1.5} r={-1.5} s={1.5} fill = {fotoPos['foto_pos_8_10']} onClick={() => handleComprarEscoba('8_10', 1)}>
                 </Hexagon>
-                <Hexagon q={1.5} r={0} s={1.5} fill = 'pat-escoba-roja-izquierda' onClick={() => handleComprar('10_13')}>
+                <Hexagon q={1.5} r={0} s={1.5} fill = {fotoPos['foto_pos_10_13']} onClick={() => handleComprarEscoba('10_13', 2)}>
                 </Hexagon>
-                <Hexagon q={0} r={1.5} s={-1.5} fill = 'pat-logo' onClick={() => handleComprar('10_15')}>
+                <Hexagon q={0} r={1.5} s={-1.5} fill = {fotoPos['foto_pos_10_15']} onClick={() => handleComprarEscoba('10_15', 0)}>
                 </Hexagon>
-                <Hexagon q={-1.5} r={1.5} s={0} fill = 'pat-logo' onClick={() => handleComprar('10_12')}>
+                <Hexagon q={-1.5} r={1.5} s={0} fill = {fotoPos['foto_pos_10_12']} onClick={() => handleComprarEscoba('10_12', 1)}>
                 </Hexagon>
-                <Hexagon q={-1.5} r={0} s={1.5} fill = 'pat-logo' onClick={() => handleComprar('7_10')}>
+                <Hexagon q={-1.5} r={0} s={1.5} fill = {fotoPos['foto_pos_7_10']} onClick={() => handleComprarEscoba('7_10', 2)}>
                 </Hexagon>
                 {/* Escobas segunda vuelta */}
-                <Hexagon q={1.5} r={-3} s={-2} fill = 'pat-logo' onClick={() => handleComprar('5_8')}>
+                <Hexagon q={1.5} r={-3} s={-2} fill = {fotoPos['foto_pos_5_8']} onClick={() => handleComprarEscoba('5_8', 2)}>
                 </Hexagon>
-                <Hexagon q={3} r={-1.5} s={-1} fill = 'pat-logo' onClick={() => handleComprar('8_13')}>
+                <Hexagon q={3} r={-1.5} s={-1} fill = {fotoPos['foto_pos_8_13']} onClick={() => handleComprarEscoba('8_13', 0)}>
                 </Hexagon>
-                <Hexagon q={3} r={1.5} s={-4.5} fill = 'pat-logo' onClick={() => handleComprar('13_18')}>
+                <Hexagon q={3} r={1.5} s={-4.5} fill = {fotoPos['foto_pos_13_18']} onClick={() => handleComprarEscoba('13_18', 0)}>
                 </Hexagon>
-                <Hexagon q={1.5} r={3} s={-4.5} fill = 'pat-logo' onClick={() => handleComprar('15_18')}>
+                <Hexagon q={1.5} r={3} s={-4.5} fill = {fotoPos['foto_pos_15_18']} onClick={() => handleComprarEscoba('15_18', 2)}>
                 </Hexagon>
-                <Hexagon q={-1.5} r={3} s={-1.5} fill = 'pat-logo' onClick={() => handleComprar('12_15')}>
+                <Hexagon q={-1.5} r={3} s={-1.5} fill = {fotoPos['foto_pos_12_15']} onClick={() => handleComprarEscoba('12_15', 2)}>
                 </Hexagon>
-                <Hexagon q={-3} r={1.5} s={-1.5} fill = 'pat-logo' onClick={() => handleComprar('7_12')}>
+                <Hexagon q={-3} r={1.5} s={-1.5} fill = {fotoPos['foto_pos_7_12']} onClick={() => handleComprarEscoba('7_12', 0)}>
                 </Hexagon>
-                <Hexagon q={-3} r={-1.5} s={0} fill = 'pat-logo' onClick={() => handleComprar('2_7')}>
+                <Hexagon q={-3} r={-1.5} s={0} fill = {fotoPos['foto_pos_2_7']} onClick={() => handleComprarEscoba('2_7', 0)}>
                 </Hexagon>
-                <Hexagon q={-1.5} r={-3} s={1.5} fill = 'pat-logo' onClick={() => handleComprar('2_5')}>
+                <Hexagon q={-1.5} r={-3} s={1.5} fill = {fotoPos['foto_pos_2_5']} onClick={() => handleComprarEscoba('2_5', 2)}>
                 </Hexagon>
                 {/* Escobas tercera vuelta */}
-                <Hexagon q={3} r={-4.5} s={1.5} fill = 'pat-logo' onClick={() => handleComprar('3_8')}>
+                <Hexagon q={3} r={-4.5} s={1.5} fill = {fotoPos['foto_pos_3_8']} onClick={() => handleComprarEscoba('3_8', 0)}>
                 </Hexagon>
-                <Hexagon q={4.5} r={-3} s={-1.5} fill = 'pat-logo' onClick={() => handleComprar('8_11')}>
+                <Hexagon q={4.5} r={-3} s={-1.5} fill = {fotoPos['foto_pos_8_11']} onClick={() => handleComprarEscoba('8_11', 2)}>
                 </Hexagon>
-                <Hexagon q={4.5} r={1.5} s={-6} fill = 'pat-logo' onClick={() => handleComprar('16_18')}>
+                <Hexagon q={4.5} r={1.5} s={-6} fill = {fotoPos['foto_pos_16_18']} onClick={() => handleComprarEscoba('16_18', 1)}>
                 </Hexagon>
-                <Hexagon q={-1.5} r={6} s={-4.5} fill = 'pat-logo' onClick={() => handleComprar('17_19')}>
+                <Hexagon q={-1.5} r={6} s={-4.5} fill = {fotoPos['foto_pos_17_19']} onClick={() => handleComprarEscoba('17_19', 2)}>
                 </Hexagon>
-                <Hexagon q={-4.5} r={-1.5} s={6} fill = 'pat-logo' onClick={() => handleComprar('2_4')}>
+                <Hexagon q={-4.5} r={-1.5} s={6} fill = {fotoPos['foto_pos_2_4']} onClick={() => handleComprarEscoba('2_4', 1)}>
                 </Hexagon>
-                <Hexagon q={-6} r={1.5} s={4.5} fill = 'pat-logo' onClick={() => handleComprar('4_9')}>
+                <Hexagon q={-6} r={1.5} s={4.5} fill = {fotoPos['foto_pos_4_9']} onClick={() => handleComprarEscoba('4_9', 0)}>
                 </Hexagon>
-                <Hexagon q={-1.5} r={4.5} s={-3} fill = 'pat-logo' onClick={() => handleComprar('15_17')}>
+                <Hexagon q={-1.5} r={4.5} s={-3} fill = {fotoPos['foto_pos_15_17']} onClick={() => handleComprarEscoba('15_17', 1)}>
                 </Hexagon>
-                <Hexagon q={-3} r={4.5} s={-1.5} fill = 'pat-logo' onClick={() => handleComprar('12_17')}>
+                <Hexagon q={-3} r={4.5} s={-1.5} fill = {fotoPos['foto_pos_12_17']} onClick={() => handleComprarEscoba('12_17', 0)}>
                 </Hexagon>
-                <Hexagon q={-4.5} r={3} s={1.5} fill = 'pat-logo' onClick={() => handleComprar('9_12')}>
+                <Hexagon q={-4.5} r={3} s={1.5} fill = {fotoPos['foto_pos_9_12']} onClick={() => handleComprarEscoba('9_12', 2)}>
                 </Hexagon>
-                <Hexagon q={-1.5} r={-1.5} s={3} fill = 'pat-logo' onClick={() => handleComprar('5_7')}>
+                <Hexagon q={-1.5} r={-1.5} s={3} fill = {fotoPos['foto_pos_5_7']} onClick={() => handleComprarEscoba('5_7', 1)}>
                 </Hexagon>
-                <Hexagon q={-4.5} r={1.5} s={3} fill = 'pat-logo' onClick={() => handleComprar('7_9')}>
+                <Hexagon q={-4.5} r={1.5} s={3} fill = {fotoPos['foto_pos_7_9']} onClick={() => handleComprarEscoba('7_9', 1)}>
                 </Hexagon>
-                <Hexagon q={1.5} r={-4.5} s={3} fill = 'pat-logo' onClick={() => handleComprar('3_5')}>
+                <Hexagon q={1.5} r={-4.5} s={3} fill = {fotoPos['foto_pos_3_5']} onClick={() => handleComprarEscoba('3_5', 1)}>
                 </Hexagon>
-                <Hexagon q={0} r={-4.5} s={4.5} fill = 'pat-logo' onClick={() => handleComprar('1_5')}>
+                <Hexagon q={0} r={-4.5} s={4.5} fill = {fotoPos['foto_pos_1_5']} onClick={() => handleComprarEscoba('1_5', 0)}>
                 </Hexagon>
-                <Hexagon q={4.5} r={-4.5} s={4.5} fill = 'pat-logo' onClick={() => handleComprar('6_8')}>
+                <Hexagon q={4.5} r={-4.5} s={4.5} fill = {fotoPos['foto_pos_6_8']} onClick={() => handleComprarEscoba('6_8', 1)}>
                 </Hexagon>
-                <Hexagon q={4.5} r={0} s={4.5} fill = 'pat-logo' onClick={() => handleComprar('13_16')}>
+                <Hexagon q={4.5} r={0} s={4.5} fill = {fotoPos['foto_pos_13_16']} onClick={() => handleComprarEscoba('13_16', 2)}>
                 </Hexagon>
-                <Hexagon q={0} r={4.5} s={-4.5} fill = 'pat-logo' onClick={() => handleComprar('15_19')}>
+                <Hexagon q={0} r={4.5} s={-4.5} fill = {fotoPos['foto_pos_15_19']} onClick={() => handleComprarEscoba('15_19', 0)}>
                 </Hexagon>
-                <Hexagon q={-4.5} r={4.5} s={0} fill = 'pat-logo' onClick={() => handleComprar('12_14')}>
+                <Hexagon q={-4.5} r={4.5} s={0} fill = {fotoPos['foto_pos_12_14']} onClick={() => handleComprarEscoba('12_14', 1)}>
                 </Hexagon>
-                <Hexagon q={-4.5} r={0} s={4.5} fill = 'pat-logo' onClick={() => handleComprar('4_7')}>
+                <Hexagon q={-4.5} r={0} s={4.5} fill = {fotoPos['foto_pos_4_7']} onClick={() => handleComprarEscoba('4_7', 2)}>
                 </Hexagon>
-                <Hexagon q={4.5} r={-1.5} s={4.5} fill = 'pat-logo' onClick={() => handleComprar('11_13')}>
+                <Hexagon q={4.5} r={-1.5} s={4.5} fill = {fotoPos['foto_pos_11_13']} onClick={() => handleComprarEscoba('11_13', 1)}>
                 </Hexagon>
-                <Hexagon q={-1.5} r={-4.5} s={6} fill = 'pat-logo' onClick={() => handleComprar('1_2')}>
+                <Hexagon q={-1.5} r={-4.5} s={6} fill = {fotoPos['foto_pos_1_2']} onClick={() => handleComprarEscoba('1_2', 1)}>
                 </Hexagon>
-                <Hexagon q={-6} r={4.5} s={4.5} fill = 'pat-logo' onClick={() => handleComprar('9_14')}>
+                <Hexagon q={-6} r={4.5} s={4.5} fill = {fotoPos['foto_pos_9_14']} onClick={() => handleComprarEscoba('9_14', 0)}>
                 </Hexagon>
-                <Hexagon q={-4.5} r={6} s={4.5} fill = 'pat-logo' onClick={() => handleComprar('14_17')}>
+                <Hexagon q={-4.5} r={6} s={4.5} fill = {fotoPos['foto_pos_14_17']} onClick={() => handleComprarEscoba('14_17', 2)}>
                 </Hexagon>
-                <Hexagon q={1.5} r={4.5} s={-4.5} fill = 'pat-logo' onClick={() => handleComprar('18_19')}>
+                <Hexagon q={1.5} r={4.5} s={-4.5} fill = {fotoPos['foto_pos_18_19']} onClick={() => handleComprarEscoba('18_19', 1)}>
                 </Hexagon>
-                <Hexagon q={6} r={-1.5} s={4.5} fill = 'pat-logo' onClick={() => handleComprar('11_16')}>
+                <Hexagon q={6} r={-1.5} s={4.5} fill = {fotoPos['foto_pos_11_16']} onClick={() => handleComprarEscoba('11_16', 0)}>
                 </Hexagon>
-                <Hexagon q={6} r={-4.5} s={4.5} fill = 'pat-logo' onClick={() => handleComprar('6_11')}>
+                <Hexagon q={6} r={-4.5} s={4.5} fill = {fotoPos['foto_pos_6_11']} onClick={() => handleComprarEscoba('6_11', 0)}>
                 </Hexagon>
-                <Hexagon q={4.5} r={-6} s={4.5} fill = 'pat-logo' onClick={() => handleComprar('3_6')}>
+                <Hexagon q={4.5} r={-6} s={4.5} fill = {fotoPos['foto_pos_3_6']} onClick={() => handleComprarEscoba('3_6', 2)}>
                 </Hexagon>
-                <Hexagon q={1.5} r={-6} s={4.5} fill = 'pat-logo' onClick={() => handleComprar('1_3')}>
+                <Hexagon q={1.5} r={-6} s={4.5} fill = {fotoPos['foto_pos_1_3']} onClick={() => handleComprarEscoba('1_3', 2)}>
                 </Hexagon>
-                <Hexagon q={1.5} r={1.5} s={0} fill = 'pat-logo' onClick={() => handleComprar('13_15')}>
+                <Hexagon q={1.5} r={1.5} s={0} fill = {fotoPos['foto_pos_13_15']} onClick={() => handleComprarEscoba('13_15', 1)}>
                 </Hexagon>
 
 
@@ -550,19 +700,29 @@ function Partida () {
 
             {/* Patterns de cabanas */}
             <Pattern id="pat-cabana-roja" link={CabanaRoja} size={{x:3.0, y:1.8}}/>
-            {/* <Pattern id="pat-cabana-verde" link={CabanaVerde} size={{x:1.8, y:1.8}}/> */}
+            <Pattern id="pat-cabana-verde" link={CabanaVerde} size={{x:1.8, y:1.8}}/>
             <Pattern id="pat-cabana-azul" link={CabanaAzul} size={{x:3.0, y:1.8}}/>
-            {/* <Pattern id="pat-cabana-amarilla" link={CabanaAmarilla} size={{x:1.8, y:1.8}}/> */}
+            <Pattern id="pat-cabana-amarilla" link={CabanaAmarilla} size={{x:1.8, y:1.8}}/>
 
             {/* Patterns de castillos */}
             <Pattern id="pat-castillo-rojo" link={CastilloRojo} size={{x:3.0, y:1.8}}/>
-            {/* <Pattern id="pat-castillo-verde" link={CastilloVerde} size={{x:1.8, y:1.8}}/> */}
+            <Pattern id="pat-castillo-verde" link={CastilloVerde} size={{x:1.8, y:1.8}}/>
             <Pattern id="pat-castillo-azul" link={CastilloAzul} size={{x:3.0, y:1.8}}/>
-            {/* <Pattern id="pat-castillo-amarillo" link={CastilloAmarillo} size={{x:1.8, y:1.8}}/> */}
-
+            <Pattern id="pat-castillo-amarillo" link={CastilloAmarillo} size={{x:1.8, y:1.8}}/>
+            
+            {/* Patterns de escobas */}
             <Pattern id="pat-escoba-roja-recto" link={EscobaRojaRecto} size={{x:3.5, y:2.5}}/>
             <Pattern id="pat-escoba-roja-derecha" link={EscobaRojaDerecha} size={{x:3.5, y:4}}/>
             <Pattern id="pat-escoba-roja-izquierda" link={EscobaRojaIzquierda} size={{x:4, y:3.5}}/>
+            <Pattern id="pat-escoba-azul-recto" link={EscobaAzulRecto} size={{x:3.5, y:2.5}}/>
+            <Pattern id="pat-escoba-azul-derecha" link={EscobaAzulDerecha} size={{x:3.5, y:4}}/>
+            <Pattern id="pat-escoba-azul-izquierda" link={EscobaAzulIzquierda} size={{x:4, y:3.5}}/>
+            <Pattern id="pat-escoba-verde-recto" link={EscobaVerdeRecto} size={{x:3.5, y:2.5}}/>
+            <Pattern id="pat-escoba-verde-derecha" link={EscobaVerdeDerecha} size={{x:3.5, y:4}}/>
+            <Pattern id="pat-escoba-verde-izquierda" link={EscobaVerdeIzquierda} size={{x:4, y:3.5}}/>
+            <Pattern id="pat-escoba-amarilla-recto" link={EscobaAmarillaRecto} size={{x:3.5, y:2.5}}/>
+            <Pattern id="pat-escoba-amarilla-derecha" link={EscobaAmarillaDerecha} size={{x:3.5, y:4}}/>
+            <Pattern id="pat-escoba-amarilla-izquierda" link={EscobaAmarillaIzquierda} size={{x:4, y:3.5}}/>
           </HexGrid>
           
         </div>
@@ -572,7 +732,7 @@ function Partida () {
           <br></br>
           <p>Resultado dados: </p>
           <br></br>
-          <button className="button-partida" id="button-escoba">Comprar Escoba</button>
+          <button className="button-partida" id="button-escoba" onClick={handleBotonComprarEscoba}>Comprar Escoba</button>
           <br></br>
           <button className="button-partida" id="button-cabana" onClick={handleBotonComprarCabana}>Comprar Cabana</button>
           <br></br>
