@@ -11,7 +11,7 @@ function Instruction5() {
         <h1 className="titulo-instrucciones">¿Listo para jugar <span className="name-instructions">War of Houses</span>?</h1>
         <p className="parrafo-instrucciones" id="text-instruction-5"> ¡Apreta el botón para comenzar una partida!
         </p>
-            <Link className="play-button" to="/playlist">
+            <Link className="play-button" to="/partidas">
                 Comenzar partida
             </Link>
         </div>

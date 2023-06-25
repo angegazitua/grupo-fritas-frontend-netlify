@@ -1,10 +1,10 @@
 
 import ImageCabanaRoja from '../../assets/img/cabana-roja.png';
-import ImageEscobaRoja1 from '../../assets/img/escoba-roja.png'
-import ImageEscobaRoja2 from '../../assets/img/escoba-roja.png'
+import ImageEscobaRoja1 from '../../assets/img/escoba-instrucciones.png'
+import ImageEscobaRoja2 from '../../assets/img/escoba-instrucciones.png'
 import ImageCabanaAzul from '../../assets/img/cabana-azul.png';
 import ImageEscobaAzul from '../../assets/img/escoba-azul.png'
-import ImageCastilloAzul from '../../assets/img/castillo-azul.png'
+import ImageCastilloAzul from '../../assets/img/castillo-instrucciones.png'
 
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
@@ -104,7 +104,7 @@ function Instruction3() {
           <Board />
         </div>
         <div className="div-instrucciones-text">
-          <p className="parrafo-instrucciones">Para conseguir más puntos de victoria tienes que construir
+          <p className="parrafo-instrucciones">Para conseguir más snitches doradas tienes que construir
           nuevas escobas y cabañas, y ampliar tus cabañas a castillos.
           Un castillo vale 2 snitches doradas. Pero, para construir, necesitas
           materias primas.</p>
@@ -112,7 +112,7 @@ function Instruction3() {
           <p className="parrafo-instrucciones"> En el tablero se puede ver como se van constuyendo las escobas, cabañas y castillos. ¿Cómo consigues las materias primas? Muy sencillo: en cada turno se
               determina el terreno que va a producir. Esto se hace tirando dos dados. En
               cada terreno hay un número. Si por ejemplo, la suma de los dados es un “4”, todos los terrenos marcados con un 
-              “4” producirán. En la ilustración de la derecha sería Diagonal Alley (que produciría baritas).</p>
+              “4” producirán. En la ilustración de la derecha sería Diagonal Alley (que produciría varitas).</p>
 
           <br></br> 
           <p className="parrafo-instrucciones">Sólo consiguen materias primas los jugadores que tengan una cabaña o un castillo

@@ -1,6 +1,6 @@
 
 import ImageCabanaRoja from '../../assets/img/cabana-roja-grande.png';
-import ImageEscobaRoja from '../../assets/img/escoba-roja-grande.png'
+import ImageEscobaRoja from '../../assets/img/escoba-de-bruja-grande.png'
 import ImageCastilloRojo from '../../assets/img/castillo-rojo-grande.png'
 import { Link } from "react-router-dom";
 import './instructions.css';
@@ -15,7 +15,7 @@ function Instruction4() {
   return (
     <main className="content-instruction">
         <h1 className="titulo-instrucciones">¿Quieres aprender a jugar <span className="name-instructions">War of Houses</span>?</h1>
-        <p className="parrafo-instrucciones" id="text-instruction-4"> Para poder construir nuevas escobas, cabañas y castillos se deben juntar diferentes cantidades de las cartas de material primas descritas
+        <p className="parrafo-instrucciones" id="text-instruction-4"> Para poder construir nuevas escobas, cabañas y castillos se deben juntar diferentes cantidades de las cartas de materias primas descritas
             anteriormente. Las combinaciones para crear cada uno de estos elementos son las siguientes:
         </p>
             <div className="div-cartas-escoba">
