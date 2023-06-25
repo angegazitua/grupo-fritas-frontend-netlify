@@ -2,6 +2,7 @@ import React, { createContext, useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../../auth/AuthContext';
 import { Link } from "react-router-dom";
+import './partidas.css';
 
 function PartidasTabla() {
   const [partidas, setPartidas] = useState([]);
@@ -55,6 +56,8 @@ function PartidasTabla() {
   };
 
   return (
+    <main className='content'>
+    <div className='bg-container-partidas'></div>
     <div>
       {partidas.length > 0 ? (
         <table>
@@ -92,6 +95,7 @@ function PartidasTabla() {
         Ingresar a una nueva partida
       </Link>
     </div>
+    </main>
   );
 }
 
