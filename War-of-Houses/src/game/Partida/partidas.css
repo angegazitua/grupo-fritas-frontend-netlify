@@ -20,11 +20,7 @@
   }
   
   th {
-    background-color: #f2f2f2;
-  }
-  
-  tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: goldenrod;
   }
   
   /* Estilos del botón de la partida */
