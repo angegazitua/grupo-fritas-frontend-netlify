@@ -48,16 +48,6 @@ function Navbar() {
                     </NavLink>
                 </li>
                 <li className="navbar-element"> 
-                    <NavLink to="usercheck" className={({isActive}) => isActive ? "navbar-link name" : "navbar-link"}>
-                        User Check
-                    </NavLink>
-                </li>
-                <li className="navbar-element"> 
-                    <NavLink to="admincheck" className={({isActive}) => isActive ? "navbar-link name" : "navbar-link"}>
-                        Admin Check
-                    </NavLink>
-                </li>
-                <li className="navbar-element"> 
                     <NavLink to="logout" className={({isActive}) => isActive ? "navbar-link name" : "navbar-link"}>
                         Cerrar Sesión
                     </NavLink>

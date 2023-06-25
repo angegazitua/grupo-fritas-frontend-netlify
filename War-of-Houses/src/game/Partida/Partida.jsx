@@ -60,6 +60,10 @@ function Partida () {
     let [miTurno, setMiTurno] = useState(false);
     let [casaTurnoActual, setCasaTurnoActual] = useState(null);
     let [partidaFinalizada, setPartidaFinalizada] = useState(false);
+    let [puntajeRojo, setPuntajeRojo] = useState(0);
+    let [puntajeAzul, setPuntajeAzul] = useState(0);
+    let [puntajeVerde, setPuntajeVerde] = useState(0);
+    let [puntajeAmarillo, setPuntajeAmarillo] = useState(0);
 
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
@@ -145,7 +149,7 @@ function Partida () {
             setLogoJugador(Slytherin);
           } else if (jugador.casa === 'ravenclaw'){
             setLogoJugador(Ravenclaw);
-          } else if (jugador.casa === 'huffelpuff'){
+          } else if (jugador.casa === 'hufflepuff'){
             setLogoJugador(Hufflepuff);
           }
         })
@@ -183,14 +187,14 @@ function Partida () {
             setPartidaFinalizada(false);
           }
           
-          if (response.data["jugador_rojo"]["id"] == turnoActual){
+          if (response.data["jugador_rojo"]["turno"] === turnoActual){
             setCasaTurnoActual("Griffindor");
-          } else if (response.data["jugador_verde"]["id"] == turnoActual) {
+          } else if (response.data["jugador_verde"]["turno"] === turnoActual) {
             setCasaTurnoActual("Slytherin");
-          }  else if (response.data["jugador_azul"]["id"] == turnoActual) {
+          }  else if (response.data["jugador_azul"]["turno"] === turnoActual) {
             setCasaTurnoActual("Ravenclaw");
-          }  else if (response.data["jugador_amarillo"]["id"] == turnoActual) {
-            setCasaTurnoActual("Huffelpuff");
+          }  else if (response.data["jugador_amarillo"]["turno"] === turnoActual) {
+            setCasaTurnoActual("Hufflepuff");
           }
           
           if (jugador.id === response.data["jugador_rojo"]["id"]) {
@@ -414,6 +418,12 @@ function Partida () {
             }
           });
 
+          //Puntajes Jugadores
+          setPuntajeRojo(response.data["jugador_rojo"]["puntosVictoria"]);
+          setPuntajeAzul(response.data["jugador_azul"]["puntosVictoria"]);
+          setPuntajeVerde(response.data["jugador_verde"]["puntosVictoria"]);
+          setPuntajeAmarillo(response.data["jugador_amarillo"]["puntosVictoria"]);
+
 
         })
         .catch((error) => {
@@ -634,11 +644,13 @@ function Partida () {
         <div className='div-izquierdo-partida'>
           <h1>Turno actual: {casaTurnoActual} </h1>
           <br></br>
+          <div className="div-puntajes-jugadores">
           <h1>Puntajes jugadores</h1>
-          <p>Griffindor: </p>
-          <p>Ravenclaw: </p>
-          <p>Slytherin: </p>
-          <p>Huffelpuff: </p>
+          <p>Griffindor: {puntajeRojo}</p>
+          <p>Ravenclaw: {puntajeAzul}</p>
+          <p>Slytherin: {puntajeVerde}</p>
+          <p>Huffelpuff: {puntajeAmarillo}</p>
+          </div>
           <div className="cartas">
             <div className="div-cartas">
               <img className='carta-dragon' src={CartaDragon}></img>
