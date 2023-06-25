@@ -26,7 +26,11 @@ function SignUp() {
     };
 
     return (
+        <main className="content">
+        <div className="bg-container-signup"></div>
         <div className="SignUp">
+            <h1>¿Eres nuevo aquí?</h1>
+            <h2>¡Registrate a continuación!</h2>
             <form onSubmit={handleSubmit}>
                 <label>
                     Nombre:
@@ -61,6 +65,7 @@ function SignUp() {
                 <input type="submit" value="Enviar" />
             </form>
         </div>
+        </main>
     );
 }
 

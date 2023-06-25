@@ -38,8 +38,11 @@ function Login() {
     };
 
     return (
+        <main className="content">
+        <div className="bg-container-login"></div>
         <div className="Login">
-            <h1>¡Bienvenido! Inicia tu sesión a continuación</h1> 
+            <h1>¡Bienvenido!</h1> 
+            <h2>Inicia tu sesión a continuación</h2>
 
             <p>{msg}</p>
             
@@ -69,6 +72,7 @@ function Login() {
             </form>
             
         </div>
+        </main>
         
     );
 }
