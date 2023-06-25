@@ -114,6 +114,22 @@ svg g polygon {
   transition: fill-opacity .5s;
 }
 
+.div-info-usuario {
+  display: flex;
+  flex-direction: row;
+}
+
+.div-info-usuario h2 {
+  font-size: 2.5em;
+  color: goldenrod;
+  margin-right: 2.5vh;
+}
+
+.carta-usuario {
+  height: 150px;
+  width: 120px;
+}
+
 /* .grid {
     width: 500%;
 } */

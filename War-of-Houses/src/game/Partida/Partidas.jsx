@@ -7,9 +7,12 @@ import './partidas.css';
 function PartidasTabla() {
   const [partidas, setPartidas] = useState([]);
   const { user_id } = useContext(AuthContext);
+  let [nombreUsuario, setNombreUsuario] = useState('');
+  const {token} = useContext(AuthContext);
   
   useEffect(() => {
     cargarPartidas();
+    obtenerUsuario();
 
     // Agregamos user_id como dependencia para que se ejecute el efecto cada vez que user_id cambie
   }, [user_id]);
@@ -55,9 +58,31 @@ function PartidasTabla() {
     
   };
 
+  const obtenerUsuario = () => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/usuarios/${user_id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then((response) => {
+        const data = response.data;
+        const usuario = data;
+        console.log(usuario);
+        setNombreUsuario(usuario.nombre);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+  };
+
   return (
     <main className='content'>
     <div className='bg-container-partidas'></div>
+    <div className="bienvenida-partidas">
+      <h1>¡Bienvenido/a {nombreUsuario}!</h1>
+    </div>
     <div>
       {partidas.length > 0 ? (
         <table>

@@ -37,6 +37,10 @@ import EscobaVerdeIzquierda from '../../assets/img/escoba-verde-izquierda.png';
 import EscobaAmarillaRecto from '../../assets/img/escoba-amarilla-recto.png';
 import EscobaAmarillaDerecha from '../../assets/img/escoba-amarilla-derecha.png';
 import EscobaAmarillaIzquierda from '../../assets/img/escoba-amarilla-izquierda.png';
+import Gryffindor from '../../assets/img/gryffindor.png';
+import Slytherin from '../../assets/img/slytherin.png';
+import Ravenclaw from '../../assets/img/ravenclaw.png';
+import Hufflepuff from '../../assets/img/hufflepuff.png';
 
 function Partida () {
     const navigate = useNavigate();
@@ -50,6 +54,7 @@ function Partida () {
     let [cartasPhoenix, setCartasPhoenix] = useState(null);
     let [cartasUnicornio, setCartasUnicornio] = useState(null);
     let [cartasSerpiente, setCartasSerpiente] = useState(null);
+    let [logoJugador, setLogoJugador] = useState(null);
     let [resultadoDado, setResultadoDado] = useState(null);
     let [turnoActual, setTurnoActual] = useState(null);
     let [miTurno, setMiTurno] = useState(false);
@@ -59,8 +64,10 @@ function Partida () {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
     const idPartida = searchParams.get("idPartida");
+    let [nombreUsuario, setNombreUsuario] = useState('');
 
     const { user_id } = useContext(AuthContext);
+    const {token} = useContext(AuthContext);
 
     const [fotoPos, setFotoPos] = useState(
       {'foto_pos_1_2_5': 'pat-logo', 'foto_pos_1_3_5': 'pat-logo', 'foto_pos_2_4_7': 'pat-logo',
@@ -92,6 +99,7 @@ function Partida () {
 
     useEffect(() => {
       obtenerJugador();
+      obtenerUsuario();
       // Agregamos user_id como dependencia para que se ejecute el efecto cada vez que user_id cambie
     }, [user_id]);
 
@@ -105,6 +113,25 @@ function Partida () {
       cargarPartida();
     }, [jugador]);
 
+    const obtenerUsuario = () => {
+      axios
+        .get(`${import.meta.env.VITE_BACKEND_URL}/usuarios/${user_id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
+        .then((response) => {
+          const data = response.data;
+          const usuario = data;
+          console.log(usuario);
+          setNombreUsuario(usuario.nombre);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+  
+    };
+
     const obtenerJugador = () => {
       axios
         .get(`${import.meta.env.VITE_BACKEND_URL}/obtener_id_jugador/${idPartida}/${user_id}`)
@@ -112,6 +139,15 @@ function Partida () {
           const jugador = response.data;
           console.log(jugador);
           setJugador(jugador);
+          if (jugador.casa === 'gryffindor') {
+            setLogoJugador(Gryffindor);
+          } else if (jugador.casa === 'slytherin'){
+            setLogoJugador(Slytherin);
+          } else if (jugador.casa === 'ravenclaw'){
+            setLogoJugador(Ravenclaw);
+          } else if (jugador.casa === 'huffelpuff'){
+            setLogoJugador(Hufflepuff);
+          }
         })
         .catch((error) => {
           console.log(error);
@@ -879,9 +915,13 @@ function Partida () {
         </div>
 
         <div className='div-derecho-partida'>
+          <div className="div-info-usuario">
+              <h2>Usuario {nombreUsuario}</h2>
+              <img className='carta-usuario' src={logoJugador}></img>
+          </div>
           <button className="button-partida" id="button-lanzar" onClick={handleBotonLanzarDado}>Lanzar Dados</button>
           <br></br>
-          <p>Resultado dados: {resultadoDado} </p>
+          {resultadoDado && (<p>Resultado dados: {resultadoDado}</p>)}
           <br></br>
           <button className="button-partida" id="button-escoba" onClick={handleBotonComprarEscoba}>Comprar Escoba</button>
           <br></br>
