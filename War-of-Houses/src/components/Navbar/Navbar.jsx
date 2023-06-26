@@ -2,9 +2,16 @@ import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import Logo from '../../assets/img/logo_howards.png';
 import { AuthContext } from '../../auth/AuthContext'
+import jwt_decode from "jwt-decode";
 
 function Navbar() {
   const { user_id } = useContext(AuthContext);
+//   const {token} = useContext(AuthContext);
+//   let user_id = null;
+//   if (token !== null) {
+//     user_id = jwt_decode(token).sub;
+//   }
+  
 
   return (
     <header>

@@ -3,12 +3,17 @@ import axios from 'axios';
 import { AuthContext } from '../../auth/AuthContext';
 import { Link } from "react-router-dom";
 import './partidas.css';
+import jwt_decode from "jwt-decode";
 
 function PartidasTabla() {
   const [partidas, setPartidas] = useState([]);
   const { user_id } = useContext(AuthContext);
   let [nombreUsuario, setNombreUsuario] = useState('');
   const {token} = useContext(AuthContext);
+  // let user_id = null;
+  // if (token !== null) {
+  //   user_id = jwt_decode(token).sub;
+  // }
   
   const headers = {
     Authorization: `Bearer ${token}`

@@ -4,6 +4,7 @@ import { AuthContext } from '../../auth/AuthContext';
 // https://www.npmjs.com/package/react-hexgrid?activeTab=readme
 import React, {createContext, useState, useEffect, useContext} from "react";
 import { HexGrid, Layout, Hexagon, Text, Pattern, Path, Hex} from 'react-hexgrid';
+import jwt_decode from 'jwt-decode';
 import './partida.css'
 import Image1 from '../../assets/img/bosque_prohibido.jpg'
 import Image2 from '../../assets/img/cabaña_hagrid.jpg'
@@ -71,7 +72,13 @@ function Partida () {
     let [nombreUsuario, setNombreUsuario] = useState('');
 
     const { user_id } = useContext(AuthContext);
+    
+
     const {token} = useContext(AuthContext);
+    // let user_id = null;
+    // if (token !== null) {
+    //   user_id = jwt_decode(token).sub;
+    // }
 
     const headers = {
       Authorization: `Bearer ${token}`

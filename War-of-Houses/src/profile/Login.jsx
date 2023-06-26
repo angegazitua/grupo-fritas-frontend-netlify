@@ -2,11 +2,16 @@ import React, { useContext, useState } from 'react';
 import './Login.css';
 import axios from 'axios';
 import { AuthContext } from '../auth/AuthContext';
+import jwt_decode from "jwt-decode";
 
 
 function Login() {
     const {token, setToken} = useContext(AuthContext);
     const {user_id, setUserId} = useContext(AuthContext);
+    // let user_id = null;
+    // if (token !== null) {
+    //     user_id = jwt_decode(token).sub;
+    // }
     const [mail, setEmail] = useState('');
     const [contrasena, setPassword] = useState('');
     const [msg, setMsg] = useState('');
@@ -26,9 +31,24 @@ function Login() {
             setMsg('Login exitoso');
             // Guardar el token en el local storage
             const access_token = response.data.access_token;
-            const user_id = response.data.user_id;
+            // const user_id = response.data.user_id;
+            // console.log('access_token 1');
             setToken(access_token);
-            setUserId(user_id);
+            // console.log('access_token 2');
+            // setUserId(jwt_decode(access_token).sub || null);
+            // console.log('access_token 3');
+            let initialUserId = null;
+            if (access_token) {
+                try {
+                    const decodedToken = jwt_decode(token);
+                    if (decodedToken.sub) {
+                    initialUserId = decodedToken.sub;
+                    }
+                } catch (error) {
+                    console.log('Error decoding token:', error);
+                }
+            }
+            setUserId(initialUserId);
             
 
         }).catch((error) => {

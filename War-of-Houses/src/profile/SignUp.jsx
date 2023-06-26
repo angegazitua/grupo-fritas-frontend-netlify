@@ -20,6 +20,8 @@ function SignUp() {
         }
         ).then((response) => {
             console.log(response);
+            // redirigir a login
+            window.location.href = '/login';
         }).catch((error) => {
             console.log(error);
         });
