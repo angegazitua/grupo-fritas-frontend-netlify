@@ -73,6 +73,10 @@ function Partida () {
     const { user_id } = useContext(AuthContext);
     const {token} = useContext(AuthContext);
 
+    const headers = {
+      Authorization: `Bearer ${token}`
+    };
+
     const [fotoPos, setFotoPos] = useState(
       {'foto_pos_1_2_5': 'pat-logo', 'foto_pos_1_3_5': 'pat-logo', 'foto_pos_2_4_7': 'pat-logo',
       'foto_pos_2_5_7': 'pat-logo', 'foto_pos_3_5_8': 'pat-logo', 'foto_pos_3_6_8': 'pat-logo',
@@ -120,9 +124,7 @@ function Partida () {
     const obtenerUsuario = () => {
       axios
         .get(`${import.meta.env.VITE_BACKEND_URL}/usuarios/${user_id}`, {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
+          headers: headers
         })
         .then((response) => {
           const data = response.data;
@@ -138,7 +140,11 @@ function Partida () {
 
     const obtenerJugador = () => {
       axios
-        .get(`${import.meta.env.VITE_BACKEND_URL}/obtener_id_jugador/${idPartida}/${user_id}`)
+        .get(`${import.meta.env.VITE_BACKEND_URL}/obtener_id_jugador/${idPartida}/${user_id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
         .then((response) => {
           const jugador = response.data;
           console.log(jugador);
@@ -160,26 +166,32 @@ function Partida () {
   
     const cargarPartida = () => {
       axios
-        .get(`${import.meta.env.VITE_BACKEND_URL}/estado_partida/${idPartida}`)
+        .get(`${import.meta.env.VITE_BACKEND_URL}/estado_partida/${idPartida}`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
         .then((response) => {
           console.log(response.data);
           // Seteamos el turno actual
           setTurnoActual(response.data["turno_actual"]);
-          console.log("TURNO ACTUAL")
+          console.log(response.data["turno_actual"]);
+          console.log("TURNO ACTUAL");
           console.log(turnoActual);
           console.log(jugador.turno);
-          console.log(miTurno);
           if (turnoActual === jugador.turno) {
             setMiTurno(true);
           } else {
             setMiTurno(false);
           }
+          console.log(miTurno);
 
           // Vemos si la partida finalizó
           if (response.data["ganador"] !== null) {
-            axios.post(`${import.meta.env.VITE_BACKEND_URL}/finalizar_partida`, {
-              idJugadorGanador: jugador.id
-            })
+            axios.post(`${import.meta.env.VITE_BACKEND_URL}/finalizar_partida`, 
+              {idJugadorGanador: jugador.id},
+              {headers: headers}
+            )
             setPartidaFinalizada(true);
             navigate("/partidafinalizada");
 
@@ -433,9 +445,10 @@ function Partida () {
 
     const handleBotonLanzarDado = () => {
       if (miTurno) {
-        axios.post(`${import.meta.env.VITE_BACKEND_URL}/lanzar_dados`, {
-          idPartida: idPartida
-        })
+        axios.post(`${import.meta.env.VITE_BACKEND_URL}/lanzar_dados`, 
+          {idPartida: idPartida},
+          {headers: headers}
+        )
         .then((response) => {
           console.log(response.data);
           setResultadoDado(response.data["resultado"]);
@@ -451,8 +464,9 @@ function Partida () {
     const handleBotonFinalizarTurno = () => {
       if (miTurno) {
         axios.post(`${import.meta.env.VITE_BACKEND_URL}/actualizar_turno`, {
-          idPartida: idPartida
-        })
+          idPartida: idPartida}, 
+          {headers: headers}
+        )
         .then((response) => {
           console.log(response.data);
           setTurnoActual(response.data["turnoActual"]);
@@ -470,7 +484,11 @@ function Partida () {
     const handleBotonComprarCabana = () => {
       if (miTurno) {
         axios
-        .get(`${import.meta.env.VITE_BACKEND_URL}/comprar_cabana/${jugador.id}`)
+        .get(`${import.meta.env.VITE_BACKEND_URL}/comprar_cabana/${jugador.id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
         .then((response) => {
           console.log(response.data);
           if (response.data["bool"]) {
@@ -494,7 +512,11 @@ function Partida () {
     const handleBotonComprarCastillo = () => {
       if (miTurno) {
         axios
-        .get(`${import.meta.env.VITE_BACKEND_URL}/comprar_castillo/${jugador.id}`)
+        .get(`${import.meta.env.VITE_BACKEND_URL}/comprar_castillo/${jugador.id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
         .then((response) => {
           console.log(response.data);
           if (response.data["bool"]) {
@@ -513,7 +535,11 @@ function Partida () {
     const handleBotonComprarEscoba = () => {
       if (miTurno) {
         axios
-        .get(`${import.meta.env.VITE_BACKEND_URL}/comprar_escoba/${jugador.id}`)
+        .get(`${import.meta.env.VITE_BACKEND_URL}/comprar_escoba/${jugador.id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
         .then((response) => {
           console.log(response.data);
           if (response.data["bool"]) {
@@ -560,8 +586,9 @@ function Partida () {
           idJugador: jugador.id,
           posicion1: lista_pos[0],
           posicion2: lista_pos[1],
-          posicion3: lista_pos[2]
-        })
+          posicion3: lista_pos[2]}, 
+          {headers: headers }
+        )
         .then((response) => {
           console.log(response.data);
           console.log("hola Holaaaaaa")
@@ -592,8 +619,9 @@ function Partida () {
             idJugador: jugador.id,
             posicion1: lista_pos[0],
             posicion2: lista_pos[1],
-            posicion3: lista_pos[2]
-          })
+            posicion3: lista_pos[2]}, 
+            {headers: headers}
+          )
           .then((response) => {
             console.log(response.data);
             cargarPartida(); // Actualizamos las partidas 
@@ -617,12 +645,13 @@ function Partida () {
         if (puedeComprar){
           //Si es que efectivamente puede comprar la escoba, que llame a guarda_escoba
           axios
-          .post(`${import.meta.env.VITE_BACKEND_URL}/guardar_escoba`, {
-            idJugador: jugador.id,
+          .post(`${import.meta.env.VITE_BACKEND_URL}/guardar_escoba`,
+            {idJugador: jugador.id,
             posicion1: lista_pos[0],
             posicion2: lista_pos[1], 
-            rotacion: rotacion
-          })
+            rotacion: rotacion},
+            {headers: headers} 
+          )
           .then((response) => {
             console.log(response.data);
             cargarPartida(); // Actualizamos las partidas
@@ -683,58 +712,58 @@ function Partida () {
               <Hexagon q={0} r={0} s={0} fill = 'pat-logo'>
               </Hexagon>
               <Hexagon q={0} r={1} s={-1} fill = 'pat-2'>
-                <Text>10</Text>
+                <Text>4</Text>
               </Hexagon>
               <Hexagon q={1} r={0} s={-1} fill = 'pat-3'>
-                <Text>8</Text> 
+                <Text>3</Text> 
               </Hexagon>
               <Hexagon q={1} r={-1} s={0} fill = 'pat-4'>
                 <Text>4</Text>
                 </Hexagon>
               <Hexagon q={0} r={-1} s={1} fill = 'pat-5'>
-                <Text>5</Text>
+                <Text>6</Text>
                 </Hexagon>
               <Hexagon q={-1} r={0} s={1} fill = 'pat-1'>
-                <Text>6</Text>
+                <Text>11</Text>
                 </Hexagon>
               <Hexagon q={-1} r={1} s={0} fill = 'pat-2'>
-                <Text>9</Text>
+                <Text>3</Text>
                 </Hexagon>
               <Hexagon q={-2} r={0} s={1} fill = 'pat-3'>
-                <Text>2</Text>
-                </Hexagon>
-              <Hexagon q={0} r={2} s={-2} fill = 'pat-4'>
-                <Text>6</Text>
-                </Hexagon>
-              <Hexagon q={1} r={1} s={-2} fill = 'pat-5'>
                 <Text>9</Text>
                 </Hexagon>
-              <Hexagon q={2} r={0} s={-2} fill = 'pat-1'>
+              <Hexagon q={0} r={2} s={-2} fill = 'pat-4'>
+                <Text>11</Text>
+                </Hexagon>
+              <Hexagon q={1} r={1} s={-2} fill = 'pat-5'>
                 <Text>5</Text>
+                </Hexagon>
+              <Hexagon q={2} r={0} s={-2} fill = 'pat-1'>
+                <Text>8</Text>
                 </Hexagon>
               <Hexagon q={2} r={-1} s={-1} fill = 'pat-2' >
                 <Text>10</Text>
                 </Hexagon>
               <Hexagon q={2} r={-2} s={0} fill = 'pat-3'>
-                <Text>8</Text>
+                <Text>9</Text>
                 </Hexagon>
               <Hexagon q={1} r={-2} s={1} fill = 'pat-4'>
-                <Text>12</Text>
+                <Text>2</Text>
                 </Hexagon>
               <Hexagon q={0} r={-2} s={2} fill = 'pat-5'>
-                <Text>11</Text>
+                <Text>10</Text>
                 </Hexagon>
               <Hexagon q={-1} r={-1} s={2} fill = 'pat-1'>
-                <Text>3</Text>
+                <Text>12</Text>
                 </Hexagon>
               <Hexagon q={-2} r={1} s={1} fill = 'pat-3'>
-                <Text>3</Text>
+                <Text>8</Text>
                 </Hexagon>
               <Hexagon q={-2} r={2} s={0} fill = 'pat-4'>
-                <Text>4</Text>  
+                <Text>5</Text>  
                 </Hexagon>
               <Hexagon q={-1} r={2} s={-1} fill = 'pat-5'>
-                <Text>11</Text>
+                <Text>6</Text>
                 </Hexagon>
             </Layout>
 

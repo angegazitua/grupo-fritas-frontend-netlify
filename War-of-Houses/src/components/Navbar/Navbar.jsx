@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import Logo from '../../assets/img/logo_howards.png'
+import Logo from '../../assets/img/logo_howards.png';
+import { AuthContext } from '../../auth/AuthContext'
 
 function Navbar() {
+  const { user_id } = useContext(AuthContext);
+
   return (
     <header>
         <nav className="navbar">
@@ -42,16 +45,20 @@ function Navbar() {
                         Instrucciones
                     </NavLink>
                 </li>
-                <li className="navbar-element"> 
-                    <NavLink to="partidas" className={({isActive}) => isActive ? "navbar-link name" : "navbar-link"}>
+                {user_id && (
+                    <li className="navbar-element">
+                    <NavLink to="partidas" className={({ isActive }) => isActive ? "navbar-link name" : "navbar-link"}>
                         Partidas
                     </NavLink>
-                </li>
-                <li className="navbar-element"> 
-                    <NavLink to="logout" className={({isActive}) => isActive ? "navbar-link name" : "navbar-link"}>
+                    </li>
+                )}
+                {user_id && (
+                    <li className="navbar-element">
+                    <NavLink to="logout" className={({ isActive }) => isActive ? "navbar-link name" : "navbar-link"}>
                         Cerrar Sesión
                     </NavLink>
-                </li>
+                    </li>
+                )}
             </ul>
         </nav>
     </header>
