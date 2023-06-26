@@ -104,8 +104,9 @@ svg g:hover {
 
 .div-cuadro-respuestas{
   margin-top: 10px;
-  background-color: goldenrod;
   padding: 10px;
+  border: 2px solid;
+  border-color: goldenrod;
 }
 
 svg g polygon {

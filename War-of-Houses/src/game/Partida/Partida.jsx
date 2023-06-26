@@ -43,42 +43,41 @@ import Slytherin from '../../assets/img/slytherin.png';
 import Ravenclaw from '../../assets/img/ravenclaw.png';
 import Hufflepuff from '../../assets/img/hufflepuff.png';
 
+
 function Partida () {
     const navigate = useNavigate();
 
     const hexagonSize = { x: 18, y: 10 };
     const hexagonSize3 = { x: 10, y: 10 };
-    let [queQuiereComprar, setQueQuiereComprar] = useState("");
-    let [puedeComprar, setPuedeComprar] = useState(false);
-    let [cartasDragon, setCartasDragon] = useState(null);
-    let [cartasVarita, setCartasVarita] = useState(null);
-    let [cartasPhoenix, setCartasPhoenix] = useState(null);
-    let [cartasUnicornio, setCartasUnicornio] = useState(null);
-    let [cartasSerpiente, setCartasSerpiente] = useState(null);
-    let [logoJugador, setLogoJugador] = useState(null);
-    let [resultadoDado, setResultadoDado] = useState(null);
-    let [turnoActual, setTurnoActual] = useState(null);
-    let [miTurno, setMiTurno] = useState(false);
-    let [casaTurnoActual, setCasaTurnoActual] = useState(null);
-    let [partidaFinalizada, setPartidaFinalizada] = useState(false);
-    let [puntajeRojo, setPuntajeRojo] = useState(0);
-    let [puntajeAzul, setPuntajeAzul] = useState(0);
-    let [puntajeVerde, setPuntajeVerde] = useState(0);
-    let [puntajeAmarillo, setPuntajeAmarillo] = useState(0);
+    const [queQuiereComprar, setQueQuiereComprar] = useState("");
+    const [puedeComprar, setPuedeComprar] = useState(false);
+    const [cartasDragon, setCartasDragon] = useState(null);
+    const [cartasVarita, setCartasVarita] = useState(null);
+    const [cartasPhoenix, setCartasPhoenix] = useState(null);
+    const [cartasUnicornio, setCartasUnicornio] = useState(null);
+    const [cartasSerpiente, setCartasSerpiente] = useState(null);
+    const [logoJugador, setLogoJugador] = useState(null);
+    const [resultadoDado, setResultadoDado] = useState(null);
+    const [turnoActual, setTurnoActual] = useState(null);
+    const [miTurno, setMiTurno] = useState(false);
+    const [casaTurnoActual, setCasaTurnoActual] = useState(null);
+    const [partidaFinalizada, setPartidaFinalizada] = useState(false);
+    const [puntajeRojo, setPuntajeRojo] = useState(0);
+    const [puntajeAzul, setPuntajeAzul] = useState(0);
+    const [puntajeVerde, setPuntajeVerde] = useState(0);
+    const [puntajeAmarillo, setPuntajeAmarillo] = useState(0);
+    const [mensaje, setMensaje] = useState("Bienvenido a la partida");
+    const [yaLanzoDado, setYaLanzoDado] = useState(false);
 
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
     const idPartida = searchParams.get("idPartida");
-    let [nombreUsuario, setNombreUsuario] = useState('');
+    const [nombreUsuario, setNombreUsuario] = useState('');
 
     const { user_id } = useContext(AuthContext);
     
 
     const {token} = useContext(AuthContext);
-    // let user_id = null;
-    // if (token !== null) {
-    //   user_id = jwt_decode(token).sub;
-    // }
 
     const headers = {
       Authorization: `Bearer ${token}`
@@ -117,16 +116,15 @@ function Partida () {
       obtenerUsuario();
       // Agregamos user_id como dependencia para que se ejecute el efecto cada vez que user_id cambie
     }, [user_id]);
-
-    // useEffect(() => {
-    //   obtenerJugador();
-    //   // Agregamos user_id como dependencia para que se ejecute el efecto cada vez que user_id cambie
-    // }, [user_id]);
     
     useEffect(() => {
-      // obtenerJugador();
+      obtenerTurno();
+      // cargarPartida();
+    }, [turnoActual, jugador]);
+
+    useEffect(() => {
       cargarPartida();
-    }, [jugador]);
+    });
 
     const obtenerUsuario = () => {
       axios
@@ -170,8 +168,41 @@ function Partida () {
           console.log(error);
         });
     };
+
+    const obtenerTurno = () => {
+      axios
+        .get(`${import.meta.env.VITE_BACKEND_URL}/estado_partida/${idPartida}`, {
+          headers: headers
+        })
+        .then((response) => {
+          //Determinamos si es su turno y de qué jugador es el turno
+          if (response.data["turno_actual"] === jugador.turno) {
+            setMiTurno(true);
+            setMensaje("¡Estas de suerte! Ya es tu turno, elige qué quieres hacer utilizado los botones");
+          } else {
+            setMiTurno(false);
+            setMensaje("No es tu turno todavía... espera a que tus contrincantes terminen sus estrategias");
+          }
+          
+          //Casa del jugador que es su turno
+          if (response.data["jugador_rojo"]["turno"] === response.data["turno_actual"]){
+            setCasaTurnoActual("Griffindor");
+          } else if (response.data["jugador_verde"]["turno"] === response.data["turno_actual"]) {
+            setCasaTurnoActual("Slytherin");
+          }  else if (response.data["jugador_azul"]["turno"] === response.data["turno_actual"]) {
+            setCasaTurnoActual("Ravenclaw");
+          }  else if (response.data["jugador_amarillo"]["turno"] === response.data["turno_actual"]) {
+            setCasaTurnoActual("Hufflepuff");
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+  
+    };
   
     const cargarPartida = () => {
+      console.log("CARGAR PARTIDA");
       axios
         .get(`${import.meta.env.VITE_BACKEND_URL}/estado_partida/${idPartida}`, {
           headers: {
@@ -180,18 +211,20 @@ function Partida () {
         })
         .then((response) => {
           console.log(response.data);
-          // Seteamos el turno actual
-          setTurnoActual(response.data["turno_actual"]);
-          console.log(response.data["turno_actual"]);
-          console.log("TURNO ACTUAL");
-          console.log(turnoActual);
-          console.log(jugador.turno);
-          if (turnoActual === jugador.turno) {
-            setMiTurno(true);
-          } else {
-            setMiTurno(false);
-          }
-          console.log(miTurno);
+          // // Seteamos el turno actual
+          // setTurnoActual(response.data["turno_actual"]);
+          // console.log(response.data["turno_actual"]);
+          // console.log("TURNO ACTUAL");
+          // console.log(turnoActual);
+          // console.log(jugador.turno);
+          // if (turnoActual === jugador.turno) {
+          //   setMiTurno(true);
+          //   setMensaje("¡Estas de suerte! Ya es tu turno, elige qué quieres hacer utilizado los botones");
+          // } else {
+          //   setMiTurno(false);
+          //   setMensaje("No es tu turno todavía... espera a que tus contrincantes terminen sus estrategias");
+          // }
+          // console.log(miTurno);
 
           // Vemos si la partida finalizó
           if (response.data["ganador"] !== null) {
@@ -199,22 +232,24 @@ function Partida () {
               {idJugadorGanador: jugador.id},
               {headers: headers}
             )
+            setYaLanzoDado(false);
             setPartidaFinalizada(true);
-            navigate("/partidafinalizada");
+            // navigate("/partidafinalizada");
+            window.location.href = '/partidafinalizada';
 
           } else if (response.data["ganador"] === null) {
             setPartidaFinalizada(false);
           }
           
-          if (response.data["jugador_rojo"]["turno"] === turnoActual){
-            setCasaTurnoActual("Griffindor");
-          } else if (response.data["jugador_verde"]["turno"] === turnoActual) {
-            setCasaTurnoActual("Slytherin");
-          }  else if (response.data["jugador_azul"]["turno"] === turnoActual) {
-            setCasaTurnoActual("Ravenclaw");
-          }  else if (response.data["jugador_amarillo"]["turno"] === turnoActual) {
-            setCasaTurnoActual("Hufflepuff");
-          }
+          // if (response.data["jugador_rojo"]["turno"] === turnoActual){
+          //   setCasaTurnoActual("Griffindor");
+          // } else if (response.data["jugador_verde"]["turno"] === turnoActual) {
+          //   setCasaTurnoActual("Slytherin");
+          // }  else if (response.data["jugador_azul"]["turno"] === turnoActual) {
+          //   setCasaTurnoActual("Ravenclaw");
+          // }  else if (response.data["jugador_amarillo"]["turno"] === turnoActual) {
+          //   setCasaTurnoActual("Hufflepuff");
+          // }
           
           if (jugador.id === response.data["jugador_rojo"]["id"]) {
             console.log("Cartas rojas");
@@ -451,7 +486,7 @@ function Partida () {
     };
 
     const handleBotonLanzarDado = () => {
-      if (miTurno) {
+      if (miTurno && !yaLanzoDado) {
         axios.post(`${import.meta.env.VITE_BACKEND_URL}/lanzar_dados`, 
           {idPartida: idPartida},
           {headers: headers}
@@ -459,7 +494,36 @@ function Partida () {
         .then((response) => {
           console.log(response.data);
           setResultadoDado(response.data["resultado"]);
-          cargarPartida(); // Actualizamos la partidas
+
+          if (jugador.id === response.data["jugador_rojo"]["id"]) {
+            setCartasDragon(response.data["jugador_rojo"]["cantDragones"]);
+            setCartasPhoenix(response.data["jugador_rojo"]["cantPhoenix"]);
+            setCartasSerpiente(response.data["jugador_rojo"]["cantSerpientes"]);
+            setCartasUnicornio(response.data["jugador_rojo"]["cantUnicornios"]);
+            setCartasVarita(response.data["jugador_rojo"]["cantVaritas"]);
+          } else if (jugador.id === response.data["jugador_verde"]["id"]) {
+            setCartasDragon(response.data["jugador_verde"]["cantDragones"]);
+            setCartasPhoenix(response.data["jugador_verde"]["cantPhoenix"]);
+            setCartasSerpiente(response.data["jugador_verde"]["cantSerpientes"]);
+            setCartasUnicornio(response.data["jugador_verde"]["cantUnicornios"]);
+            setCartasVarita(response.data["jugador_verde"]["cantVaritas"]);
+          } else if (jugador.id === response.data["jugador_azul"]["id"]) {
+            setCartasDragon(response.data["jugador_azul"]["cantDragones"]);
+            setCartasPhoenix(response.data["jugador_azul"]["cantPhoenix"]);
+            setCartasSerpiente(response.data["jugador_azul"]["cantSerpientes"]);
+            setCartasUnicornio(response.data["jugador_azul"]["cantUnicornios"]);
+            setCartasVarita(response.data["jugador_azul"]["cantVaritas"]);
+          } else if (jugador.id === response.data["jugador_amarillo"]["id"]) {
+            setCartasDragon(response.data["jugador_amarillo"]["cantDragones"]);
+            setCartasPhoenix(response.data["jugador_amarillo"]["cantPhoenix"]);
+            setCartasSerpiente(response.data["jugador_amarillo"]["cantSerpientes"]);
+            setCartasUnicornio(response.data["jugador_amarillo"]["cantUnicornios"]);
+            setCartasVarita(response.data["jugador_amarillo"]["cantVaritas"]);
+          } 
+          setMensaje("¡Enhorabuena! Lanzaste el dado, ve si aumentaron tus materias primas. Ahora puedes comprar elementos o finalizar tu turno");
+          setYaLanzoDado(true);
+
+          //cargarPartida(); // Actualizamos la partidas
         })
         .catch((error) => {
           console.log(error);
@@ -469,14 +533,16 @@ function Partida () {
     };
 
     const handleBotonFinalizarTurno = () => {
-      if (miTurno) {
+      if (miTurno && yaLanzoDado) {
         axios.post(`${import.meta.env.VITE_BACKEND_URL}/actualizar_turno`, {
           idPartida: idPartida}, 
           {headers: headers}
         )
         .then((response) => {
           console.log(response.data);
+          setMensaje("Turno finalizado");
           setTurnoActual(response.data["turnoActual"]);
+          setYaLanzoDado(false);
           cargarPartida(); // Actualizamos la partida 
         })
         .catch((error) => {
@@ -489,7 +555,7 @@ function Partida () {
     };
 
     const handleBotonComprarCabana = () => {
-      if (miTurno) {
+      if (miTurno && yaLanzoDado) {
         axios
         .get(`${import.meta.env.VITE_BACKEND_URL}/comprar_cabana/${jugador.id}`, {
           headers: {
@@ -498,6 +564,7 @@ function Partida () {
         })
         .then((response) => {
           console.log(response.data);
+          setMensaje(response.data["msg"]);
           if (response.data["bool"]) {
             console.log("MIRAR ACA")
             console.log(queQuiereComprar);
@@ -517,7 +584,7 @@ function Partida () {
     };
 
     const handleBotonComprarCastillo = () => {
-      if (miTurno) {
+      if (miTurno && yaLanzoDado) {
         axios
         .get(`${import.meta.env.VITE_BACKEND_URL}/comprar_castillo/${jugador.id}`, {
           headers: {
@@ -526,6 +593,7 @@ function Partida () {
         })
         .then((response) => {
           console.log(response.data);
+          setMensaje(response.data["msg"]);
           if (response.data["bool"]) {
             setQueQuiereComprar("castillo");
             setPuedeComprar(true);
@@ -540,7 +608,7 @@ function Partida () {
     };
 
     const handleBotonComprarEscoba = () => {
-      if (miTurno) {
+      if (miTurno && yaLanzoDado) {
         axios
         .get(`${import.meta.env.VITE_BACKEND_URL}/comprar_escoba/${jugador.id}`, {
           headers: {
@@ -549,6 +617,7 @@ function Partida () {
         })
         .then((response) => {
           console.log(response.data);
+          setMensaje(response.data["msg"]);
           if (response.data["bool"]) {
             setQueQuiereComprar("escoba");
             setPuedeComprar(true);
@@ -563,7 +632,7 @@ function Partida () {
     };
 
     const handleComprar = (pos) => {
-      if (miTurno) {
+      if (miTurno && yaLanzoDado) {
         console.log(pos);
         console.log("Intentando comprar");
         console.log(puedeComprar);
@@ -571,9 +640,11 @@ function Partida () {
         if (puedeComprar) {
           if (queQuiereComprar === "cabana") {
             console.log("Comprar cabaña");
+            setMensaje("Intentando comprar una cabaña");
             handleComprarCabana(pos);
           } else if (queQuiereComprar === "castillo") {
             console.log("Comprar castillo");
+            setMensaje("Intentando comprar un castillo");
             handleComprarCastillo(pos);
           }
         }
@@ -582,7 +653,7 @@ function Partida () {
     };
 
     const handleComprarCabana = (pos) => {
-      if (miTurno) {
+      if (miTurno && yaLanzoDado) {
         console.log("ACAAAAAAAAAA")
       console.log(pos);
       const lista_pos = pos.split("_");
@@ -597,6 +668,7 @@ function Partida () {
           {headers: headers }
         )
         .then((response) => {
+          setMensaje("Cabaña comprada correctamente :)");
           console.log(response.data);
           console.log("hola Holaaaaaa")
           setQueQuiereComprar(null);
@@ -607,6 +679,7 @@ function Partida () {
           cargarPartida(); // Actualizamos las partidas después de crear una nueva partida
         })
         .catch((error) => {
+          setMensaje("No fue posible colocar tu cabaña en ese lugar :(");
           console.log(error);
           setQueQuiereComprar(null);
           setPuedeComprar(false);
@@ -619,7 +692,7 @@ function Partida () {
     };
 
     const handleComprarCastillo = (pos) => {
-      if (miTurno) {
+      if (miTurno && yaLanzoDado) {
         const lista_pos = pos.split("_");
         axios
           .post(`${import.meta.env.VITE_BACKEND_URL}/guardar_castillo`, {
@@ -631,9 +704,11 @@ function Partida () {
           )
           .then((response) => {
             console.log(response.data);
+            setMensaje("Castillo comprado correctamente :)");
             cargarPartida(); // Actualizamos las partidas 
           })
           .catch((error) => {
+            setMensaje("No fue posible colocar tu castillo en ese lugar :(")
             console.log(error);
           });
         setQueQuiereComprar(null);
@@ -643,7 +718,7 @@ function Partida () {
     };
 
     const handleComprarEscoba = (pos, rotacion) => {
-      if (miTurno) {
+      if (miTurno && yaLanzoDado) {
         console.log("Intentando colocar escoba");
         console.log(pos);
         console.log(rotacion);
@@ -660,10 +735,12 @@ function Partida () {
             {headers: headers} 
           )
           .then((response) => {
+            setMensaje("Escoba comprada correctamente :)");
             console.log(response.data);
             cargarPartida(); // Actualizamos las partidas
           })
           .catch((error) => {
+            setMensaje("No fue posible colocar tu escoba en ese lugar :(");
             console.log(error);
           });
         }
@@ -979,7 +1056,7 @@ function Partida () {
           <br></br>
           <button className="button-partida" id="button-finalizar" onClick={handleBotonFinalizarTurno}>Finalizar Turno</button>
           <div className="div-cuadro-respuestas">
-            <p> Si desea comprar algo, aprente uno de los botones</p>
+            <p> {mensaje} </p>
           </div>
         </div>
       
