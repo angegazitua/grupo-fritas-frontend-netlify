@@ -1,8 +1,14 @@
 
+.content-partida {
+  width: 50%;
+  height: 150.5vh;
+}
+
 .div-partida {
-    display: flex;
-    align-items: center;
-    margin: 5%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 0%;
 }
 
 .hex {
@@ -17,21 +23,30 @@
     flex-direction: column;
     width: 50%;
     position: relative; 
+    height: 100.5vh;
 }
 
 .div-izquierdo-partida {
-    display: flex;
-    flex-direction: column;
-    width: 25%;
-    position: relative;
-    padding: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  position: relative;
+  padding: 0px;
+  height: 100vh;
+  margin-top: 5vh;
+  margin-left: 10vh;
+  align-items: center;
 }
 
 .div-derecho-partida {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 25%;
   position: relative; 
+  height: 100vh;
+  margin-top: 10vh;
+  padding: 20px;
 }
 
 .button-partida:hover {
@@ -60,7 +75,7 @@
   padding: 10px;
   margin: 20px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
 }
 
@@ -103,9 +118,12 @@ svg g:hover {
 }
 
 .div-cuadro-respuestas{
-  margin-top: 10px;
-  padding: 10px;
-  border: 2px solid;
+  display: flex;
+  margin-top: 5vh;
+  padding: 100px;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid;
   border-color: goldenrod;
 }
 
@@ -118,6 +136,7 @@ svg g polygon {
 .div-info-usuario {
   display: flex;
   flex-direction: row;
+  margin-bottom: 10vh;
 }
 
 .div-info-usuario h2 {
@@ -128,7 +147,13 @@ svg g polygon {
 
 .carta-usuario {
   height: 150px;
-  width: 120px;
+  width: 150px;
+  border-color: transparent;
+}
+
+.div-info-partida {
+  display: flex;
+  flex-direction: column;
 }
 
 /* .grid {

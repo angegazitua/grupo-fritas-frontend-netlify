@@ -751,39 +751,30 @@ function Partida () {
     };
 
     return (
-    
+      
+      <main className="content-partida">
+      <div className="div-grande">
       <div className="div-partida">
 
         <div className='div-izquierdo-partida'>
-          <h1>Turno actual: {casaTurnoActual} </h1>
-          <br></br>
-          <div className="div-puntajes-jugadores">
-          <h1>Puntajes jugadores</h1>
-          <p>Griffindor: {puntajeRojo}</p>
-          <p>Ravenclaw: {puntajeAzul}</p>
-          <p>Slytherin: {puntajeVerde}</p>
-          <p>Huffelpuff: {puntajeAmarillo}</p>
+          <div className="div-info-usuario">
+              <h2>Usuario {nombreUsuario}</h2>
+              <img className='carta-usuario' src={logoJugador}></img>
           </div>
-          <div className="cartas">
-            <div className="div-cartas">
-              <img className='carta-dragon' src={CartaDragon}></img>
-              <p>Número: {cartasDragon}</p>
-            </div>
-            <div className="div-cartas">
-              <img className='carta-phoenix' src={CartaPhoenix}></img>
-              <p>Número: {cartasPhoenix}</p>
-            </div>
-            <div className="div-cartas">
-              <img className='carta-unicornio' src={CartaUnicornio}></img>
-              <p>Número: {cartasUnicornio}</p>
-            </div>
-            <div className="div-cartas">
-              <img className='carta-varita' src={CartaVarita}></img>
-              <p>Número: {cartasVarita}</p>
-            </div>
-            <div className="div-cartas">
-              <img className='carta-serpiente' src={CartaSerpiente}></img>
-              <p>Número: {cartasSerpiente}</p>
+          <div className="div-info-partida">
+            <h1>Turno actual: {casaTurnoActual} </h1>
+            <br></br>
+            <div className="div-puntajes-jugadores">
+              <h1>Puntajes jugadores:</h1>
+              <br></br>
+              <br></br>
+              <p>Griffindor: {puntajeRojo}</p>
+              <br></br>
+              <p>Ravenclaw: {puntajeAzul}</p>
+              <br></br>
+              <p>Slytherin: {puntajeVerde}</p>
+              <br></br>
+              <p>Huffelpuff: {puntajeAmarillo}</p>
             </div>
           </div>
         </div>
@@ -1040,28 +1031,53 @@ function Partida () {
         </div>
 
         <div className='div-derecho-partida'>
-          <div className="div-info-usuario">
-              <h2>Usuario {nombreUsuario}</h2>
-              <img className='carta-usuario' src={logoJugador}></img>
+          <div className='div-boton-dado'>
+            <button className="button-partida" id="button-lanzar" onClick={handleBotonLanzarDado}>Lanzar Dados</button>
+            <br></br>
+            {resultadoDado && (<p>Resultado dados: {resultadoDado}</p>)}
+            <br></br>
           </div>
-          <button className="button-partida" id="button-lanzar" onClick={handleBotonLanzarDado}>Lanzar Dados</button>
-          <br></br>
-          {resultadoDado && (<p>Resultado dados: {resultadoDado}</p>)}
-          <br></br>
-          <button className="button-partida" id="button-escoba" onClick={handleBotonComprarEscoba}>Comprar Escoba</button>
-          <br></br>
-          <button className="button-partida" id="button-cabana" onClick={handleBotonComprarCabana}>Comprar Cabana</button>
-          <br></br>
-          <button className="button-partida" id="button-castillo" onClick={handleBotonComprarCastillo}>Comprar Castillo</button>
-          <br></br>
-          <button className="button-partida" id="button-finalizar" onClick={handleBotonFinalizarTurno}>Finalizar Turno</button>
+          <div className="div-botones">
+            <button className="button-partida" id="button-escoba" onClick={handleBotonComprarEscoba}>Comprar Escoba</button>
+            <br></br>
+            <button className="button-partida" id="button-cabana" onClick={handleBotonComprarCabana}>Comprar Cabana</button>
+            <br></br>
+            <button className="button-partida" id="button-castillo" onClick={handleBotonComprarCastillo}>Comprar Castillo</button>
+            <br></br>
+          </div>
+          <div>
+            <button className="button-partida" id="button-finalizar" onClick={handleBotonFinalizarTurno}>Finalizar Turno</button>
+          </div>
           <div className="div-cuadro-respuestas">
             <p> {mensaje} </p>
           </div>
         </div>
       
       </div>
-   
+      <div className="cartas">
+            <div className="div-cartas">
+              <img className='carta-dragon' src={CartaDragon}></img>
+              <p>Número: {cartasDragon}</p>
+            </div>
+            <div className="div-cartas">
+              <img className='carta-phoenix' src={CartaPhoenix}></img>
+              <p>Número: {cartasPhoenix}</p>
+            </div>
+            <div className="div-cartas">
+              <img className='carta-unicornio' src={CartaUnicornio}></img>
+              <p>Número: {cartasUnicornio}</p>
+            </div>
+            <div className="div-cartas">
+              <img className='carta-varita' src={CartaVarita}></img>
+              <p>Número: {cartasVarita}</p>
+            </div>
+            <div className="div-cartas">
+              <img className='carta-serpiente' src={CartaSerpiente}></img>
+              <p>Número: {cartasSerpiente}</p>
+            </div>
+          </div>
+      </div>
+      </main>
     );
 
     // Obtén una referencia al elemento
