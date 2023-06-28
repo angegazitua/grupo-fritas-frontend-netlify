@@ -222,6 +222,7 @@ function Partida () {
           
           //Setemos turno actual
           setTurnoActual(response.data["turno_actual"]);
+          // setResultadoDado(response.data["resultado_dado"]);
           
           // Vemos si la partida finalizó
           if (response.data["ganador"] !== null) {
