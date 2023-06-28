@@ -20,7 +20,6 @@ function AboutUs() {
           <p>Dato curioso: Fanática de Harry Potter</p>
           <br></br>
           <p>Contacto: ange.gazitua@uc.cl</p>
-          <p><button class="button-about">Contact</button></p>
         </div>
 
         <div className='persona'>
@@ -34,7 +33,6 @@ function AboutUs() {
           <p>Dato curioso: Fanática de Catan</p>
           <br></br>
           <p>Contacto: camila.bennett@uc.cl</p>
-          <p><button class="button-about">Contact</button></p>
         </div>
       </div>
 

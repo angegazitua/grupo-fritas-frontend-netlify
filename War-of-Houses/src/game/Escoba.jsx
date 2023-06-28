@@ -4,8 +4,8 @@ import './escoba.css';
 function Escoba () {
   return (
     <div className="escoba-container">
-      <div class="escoba-cuerpo"></div>
-      <div class="escoba-cerdas"></div>
+      <div className="escoba-cuerpo"></div>
+      <div className="escoba-cerdas"></div>
     </div>
   );
 }
