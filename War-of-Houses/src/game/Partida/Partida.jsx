@@ -186,7 +186,7 @@ function Partida () {
           //Determinamos si es su turno y de qué jugador es el turno
           if (response.data["turno_actual"] === jugador.turno) {
             setMiTurno(true);
-            setMensaje("¡Estas de suerte! Ya es tu turno, elige qué quieres hacer utilizado los botones");
+            setMensaje("¡Estas de suerte! Ya es tu turno, tira el dado para poder hacer las demás acciones");
           } else {
             setMiTurno(false);
             setMensaje("No es tu turno todavía... espera a que tus contrincantes terminen sus estrategias");
@@ -202,6 +202,7 @@ function Partida () {
           }  else if (response.data["jugador_amarillo"]["turno"] === response.data["turno_actual"]) {
             setCasaTurnoActual("Hufflepuff");
           }
+          setResultadoDado(response.data["resultado"]);
         })
         .catch((error) => {
           console.log(error);
@@ -222,6 +223,7 @@ function Partida () {
           
           //Setemos turno actual
           setTurnoActual(response.data["turno_actual"]);
+          setResultadoDado(response.data["resultado"]);
           
           // Vemos si la partida finalizó
           if (response.data["ganador"] !== null) {
@@ -660,14 +662,14 @@ function Partida () {
           {headers: headers }
         )
         .then((response) => {
-          setMensaje("Cabaña comprada correctamente :)");
           console.log(response.data);
-          console.log("hola Holaaaaaa")
+          if (response.data === "Posición no es válida"){
+            setMensaje("No fue posible colocar tu cabaña en ese lugar :(");
+          } else {
+            setMensaje("Cabaña comprada correctamente :)");
+          }
           setQueQuiereComprar(null);
           setPuedeComprar(false);
-          console.log(queQuiereComprar);
-          console.log(puedeComprar);
-          console.log("chao Chaooooo")
           cargarPartida(); // Actualizamos las partidas después de crear una nueva partida
         })
         .catch((error) => {
@@ -696,11 +698,15 @@ function Partida () {
           )
           .then((response) => {
             console.log(response.data);
-            setMensaje("Castillo comprado correctamente :)");
+            if (response.data === 'Posición no es válida'){
+              setMensaje("No fue posible colocar tu castillo en ese lugar :(");
+            } else {
+              setMensaje("Castillo comprado correctamente :)");
+            }
             cargarPartida(); // Actualizamos las partidas 
           })
           .catch((error) => {
-            setMensaje("No fue posible colocar tu castillo en ese lugar :(")
+            setMensaje("No fue posible colocar tu castillo en ese lugar :(");
             console.log(error);
           });
         setQueQuiereComprar(null);
@@ -727,7 +733,11 @@ function Partida () {
             {headers: headers} 
           )
           .then((response) => {
-            setMensaje("Escoba comprada correctamente :)");
+            if (response.data === "Posición no es válida"){
+              setMensaje("No fue posible colocar tu escoba en ese lugar :(");
+            } else {
+              setMensaje("Escoba comprada correctamente :)");
+            }
             console.log(response.data);
             cargarPartida(); // Actualizamos las partidas
           })
