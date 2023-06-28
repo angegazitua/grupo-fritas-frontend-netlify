@@ -45,7 +45,7 @@ import Hufflepuff from '../../assets/img/hufflepuff.png';
 
 
 function Partida () {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const hexagonSize = { x: 18, y: 10 };
     const hexagonSize3 = { x: 10, y: 10 };
@@ -73,6 +73,7 @@ function Partida () {
     const searchParams = new URLSearchParams(location.search);
     const idPartida = searchParams.get("idPartida");
     const [nombreUsuario, setNombreUsuario] = useState('');
+    const [seconds, setSeconds] = useState(0);
 
     const { user_id } = useContext(AuthContext);
     
@@ -125,6 +126,13 @@ function Partida () {
     useEffect(() => {
       cargarPartida();
     });
+
+    // useEffect(() => {
+    //   const interval = setInterval(() => {
+    //     setSeconds(seconds => seconds + 1);
+    //   }, 2000);
+    //   return () => {clearInterval(interval), cargarPartida()};
+    // }, []);
 
     const obtenerUsuario = () => {
       axios
@@ -184,7 +192,7 @@ function Partida () {
             setMensaje("No es tu turno todavía... espera a que tus contrincantes terminen sus estrategias");
           }
           
-          //Casa del jugador que es su turno
+          // Casa del jugador que es su turno
           if (response.data["jugador_rojo"]["turno"] === response.data["turno_actual"]){
             setCasaTurnoActual("Griffindor");
           } else if (response.data["jugador_verde"]["turno"] === response.data["turno_actual"]) {
@@ -211,45 +219,29 @@ function Partida () {
         })
         .then((response) => {
           console.log(response.data);
-          // // Seteamos el turno actual
-          // setTurnoActual(response.data["turno_actual"]);
-          // console.log(response.data["turno_actual"]);
-          // console.log("TURNO ACTUAL");
-          // console.log(turnoActual);
-          // console.log(jugador.turno);
-          // if (turnoActual === jugador.turno) {
-          //   setMiTurno(true);
-          //   setMensaje("¡Estas de suerte! Ya es tu turno, elige qué quieres hacer utilizado los botones");
-          // } else {
-          //   setMiTurno(false);
-          //   setMensaje("No es tu turno todavía... espera a que tus contrincantes terminen sus estrategias");
-          // }
-          // console.log(miTurno);
-
+          
+          //Setemos turno actual
+          setTurnoActual(response.data["turno_actual"]);
+          
           // Vemos si la partida finalizó
           if (response.data["ganador"] !== null) {
             axios.post(`${import.meta.env.VITE_BACKEND_URL}/finalizar_partida`, 
-              {idJugadorGanador: jugador.id},
+              {idJugadorGanador: response.data["ganador"]},
               {headers: headers}
             )
-            setYaLanzoDado(false);
-            setPartidaFinalizada(true);
-            // navigate("/partidafinalizada");
-            window.location.href = '/partidafinalizada';
-
+            .then((response) => {
+              console.log(response.data);
+              setYaLanzoDado(false);
+              setPartidaFinalizada(true);
+              window.location.href = `/partidafinalizada?idPartida=${idPartida}`;
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+            
           } else if (response.data["ganador"] === null) {
             setPartidaFinalizada(false);
           }
-          
-          // if (response.data["jugador_rojo"]["turno"] === turnoActual){
-          //   setCasaTurnoActual("Griffindor");
-          // } else if (response.data["jugador_verde"]["turno"] === turnoActual) {
-          //   setCasaTurnoActual("Slytherin");
-          // }  else if (response.data["jugador_azul"]["turno"] === turnoActual) {
-          //   setCasaTurnoActual("Ravenclaw");
-          // }  else if (response.data["jugador_amarillo"]["turno"] === turnoActual) {
-          //   setCasaTurnoActual("Hufflepuff");
-          // }
           
           if (jugador.id === response.data["jugador_rojo"]["id"]) {
             console.log("Cartas rojas");

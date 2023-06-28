@@ -94,6 +94,7 @@ function PartidasTabla() {
 
   return (
     <main className='content'>
+    {/* <a href="https://www.flaticon.es/iconos-gratis/castillo" title="castillo iconos">Castillo iconos creados por Freepik - Flaticon</a> */}
     <div className='bg-container-partidas'></div>
     <div className="bienvenida-partidas">
       <h1>¡Bienvenido/a {nombreUsuario}!</h1>
@@ -113,6 +114,7 @@ function PartidasTabla() {
                 <td>{partida.id}</td>
                 <td>
                   <div className="div-boton-partida">
+                  
                   {partida.cantJugadores === 4 && partida.ganador === null ? (
                     <Link className="partida-button" to={`/partida?idPartida=${partida.id}`}>
                       Ingresar a la partida

@@ -89,7 +89,7 @@ function Router() {
         },
         {
           path: 'partidafinalizada',
-          element: <LogOutButton />
+          element: <PartidaFinalizada />
         }
       ]
     },
